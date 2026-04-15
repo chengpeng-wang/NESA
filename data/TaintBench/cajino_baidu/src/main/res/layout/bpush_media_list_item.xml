@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="70dp">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/bpush_list_item_bg" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ImageView android:layout_gravity="center_vertical" android:id="@+id/bpush_media_list_img" android:paddingLeft="3dp" android:layout_width="40dp" android:layout_height="40dp"/>
+        <LinearLayout android:orientation="vertical" android:paddingLeft="12dp" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textSize="16dp" android:textColor="#000000" android:ellipsize="end" android:id="@+id/bpush_media_list_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:singleLine="true"/>
+            <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="8dp">
+                <TextView android:textSize="10dp" android:textColor="#000000" android:ellipsize="end" android:id="@+id/bpush_media_list_from_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"/>
+                <TextView android:textSize="10dp" android:textColor="#000000" android:ellipsize="end" android:id="@+id/bpush_media_list_time_text" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

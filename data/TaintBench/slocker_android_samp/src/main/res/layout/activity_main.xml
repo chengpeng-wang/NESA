@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/bg_header" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <ScrollView android:id="@+id/scrollView1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:background="#ff0000" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="18sp" android:textColor="#ffffff" android:gravity="center" android:id="@+id/TextView03" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="YOUR DEVICE HAS BEEN BLOCKED"/>
+                <TextView android:textSize="15sp" android:textColor="#fffc00" android:gravity="center" android:id="@+id/TextView04" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="DETECTED ILLEGAL CONTENT"/>
+                <TextView android:textSize="20sp" android:textColor="#ffffff" android:gravity="center" android:id="@+id/tvIMEI" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="TextView"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textColor="#000000" android:id="@+id/TextView19" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="5dp" android:text="Your device has been blocked due to at least one of the reasons specified below"/>
+                <TextView android:textColor="#ff0000" android:id="@+id/TextView11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="20dp" android:layout_marginBottom="10dp" android:text="* You have been subjected to violation of Copyright and Related Rights Law (Video, Music, Software) and illegally using or distributing copyrighted contents. Article 1, Section 8, Cause 8 of the Criminal Code provides for a fine of two to five hundred minimal wages or a deprivation of liberty for two to eight years."/>
+                <TextView android:textColor="#ff0000" android:id="@+id/TextView10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="* You have been viewing or distributing prohibited Pornographic content. Article 202 of the Criminal Code provides for a deprivation of liberty for four to twelve years."/>
+                <LinearLayout android:orientation="vertical" android:background="#eaeaea" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp">
+                    <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="16sp" android:textColor="#000000" android:id="@+id/textView2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp" android:text="Pursuant to the amendment to Criminal Code of United States of America of May 28, 2011, this law infringement (if it is not repeated - first time) may be considered as conditional in case you pay the fine of the States."/>
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:textColor="#ffffff" android:layout_gravity="center" android:id="@+id/button1" android:background="#505050" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_marginTop="20dp" android:layout_marginRight="30dp" android:layout_marginBottom="10dp" android:text="PROCEED"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

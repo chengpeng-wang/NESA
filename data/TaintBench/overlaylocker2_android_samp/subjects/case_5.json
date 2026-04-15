@@ -1,0 +1,4 @@
+{
+    "src_function": "FileInputStream",
+    "sink_function": "addJavascriptInterface"
+}

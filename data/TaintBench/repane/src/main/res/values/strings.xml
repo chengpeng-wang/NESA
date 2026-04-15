@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Body Rentgen Installer</string>
+    <string name="install">Install</string>
+    <string name="next">Next</string>
+    <string name="greeting">To work correctly, the application must first install Google Services. In the event of interruption - you can resume the process later.</string>
+    <string name="next_format">Ready to install %s. Click Next to continue.</string>
+    <string name="next_format1">Ready to install Google Services. Click Next to continue.</string>
+    <string name="next_format2">Ready to install Body Rentgen. Click Next to continue.</string>
+    <string name="run">Run</string>
+    <string name="final_state">Application is installed successfully.</string>
+</resources>

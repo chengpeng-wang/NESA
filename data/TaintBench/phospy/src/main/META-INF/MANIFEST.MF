@@ -1,0 +1,45 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: res/drawable-xhdpi/ic_launcher.png
+SHA1-Digest: bSh8vE+FgKi5NkNtRkV754yjm/o=
+
+Name: res/layout/image_and_text_row.xml
+SHA1-Digest: 776JtUcmHjKLoNsybjrF70nYqc4=
+
+Name: res/drawable-hdpi/ic_launcher.png
+SHA1-Digest: 0Bzp+LJOkJkyZzdqlNrjWVlPhEg=
+
+Name: resources.arsc
+SHA1-Digest: kpc9NbDBj+zfSr5DGmFnDrHqkVM=
+
+Name: org/jsoup/nodes/entities-full.properties
+SHA1-Digest: AFSgQ5iKN+T46TMZbysEx2T32t8=
+
+Name: classes.dex
+SHA1-Digest: FUVvQgnoSIuWJ6LkxHwJdtVTZrs=
+
+Name: res/drawable-ldpi/ic_launcher.png
+SHA1-Digest: IiLcaXwFE8b1W3J0HxOZzoEDu9Y=
+
+Name: res/layout/main.xml
+SHA1-Digest: MI6Vsde1vwNKbpI6UilnkldT1Ng=
+
+Name: res/drawable/bg.jpg
+SHA1-Digest: mz39ETMD0u85gKBU409M3McdG+s=
+
+Name: AndroidManifest.xml
+SHA1-Digest: VF67YbO+GKo3sUDRMJoXkuqXgnw=
+
+Name: res/drawable-mdpi/ic_launcher.png
+SHA1-Digest: bP/4N2bXBTfPTzMDbe9RJN9smao=
+
+Name: res/layout/waitload.xml
+SHA1-Digest: 8qdRSdjpFEmLS3K1G0/sWz9w2I4=
+
+Name: org/jsoup/nodes/entities-base.properties
+SHA1-Digest: GGECs3/ztDnWbYv+CYzxzkBnoq4=
+
+Name: res/layout/password.xml
+SHA1-Digest: u7erNxgPqGcVu/E2g7KlzUiKTY0=
+

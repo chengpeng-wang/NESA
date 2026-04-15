@@ -1,0 +1,52 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "You are tasked with identifying variables and expressions that may be assigned with the return values of parseInt and parseFloat.",
+
+    "examples": [
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. int a = 0;\n2. int b = 5;\n3. int c = Integer.parseInt(s);",
+            "question": "Please examine the code snippet. Identify variables and expressions that may be assigned with the return values of parseInt and parseFloat. Please think step by step and extract these desired variables or expressions and report their corresponding line numbers.",
+            "output": {
+                "explanation": "At line 1, the literal 0 is assigned to variable a. At line 3, parseInt is used and the return value is assigned to variable c. Hence, I will report the variables a at line 1 and c at line 3.",
+                "answer": [
+                    {"Line": 1, "Expression": "a"},
+                    {"Line": 3, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. int a = 10;\n2. int b = input();\n3. int c = a / b;\n4. int d = 100 / b;",
+            "question": "Please examine the code snippet. Identify variables and expressions that may be assigned with the return values of parseInt and parseFloat. Please think step by step and extract these desired variables or expressions and report their corresponding line numbers.",
+            "output": {
+                "explanation": "In the above code, parseInt and parseFloat are not invoked. Hence, I will report an empty list.",
+                "answer": []
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. String input = getInput();\n2. float parsedValue = parseFloat(input);\n3. float fixedValue = 42.0;\n4. float anotherValue = 0.0f;",
+            "question": "Please examine the code snippet. Identify variables and expressions that may be assigned with the return values of parseInt and parseFloat. Please think step by step and extract these desired variables or expressions and report their corresponding line numbers.",
+            "output": {
+                "explanation": "At line 2, the function parseFloat is invoked. The return value is assigned to parsedValue. Hence, I will report parsedValue at line 2..",
+                "answer": [
+                    {"Line": 2, "Expression": "parsedValue"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Identify the variables or expressions required.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code snippet. Identify variables and expressions that may be assigned with the return values of parseInt and parseFloat. Please think step by step and extract these desired variables or expressions and report their corresponding line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Do not repeat the question and program. Please think step by step. ",
+            "Format of the output:",
+            "Explanation: [Your explanation on whether and how parseInt and parseFloat are invoked.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

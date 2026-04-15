@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="ic_launcher" id="2130837504" />
+    <public type="drawable" name="ico3" id="2130837505" />
+    <public type="drawable" name="mai" id="2130837506" />
+    <public type="drawable" name="new2" id="2130837507" />
+    <public type="drawable" name="new3" id="2130837508" />
+    <public type="layout" name="activity_main" id="2130903040" />
+    <public type="string" name="app_name" id="2130968576" />
+    <public type="string" name="hello_world" id="2130968577" />
+    <public type="string" name="menu_settings" id="2130968578" />
+</resources>

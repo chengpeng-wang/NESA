@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:paddingLeft="5dp" android:paddingTop="7dp" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="3dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/notification_icon" android:layout_width="25dp" android:layout_height="25dp" android:src="@android:drawable/arrow_down_float" android:scaleType="fitCenter"/>
+        <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="#ff000000" android:ellipsize="marquee" android:id="@+id/notification_title" android:paddingLeft="4dp" android:fadingEdge="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="14sp" android:textColor="#ff000000" android:ellipsize="marquee" android:id="@+id/notification_text" android:paddingLeft="4dp" android:fadingEdge="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1"/>
+        <android.widget.DateTimeView android:textSize="14sp" android:textColor="#ff000000" android:id="@+id/notification_time" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4dp" android:singleLine="true"/>
+    </LinearLayout>
+</LinearLayout>

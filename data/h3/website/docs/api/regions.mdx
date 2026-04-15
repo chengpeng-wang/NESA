@@ -1,0 +1,665 @@
+---
+id: regions
+title: Region functions
+sidebar_label: Regions
+slug: /api/regions
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+These functions convert H3 indexes to and from polygonal areas.
+
+## polygonToCells
+
+Each binding's version of `polygonToCells` takes as input a GeoJSON-like data
+structure describing a polygon (i.e., an outer ring and optional holes) and
+a target cell resolution.
+It produces a collection of cells that are contained within the polygon.
+
+Containment is determined by centroids of the cells, so that a partitioning
+of polygons (covering an area without overlaps) will result in
+a partitioning of H3 cells.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error polygonToCells(const GeoPolygon *geoPolygon, int res, uint32_t flags, H3Index *out);
+```
+
+In C, `polygonToCells` takes a `GeoPolygon` struct and preallocated,
+zeroed memory, and fills it with the covering cells.
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+List<Long> polygonToCells(List<LatLng> points, List<List<LatLng>> holes, int res);
+List<String> polygonToCellAddresses(List<LatLng> points, List<List<LatLng>> holes, int res);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.polygonToCells(polygon, res, isGeoJson)
+```
+
+```js live
+function example() {
+    const polygon = [
+        [37.813318999983238, -122.4089866999972145],
+        [37.7198061999978478, -122.3544736999993603],
+        [37.8151571999998453, -122.4798767000009008]
+    ];
+    const res = 7;
+    return h3.polygonToCells(polygon, res);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.polygon_to_cells(h3shape, res)
+h3.h3shape_to_cells(h3shape, res)
+```
+
+In Python, `h3shape_to_cells` takes an `H3Shape` object
+(`LatLngPoly` or `LatLngMultiPoly`).
+Note that `polygon_to_cells` is an alias for `h3shape_to_cells`.
+For more info, see the [`h3-py` docs](https://uber.github.io/h3-py/api_quick.html#polygon-interface).
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.PolygonToCells(polygon, res)
+```
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_polygon_wkt_to_cells(wkt, res)
+```
+```sql
+h3_polygon_wkt_to_cells_string(wkt, res)
+```
+```sql
+h3_polygon_wkb_to_cells(wkb, res)
+```
+```sql
+h3_polygon_wkb_to_cells_string(wkb, res)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 polygonToCells --help
+h3: Converts a polygon (array of lat, lng points, or array of arrays of lat, lng points) into a set of covering cells at the specified resolution
+H3 4.1.0
+
+	polygonToCells	Converts a polygon (array of lat, lng points, or array of arrays of lat, lng points) into a set of covering cells at the specified resolution
+	-h, --help	Show this help message.
+	-i, --file <FILENAME>	The file to load the polygon from. Use -- to read from stdin.
+	-p, --polygon <POLYGON>	The polygon to convert. Up to 1500 characters.
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive, that the polygon should be converted to.
+	-f, --format <FMT>	'json' for ["CELL", ...], 'newline' for CELL\n... (Default: json)
+```
+
+```bash
+$ h3 polygonToCells -r 7 -p "[[37.813318999983238, -122.4089866999972145], [37.7198061999978478, -122.3544736999993603], [37.8151571999998453, -122.4798767000009008]]"
+[ "87283082bffffff", "872830870ffffff", "872830820ffffff", "87283082effffff", "872830828ffffff", "87283082affffff", "872830876ffffff" ]
+```
+
+</TabItem>
+</Tabs>
+
+
+## maxPolygonToCellsSize
+
+Provides an upper bound on the number of cells needed for memory allocation
+purposes when computing `polygonToCells` on the given GeoJSON-like data structure.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error maxPolygonToCellsSize(const GeoPolygon *geoPolygon, int res, uint32_t flags, int64_t *out);
+```
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 maxPolygonToCellsSize --help
+h3: Returns the maximum number of cells that could be needed to cover the polygon. Will always be equal or more than actually necessary
+H3 4.1.0
+
+	maxPolygonToCellsSize	Returns the maximum number of cells that could be needed to cover the polygon. Will always be equal or more than actually necessary
+	-h, --help	Show this help message.
+	-i, --file <FILENAME>	The file to load the polygon from. Use -- to read from stdin.
+	-p, --polygon <POLYGON>	The polygon to convert. Up to 1500 characters.
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive, that the polygon should be converted to.
+```
+
+```bash
+$ h3 maxPolygonToCellsSize -r 7 -p "[[37.813318999983238, -122.4089866999972145], [37.7198061999978478, -122.3544736999993603], [37.8151571999998453, -122.4798767000009008]]"
+100
+```
+
+</TabItem>
+</Tabs>
+
+## polygonToCellsExperimental
+
+Each binding's version of `polygonToCellsExperimental` takes as input a
+GeoJSON-like data structure describing a polygon (i.e., an outer ring and
+optional holes) and a target cell resolution.
+It produces a collection of cells that are contained within the polygon.
+
+This function differs from `polygonToCells` in that it uses an experimental
+new algorithm which supports center-based, fully-contained, and
+overlapping containment modes.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error polygonToCellsExperimental(const GeoPolygon *geoPolygon, int res, uint32_t flags, int64_t size, H3Index *out);
+```
+
+In C, `polygonToCellsExperimental` takes a `GeoPolygon` struct and preallocated,
+zeroed memory, and fills it with the covering cells.
+
+`size` should be the size in number of `H3Index`s of `out`.
+
+The valid values for `flags` are:
+
+| Enum name | Integer value | Description
+| --------- | ------------- | -----------
+| `CONTAINMENT_CENTER` | 0 | Cell center is contained in the shape
+| `CONTAINMENT_FULL` | 1 | Cell is fully contained in the shape
+| `CONTAINMENT_OVERLAPPING` | 2 | Cell overlaps the shape at any point
+| `CONTAINMENT_OVERLAPPING_BBOX` | 3 | Cell bounding box overlaps shape
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+List<Long> polygonToCellsExperimental(List<LatLng> points, List<List<LatLng>> holes, PolygonToCellsFlags flags, int res);
+List<String> polygonToCellExperimentalAddresses(List<LatLng> points, List<List<LatLng>> holes, PolygonToCellsFlags flags, int res);
+```
+
+The valid values for `flags` are:
+
+| Enum name | Description
+| --------- | -----------
+| `PolygonToCellsFlags.containment_center` | Cell center is contained in the shape
+| `PolygonToCellsFlags.containment_full` | Cell is fully contained in the shape
+| `PolygonToCellsFlags.containment_overlapping` | Cell overlaps the shape at any point
+| `PolygonToCellsFlags.containment_overlapping_bbox` | Cell bounding box overlaps shape
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.polygonToCellsExperimental(polygon, res, flags, isGeoJson)
+```
+
+```js live
+function example() {
+    const polygon = [
+        [37.813318999983238, -122.4089866999972145],
+        [37.7198061999978478, -122.3544736999993603],
+        [37.8151571999998453, -122.4798767000009008]
+    ];
+    const res = 7;
+    return h3.polygonToCellsExperimental(polygon, res, h3.POLYGON_TO_CELLS_FLAGS.containmentOverlapping);
+}
+```
+
+The valid values for `flags` are:
+
+| Enum name | Description
+| --------- | -----------
+| `POLYGON_TO_CELLS_FLAGS.containment_center` | Cell center is contained in the shape
+| `POLYGON_TO_CELLS_FLAGS.containment_full` | Cell is fully contained in the shape
+| `POLYGON_TO_CELLS_FLAGS.containment_overlapping` | Cell overlaps the shape at any point
+| `POLYGON_TO_CELLS_FLAGS.containment_overlapping_bbox` | Cell bounding box overlaps shape
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.h3shape_to_cells_experimental(h3shape, res, contain='overlap')
+```
+
+In Python, `h3shape_to_cells_experimental` takes an `H3Shape` object
+(`LatLngPoly` or `LatLngMultiPoly`).
+For more info, see the [`h3-py` docs](https://uber.github.io/h3-py/api_quick.html#polygon-interface).
+
+The valid values for `contain` are:
+
+| String value | Description
+| ------------ | -----------
+| `center` | Cell center is contained in the shape (default)
+| `full` | Cell is fully contained in the shape
+| `overlap` | Cell overlaps the shape at any point
+| `bbox_overlap` | Cell bounding box overlaps shape
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.PolygonToCellsExperimental(polygon, res, containmentMode, maxNumCellsReturn)
+```
+
+The valid values for `containmentMode` are:
+
+| Enum name | Description
+| --------- | -----------
+| `h3.ContainmentCenter` | Cell center is contained in the shape
+| `h3.ContainmentFull` | Cell is fully contained in the shape
+| `h3.ContainmentOverlapping` | Cell overlaps the shape at any point
+| `h3.ContainmentOverlappingBbox` | Cell bounding box overlaps shape
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_polygon_wkt_to_cells_experimental(wkt, res, 'overlap')
+```
+```sql
+h3_polygon_wkt_to_cells_experimental_string(wkt, res, 'overlap')
+```
+```sql
+h3_polygon_wkb_to_cells_experimental(wkb, res, 'overlap')
+```
+```sql
+h3_polygon_wkb_to_cells_experimental_string(wkb, res, 'overlap')
+```
+
+The valid values for the third `contain` argument are:
+
+| String value | Description
+| ------------ | -----------
+| `center` | Cell center is contained in the shape (default)
+| `full` | Cell is fully contained in the shape
+| `overlap` | Cell overlaps the shape at any point
+| `bbox_overlap` | Cell bounding box overlaps shape
+
+</TabItem>
+<TabItem value="shell">
+
+This function is not exposed in the CLI bindings.
+
+</TabItem>
+</Tabs>
+
+
+## maxPolygonToCellsSizeExperimental
+
+Provides an upper bound on the number of cells needed for memory allocation
+purposes when computing `polygonToCellsExperimental` on the given GeoJSON-like data structure.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error maxPolygonToCellsSizeExperimental(const GeoPolygon *geoPolygon, int res, uint32_t flags, int64_t *out);
+```
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+This function is not exposed in the CLI bindings.
+
+</TabItem>
+</Tabs>
+
+
+## cellsToLinkedMultiPolygon / cellsToMultiPolygon
+
+Create a GeoJSON-like multi-polygon describing the outline(s) of a set of cells.
+Polygon outlines will follow GeoJSON MultiPolygon order: Each polygon will
+have one outer loop, which is first in the list, followed by any holes.
+
+It is expected that all cells in the set have the same resolution and
+that the set contains no duplicates. Behavior is undefined if duplicates
+or multiple resolutions are present, and the algorithm may produce
+unexpected or invalid output.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error cellsToLinkedMultiPolygon(const H3Index *h3Set, const int numHexes, LinkedGeoPolygon *out);
+```
+
+It is the responsibility of the caller to call `destroyLinkedPolygon` on the
+populated linked geo structure, or the memory for that structure will
+not be freed.
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+List<List<List<LatLng>>> cellsToMultiPolygon(Collection<Long> h3, boolean geoJson);
+List<List<List<LatLng>>> cellAddressesToMultiPolygon(Collection<String> h3Addresses, boolean geoJson);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.cellsToMultiPolygon(cells, geoJson)
+```
+
+```js live
+function example() {
+    const cells = ['872830828ffffff', '87283082effffff'];
+    return h3.cellsToMultiPolygon(cells, true);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.cells_to_h3shape(cells, *, tight=True)
+```
+
+Returns an `H3Shape` object:
+- If `tight=True`, returns `LatLngPoly` if possible, otherwise `LatLngMultiPoly`.
+- If `tight=False`, always returns a `LatLngMultiPoly`.
+
+For more info, see the [`h3-py` docs](https://uber.github.io/h3-py/api_quick.html#polygon-interface).
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.CellsToMultiPolygon(cells)
+
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_cells_to_multi_polygon_wkt(cells)
+```
+```sql
+h3_cells_to_multi_polygon_wkb(cells)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 cellsToMultiPolygon --help
+h3: Returns a polygon (array of arrays of lat, lng points) for a set of cells
+H3 4.1.0
+
+	cellsToMultiPolygon	Returns a polygon (array of arrays of lat, lng points) for a set of cells
+	-h, --help	Show this help message.
+	-i, --file <FILENAME>	The file to load the cells from. Use -- to read from stdin.
+	-c, --cells <CELLS>	The cells to convert. Up to 100 cells if provided as hexadecimals with zero padding.
+	-f, --format <FMT>	'json' for [[[[lat, lng],...],...],...] 'wkt' for a WKT MULTIPOLYGON
+```
+
+```bash
+$ h3 cellsToMultiPolygon -c 872830828ffffff,87283082effffff
+[[[[37.784046, -122.427089], [37.772267, -122.434586], [37.761736, -122.425769], [37.762982, -122.409455], [37.752446, -122.400640], [37.753689, -122.384324], [37.765468, -122.376819], [37.776004, -122.385635], [37.774761, -122.401954], [37.785293, -122.410771]]]]
+```
+
+</TabItem>
+</Tabs>
+
+
+
+## destroyLinkedMultiPolygon
+
+Free all allocated memory for a linked geo structure. The caller is
+responsible for freeing memory allocated to the input polygon struct.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+void destroyLinkedMultiPolygon(LinkedGeoPolygon *polygon);
+```
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+</Tabs>
+
+

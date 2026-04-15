@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: AndroidManifest.xml
+SHA1-Digest: XQOH6PwP+6VZbgOUJyBe/KNkcs0=
+
+Name: res/layout/abc_view.xml
+SHA1-Digest: j8U0uKNyxYWJqmsOhKSSzgVUs5M=
+
+Name: res/layout/warming_layout.xml
+SHA1-Digest: jAdm/TvlRpIY/opS885DPL+CI7Q=
+
+Name: res/layout/abc_icon_title.xml
+SHA1-Digest: kzNtbruKvlK83VtQTVUr/qxG2Qc=
+
+Name: res/drawable/abc_close.png
+SHA1-Digest: XHV6U45vVmPgASyGSZEuhEUf5ho=
+
+Name: res/layout/abc_onlyimage.xml
+SHA1-Digest: Carq+sLbNkjdrBYu7vGv2OnKvJo=
+
+Name: resources.arsc
+SHA1-Digest: 68+5MJl6UQ99v0nYtAiew0JgeYQ=
+
+Name: res/drawable/abc_sms_icon.png
+SHA1-Digest: OiJ0/121Ta9bUF/7klsvQXRVhTk=
+
+Name: classes.dex
+SHA1-Digest: BWeTniUXrEKJbRvUApQLuNtnSoY=
+
+Name: res/layout/abc_icon_title_descrption.xml
+SHA1-Digest: cAzzOJ9esB57FzWgmIOHBoAcq/Q=
+
+Name: res/drawable/abc_icon.png
+SHA1-Digest: kTlWvRuOoA1vcrqARMW3QcV8kZs=
+

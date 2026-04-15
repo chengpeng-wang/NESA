@@ -1,0 +1,128 @@
+* {
+	box-sizing: border-box;
+}
+body, input {
+  font-family: 'Roboto', 'Droid Sans';
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  background: white;
+  padding: 0;
+  margin: 0;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  outline: none;
+}
+img {
+  display: block;
+}
+input {
+  background: transparent;
+  position: relative;
+  border: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 8px 8px 6px;
+  background: bottom left -moz-linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center -moz-linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right -moz-linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+  background: bottom left -webkit-linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center -webkit-linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right -webkit-linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+  background: bottom left linear-gradient(#a9a9a9, #a9a9a9) no-repeat, bottom center linear-gradient(#a9a9a9, #a9a9a9) repeat-x, bottom right linear-gradient(#a9a9a9, #a9a9a9) no-repeat;
+  -moz-background-size: 1px 6px, 1px 1px, 1px 6px;
+  -o-background-size: 1px 6px, 1px 1px, 1px 6px;
+  -webkit-background-size: 1px 6px, 1px 1px, 1px 6px;
+  background-size: 1px 6px, 1px 1px, 1px 6px;
+}
+
+input[disabled], input.disabled {
+  color: #a9a9a9;
+  background: bottom left -moz-linear-gradient(#cecece, #cecece) no-repeat, bottom center -moz-linear-gradient(#cecece, #cecece) repeat-x, bottom right -moz-linear-gradient(#cecece, #cecece) no-repeat;
+  background: bottom left -webkit-linear-gradient(#cecece, #cecece) no-repeat, bottom center -webkit-linear-gradient(#cecece, #cecece) repeat-x, bottom right -webkit-linear-gradient(#cecece, #cecece) no-repeat;
+  background: bottom left linear-gradient(#cecece, #cecece) no-repeat, bottom center linear-gradient(#cecece, #cecece) repeat-x, bottom right linear-gradient(#cecece, #cecece) no-repeat;
+  -moz-background-size: 1px 6px, 1px 1px, 1px 6px;
+  -o-background-size: 1px 6px, 1px 1px, 1px 6px;
+  -webkit-background-size: 1px 6px, 1px 1px, 1px 6px;
+  background-size: 1px 6px, 1px 1px, 1px 6px;
+}
+
+input:focus {
+  background: bottom left -moz-linear-gradient(#0099cc, #0099cc) no-repeat, bottom center -moz-linear-gradient(#0099cc, #0099cc) repeat-x, bottom right -moz-linear-gradient(#0099cc, #0099cc) no-repeat;
+  background: bottom left -webkit-linear-gradient(#0099cc, #0099cc) no-repeat, bottom center -webkit-linear-gradient(#0099cc, #0099cc) repeat-x, bottom right -webkit-linear-gradient(#0099cc, #0099cc) no-repeat;
+  background: bottom left linear-gradient(#0099cc, #0099cc) no-repeat, bottom center linear-gradient(#0099cc, #0099cc) repeat-x, bottom right linear-gradient(#0099cc, #0099cc) no-repeat;
+  -moz-background-size: 1px 6px, 1px 1px, 1px 6px;
+  -o-background-size: 1px 6px, 1px 1px, 1px 6px;
+  -webkit-background-size: 1px 6px, 1px 1px, 1px 6px;
+  background-size: 1px 6px, 1px 1px, 1px 6px;
+}
+.clear {
+	clear: both;
+}
+.header {
+	width: 100%;
+	height: 15%;
+}
+.footer {
+	margin-top: 20px;
+	position: relative;
+	border: none;
+	outline: none;
+	padding: 15px 0 15px 0;
+	width: 100%;
+	color: white;
+	background: rgb(66,127,237);
+	font-weight: bold;
+	font-size: 1em;
+	text-align: center;
+}
+.footer[disabled] {
+	background: rgb(109,110,113);
+}
+.pages {
+	position: relative;
+	width: 90%;
+	font-size: .75em;
+	//left: 0;
+	//right: 0;
+	margin: 0 auto;
+}
+.page-2 {
+	display: none;
+}
+.cardholder_name {
+	text-transform: uppercase;
+}
+.cardholder_name::-webkit-input-placeholder {
+	text-transform: none;
+}
+input {
+	text-align: center;
+}
+input::-webkit-input-placeholder {
+	text-align: left;
+}
+#credit_card_expiry_id {
+	width: 45%;
+	margin-right: 5%;
+	float: left;
+}
+#credit_card_cvc_id {
+	width: 45%;
+	margin-left: 5%;
+	float: right;
+}
+.error {
+	display: none;
+	text-align: center;
+	color: red;
+}

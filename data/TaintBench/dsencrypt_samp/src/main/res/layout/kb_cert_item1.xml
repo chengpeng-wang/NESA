@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="top" android:orientation="vertical" android:background="#fff4f4f4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:background="@drawable/s4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="12sp" android:textColor="#ffffffff" android:id="@+id/tv_name" android:paddingLeft="20dp" android:paddingTop="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:background="@drawable/s5" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <LinearLayout android:orientation="vertical" android:background="@drawable/s6" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="12sp" android:id="@+id/textView2" android:paddingLeft="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="금융결제원"/>
+            <TextView android:textSize="12sp" android:id="@+id/tv_issue" android:paddingLeft="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="TextView"/>
+            <TextView android:textSize="12sp" android:id="@+id/tv_expire" android:paddingLeft="8dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="TextView"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

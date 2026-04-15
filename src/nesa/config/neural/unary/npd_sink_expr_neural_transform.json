@@ -1,0 +1,51 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying the variable just bofore the field access operator . and reporting them along with their line numbers.",
+
+    "task": "I want you to extract the variable just before the field access operator ., i.e., a in a.foo() and a in a.f.",
+
+    "examples": [
+        {
+            "description": "List the variable just before the field access operator .",
+            "code": "1. String s = null;\n2. int len = s.length();",
+            "question": "Please examine the code snippet. List the variable just before the field access operator . You should think step by step.",
+            "output": {
+                "explanation": "At line 2, s is before .",
+                "answer": [
+                    {"Line": 2, "Expression": "s"}
+                ]
+            }
+        },
+        {
+            "description": "List the variable just before the field access operator .",
+            "code": "1. String s = getStringValue();\n2. int len = s.length();",
+            "question": "Please examine the code snippet. List the variable just before the field access operator . You should think step by step.",
+            "output": {
+                "explanation": "At line 2, s is before .",
+                "answer": [
+                    {"Line": 2, "Expression": "s"}
+                ]
+            }
+        },
+        {
+            "description": "List the variable just before the field access operator .",
+            "code": "1. String s = getStringValue();\n2. foo(s);",
+            "question": "Please examine the code snippet. List the variable just before the field access operator . You should think step by step.",
+            "output": {
+                "explanation": "There is no . in the program. Hence, I will report an empty list.",
+                "answer": [
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "List the variable just before the field access operator .",
+        "code": "{P_CODE}",
+        "question": "Please examine the code snippet. List the variable just before the field access operator . You should think step by step.",
+        "format": [
+            "Please answer the question with explanation and final answer. Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {EXPRESSION}"
+        ]
+    }
+}

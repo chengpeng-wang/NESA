@@ -1,0 +1,45 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "Given a reference, please list the malloc expression assigned to it.",
+
+    "examples": [
+        {
+            "description": "Given a reference, please list the malloc expression assigned to it.",
+
+            "code": "1. void example1() {\n2.     MyClass obj = new MyClass();\n3. }",
+            "question": "Examine the obj at line 2 and find the attached malloc expression.",
+            "output": {
+                "explanation": "Let us examine the code line by line. At line 2, a new memory object of MyClass is allocated. The reference obj is attached to the allocated memory object. Hence, the malloc expression is new MyClass().",
+                "answer": [
+                    {"Line": 2, "Variable": "new MyClass()"}
+                ]
+            }
+        },
+        {
+            "description": "Given a reference, please list the malloc expression assigned to it.",
+
+            "code": "1. void example2() {\n2.     MyClass obj1 = new MyClass();\n3.     MyClass obj2 = obj1;\n4. }",
+            "question": "Examine the obj1 at line 2 and find the attached malloc expression.",
+            "output": {
+                "explanation": "Let us examine the code line by line. At line 2, a new memory object of MyClass is allocated. The reference obj1 is attached to the allocated memory object. Hence, the malloc expression is new MyClass().",
+                "answer": [
+                    {"Line": 2, "Variable": "new MyClass()"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the reference {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and list the malloc expression attached to the reference.",
+
+        "code": "{P_CODE}",
+        "question": "List the malloc expression attached to the reference {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Please follow the above examples and think step by step.",
+
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation on how the memory object is allocated and attached to a reference.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

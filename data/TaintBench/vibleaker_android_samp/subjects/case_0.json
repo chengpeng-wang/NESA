@@ -1,0 +1,4 @@
+{
+    "src_function": "getExternalStorageDirectory",
+    "sink_function": "exchange"
+}

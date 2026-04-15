@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:id="@+id/scrollView1" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="399dp">
+            <TextView android:gravity="center" android:id="@+id/textViewsos" android:layout_width="200dp" android:layout_height="wrap_content" android:layout_marginTop="48dp" android:text="This Message will be sent to all your contacts if you lost your phone. \10 you can send it from our website." android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            <EditText android:id="@+id/editTextsos" android:layout_width="250dp" android:layout_height="150dp" android:hint="Hi, This is a autosend message , i lost my phone , you should delete my number from your contacts" android:ems="10" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:inputType="textMultiLine"/>
+        </RelativeLayout>
+    </ScrollView>
+    <Button android:id="@+id/buttonsos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Save" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+</RelativeLayout>

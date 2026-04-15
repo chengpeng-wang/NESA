@@ -1,0 +1,4 @@
+{
+    "src_function": "getSimSerialNumber",
+    "sink_function": "getInputStream"
+}

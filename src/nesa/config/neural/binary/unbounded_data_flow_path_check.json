@@ -1,0 +1,37 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to determine whether the values of two expressions at two program locations are dependent. You should only report unbounded data flows and ignore data flows that are bounded by path conditions.",
+
+    "task": "Given a specific expresion, denoted by expr_a, at a specific line, denoted by l1, and another expression, denoted by expr_b, at another line l2 in a single function, please determine whether the value of expr_b before the execution of line l2 depends on the value of expr_a after the line l1, where the execution of the line l1 is before the execution of l2. IMPORTANT: You should ONLY confirm dependency for unbounded data flows. A 'bounded value' means the variable has only a FINITE number of possible values (e.g., 'if (x > 0 && x < 100)' bounds x to have at most 100 possible values). Note that single-side constraints like 'if (i > 0)' do NOT bound the value because i can still have infinitely many possible values. If the data flow is bounded by path conditions that limit the variable to a finite range, then answer 'No'.",
+
+    "examples": [
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of count at line 1 and count at line 3.",
+            "code": "1. int count = input();\n2. if (count > 0 && count < 100) {\n3.     for (int i = 0; i < count; i++) {\n4.         process();\n5.     }\n6. }",
+            "question": "Examine whether the value of count at line 3 unboundedly depends on the value of count at line 1. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable count is initialized at line 1 and used at line 3 as a loop bound. However, there is a path condition at line 2 that bounds count between 0 and 100, giving count only a finite number of possible values (at most 100). Since this data flow is bounded by a path condition to a finite range, we should answer No.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of size at line 1 and size at line 3.",
+            "code": "1. int size = input();\n2. if (size > 0) {\n3.     for (int i = 0; i < size; i++) {\n4.         process();\n5.     }\n6. }",
+            "question": "Examine whether the value of size at line 3 unboundedly depends on the value of size at line 1. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable size is initialized at line 1 and used at line 3 as a loop bound. Although there is a path condition at line 2 that checks 'size > 0', this is only a single-side constraint. The variable size can still have infinitely many possible values (any positive integer). Since this data flow is NOT bounded to a finite range, we should answer Yes.",
+                "answer": "Yes"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the value of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "Examine whether the value of {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} unboundedly depends on the value of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1}. IMPORTANT: Only answer 'Yes' for unbounded data flows. If the data flow is bounded by path conditions (e.g., 'if (x > 0 && x < MAX)'), answer 'No'. Please think step by step and investigate how the values are used and generated.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

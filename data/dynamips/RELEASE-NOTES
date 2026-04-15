@@ -1,0 +1,35 @@
+Release Notes for Cisco router simulator (Dynamips)
+===================================================
+
+Version:  v0.2.23
+
+Release date:  Monday, Jan 2nd, 2023 (2023-01-02)
+
+Source code:  https://github.com/GNS3/dynamips/tree/v0.2.23
+
+License: GNU GPLv2
+
+
+What's New since v0.2.23
+========================
+
+* Command line option to configure console binding for TCP/AUX console. Fixes #62
+
+
+Known Issues
+============
+
+Reload from the router console doesn't work.
+  - https://github.com/GNS3/dynamips/issues/6
+
+Using a self decompressing image can lead to an invalid IA and stop the cpu.
+  - https://github.com/GNS3/dynamips/issues/8
+
+Packet transmission rate is limited.
+  - https://github.com/GNS3/dynamips/issues/46
+
+c1700 IOS Images start once and then fail to boot on second boot
+  - https://github.com/GNS3/dynamips/issues/54
+
+There is lots of missing hardware functionality.
+There are memory leaks.

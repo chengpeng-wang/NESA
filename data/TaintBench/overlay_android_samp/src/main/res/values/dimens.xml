@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="enter_phone_number_cc_width">54dp</dimen>
+    <dimen name="play_action_button_xpadding">12dp</dimen>
+    <dimen name="standard_button_minwidth">120dp</dimen>
+    <dimen name="addinstrument_content_padding">14dp</dimen>
+    <dimen name="credit_card_number_collapsed_left_padding">56dp</dimen>
+    <dimen name="credit_card_logos_left_margin">2dp</dimen>
+    <dimen name="credit_card_additional_margin">0dp</dimen>
+    <dimen name="play_purchase_secondary_size">14sp</dimen>
+</resources>

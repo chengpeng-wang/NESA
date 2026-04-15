@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:background="#606060" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="0x7f050001" android:background="0x7f020000" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="0x7f020007" android:layout_centerInParent="true"/>
+        </RelativeLayout>
+        <ImageView android:id="0x7f050003" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:src="0x7f020004" android:layout_below="0x7f050001" android:layout_centerInParent="true"/>
+        <TextView android:textSize="12dp" android:textColor="#2a2a2a" android:gravity="center" android:id="0x7f050004" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginRight="15dp" android:text="I hereby agree to the Terms of Service and Privacy Policy for the elective service as described herein." android:layout_below="0x7f050003" android:layout_centerInParent="true"/>
+        <ImageButton android:id="0x7f050005" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:src="0x7f020005" android:layout_below="0x7f050004" android:layout_centerInParent="true"/>
+        <ImageButton android:id="0x7f050006" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="0x7f020003" android:layout_below="0x7f050005" android:layout_centerInParent="true"/>
+        <RelativeLayout android:id="0x7f050007" android:background="0x7f020002" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="0x7f050006"/>
+        <TextView android:textSize="10dp" android:textColor="#2a2a2a" android:gravity="center" android:id="0x7f050008" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginRight="15dp" android:text="0x7f040004" android:layout_below="0x7f050007" android:layout_centerInParent="true"/>
+        <TextView android:textSize="7dp" android:textColor="#2a2a2a" android:id="0x7f050009" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="© Copyright 2010 Android Apps. All Rights Reserved." android:layout_below="0x7f050008" android:layout_centerInParent="true"/>
+    </RelativeLayout>
+</ScrollView>

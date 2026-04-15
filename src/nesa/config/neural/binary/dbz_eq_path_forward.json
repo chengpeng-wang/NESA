@@ -1,0 +1,73 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the expressions that have the same values as the values produced at specific lines.",
+
+    "task": "Given a program value at a specific line, analyze the given code snippets and determine all the expressions that have the same values aftr that line.",
+
+    "examples": [
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of b at line 1.",
+            "code": "1. int b = 0;\n2. z = b + 1;",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined at line 1 and directly used in line 2. Hence, the value of b at line 2 has the same value as the value of b at line 1.",
+                "answer": [
+                    {"Line": 2, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of b at line 1.",
+            "code": "1. int b = 0;\n2. b = 3;\n3. z = foo(b * 2);",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. However it is overwritten at line 2 before it is used at line 3. Hence there is no expression of which the value is the same as the value of b at line 1.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of b at line 1.",
+            "code": "1. b = 1;\n2. if (c) {\n3.   z = b;\n4. } else {\n5.   z = b + 1;\n6. koo(z + 4);\n7. }",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. Then the variable z is assigned in the if-statement. Two different values are assigned, both of which are dependent on the value of b. Finally, the value of z at line 6 depends on the values of z at line 3 and line 5 and thus depend on b at line 1.",
+                "answer": [
+                    {"Line": 3, "Variable": "b"},
+                    {"Line": 5, "Variable": "b"},
+                    {"Line": 6, "Variable": "z"}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of a at line 1.",
+            "code": "1. int a = 0;\n2. int b = 100;\n3. if (a != 0) {\n4.   c= b / a;\n5. }",
+            "question": "Examine the value of a at line 1.",
+            "output": {
+                "explanation": "The value of a is assigned with 0 at line 1. The branch condition at line 3 checks whether a is not equal to 0. Then, the value of a at line 4 can not be zero as it is used in the true branch of the branch condition.",
+                "answer": [
+                ]
+            }
+        },
+        {
+            "description": "all all the expressions evaluated after line 1 that have the same value as the value of b at line 1.",
+            "code": "1. int b = koo(c);\n2. c = 3;\n3. z = foo(b * 2);",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. The value of b is used in line 3 to compute the value of foo. Hence the value of b at line 3 comes from the value of b at line 1.",
+                "answer": [
+                    {"Line": 3, "Variable": "b"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and determine all the expressions evaluated after line {P_LINE_NUMBER} that have the same values as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}.",
+        "code": "{P_CODE}",
+        "question": "List all the expressions evaluated after line {P_LINE_NUMBER} of which the values are the same as {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

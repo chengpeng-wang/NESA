@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="@drawable/bg" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/main_linearLayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="20sp" android:textColor="#000000" android:gravity="center" android:id="@+id/text_pairstatus" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="對方是否連接："/>
+        <ImageView android:id="@+id/img_pair_status" android:layout_width="20dp" android:layout_height="wrap_content" android:src="@drawable/offline"/>
+        <Button android:id="@+id/btn_refresh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="刷新狀態" style="?android:attr/buttonStyleSmall"/>
+        <Button android:id="@+id/btn_smshelp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="嘗試喚醒" style="?android:attr/buttonStyleSmall"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/connect_linearLayout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/main_linearLayout">
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="20sp" android:textColor="#000000" android:id="@+id/tv_connect_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="最後上線時間："/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="20sp" android:textColor="#000000" android:id="@+id/tv_connect_time" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TableLayout android:id="@+id/tableLayout1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40dp" android:layout_below="@+id/connect_linearLayout" android:layout_centerHorizontal="true">
+        <TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:id="@+id/btn_sms" android:background="@drawable/photo_sms_up" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp"/>
+            <Button android:id="@+id/btn_location" android:background="@drawable/photo_gps_up" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp"/>
+        </TableRow>
+        <TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:id="@+id/btn_phonebook" android:background="@drawable/photo_phonebook_up" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp"/>
+            <Button android:id="@+id/btn_record" android:background="@drawable/photo_contacts_up" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp"/>
+        </TableRow>
+        <TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:id="@+id/btn_camera" android:background="@drawable/photo_recording_up" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp"/>
+            <Button android:id="@+id/btn_calendar" android:background="@drawable/photo_calendar_up" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp"/>
+        </TableRow>
+        <TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <Button android:id="@+id/btn_photo" android:background="@drawable/photo_photo_up" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp"/>
+        </TableRow>
+    </TableLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignLeft="@+id/connect_linearLayout" android:layout_alignParentBottom="true">
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="20sp" android:textColor="#000000" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="本機是否連接："/>
+        <ImageView android:id="@+id/img_main_status" android:layout_width="20dp" android:layout_height="wrap_content" android:src="@drawable/offline"/>
+    </LinearLayout>
+</RelativeLayout>

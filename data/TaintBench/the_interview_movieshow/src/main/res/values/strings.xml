@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">디 인터뷰</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings" />
+    <string name="title_activity_asyn_task_example">\'디 인터뷰\' 무료배포</string>
+    <string name="btn_title">영화 더 인터뷰</string>
+</resources>

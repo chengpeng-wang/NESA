@@ -1,0 +1,84 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: assets/conn.jar
+SHA1-Digest: ru9UiCHtKoc61Iu3784r3dBm7m0=
+
+Name: assets/libcall.so
+SHA1-Digest: 4vQKFin2a1pf+EKjHLVpbcZVyVk=
+
+Name: AndroidManifest.xml
+SHA1-Digest: gUs0fCOHXt172NnX20W5Ok5IImI=
+
+Name: res/menu/activity_main.xml
+SHA1-Digest: t60216m80nS79nfzgWrkanwRu7g=
+
+Name: res/drawable-xhdpi/ic_action_search.png
+SHA1-Digest: WzSVDDIHZpn0cFeuxgKRJete4TU=
+
+Name: res/drawable-ldpi/ic_launcher1.png
+SHA1-Digest: lyRjsFqw1HyhNQnUYanDLvThYJw=
+
+Name: res/drawable-ldpi/fish.png
+SHA1-Digest: EcrJottkvkpp2ZBVWeQzkPTACEE=
+
+Name: res/drawable-hdpi/ic_launcher.png
+SHA1-Digest: RQ09RDJf3yWYEKYOavo2ED4Yaz0=
+
+Name: res/drawable-mdpi/fish.png
+SHA1-Digest: h+A6onasCbzbiREb/39UVZ+uwCE=
+
+Name: assets/competing_su
+SHA1-Digest: Rj5A39HMGKdVDP/lw0n5J7wQ9cw=
+
+Name: res/drawable-ldpi/ic_launcher.png
+SHA1-Digest: CepliFtAgOUV73Bk6BbHeZHAdXs=
+
+Name: res/drawable-xhdpi/ic_launcher12.png
+SHA1-Digest: fYkK/Te+JvXuIjCvxTqMIC9Sh/0=
+
+Name: res/drawable-mdpi/ic_action_search.png
+SHA1-Digest: XjltJdEB3tvakTn9CN7KwdaNT68=
+
+Name: res/drawable-mdpi/ic_launcher.png
+SHA1-Digest: I3MP0NXnINH3Gb4a/IxI+nMF2mw=
+
+Name: res/drawable-xhdpi/ic_launcher1.png
+SHA1-Digest: TJE1tg63y88xLdIALKGpuLmgh0s=
+
+Name: res/layout/activity_main.xml
+SHA1-Digest: 6NrcGVkHAjfcbi0klwvfvl5lRA4=
+
+Name: res/drawable-mdpi/ic_launcher1.png
+SHA1-Digest: hmHFvI25C0kPfwIei0iAG6TfwjQ=
+
+Name: res/drawable-xhdpi/ic_launcher.png
+SHA1-Digest: UCzYT6RE8m1+z99KNVBkhnl38jY=
+
+Name: res/drawable-hdpi/ic_action_search.png
+SHA1-Digest: rOWnNxWCWKwkicf+FpYGMg1fX2Y=
+
+Name: res/drawable-hdpi/ic_launcher1.png
+SHA1-Digest: fYkK/Te+JvXuIjCvxTqMIC9Sh/0=
+
+Name: assets/inject_appso
+SHA1-Digest: qQG0kxAKD5uHx+vNb9ASR1/kCcc=
+
+Name: res/layout/activity_inject.xml
+SHA1-Digest: gMBGSKACTJbu01qHCT2nnI9J1fU=
+
+Name: res/drawable-xhdpi/fish.png
+SHA1-Digest: mfmZxe+UTwCoDQgt6Jh9pk8ilPA=
+
+Name: res/drawable-hdpi/fish.png
+SHA1-Digest: mfmZxe+UTwCoDQgt6Jh9pk8ilPA=
+
+Name: resources.arsc
+SHA1-Digest: PpnNAdyhc/uVZqCIbJSbT26htKU=
+
+Name: res/layout/activity_service_start.xml
+SHA1-Digest: zIhRQpCWyLUNoqekaDMMSUX+a9o=
+
+Name: classes.dex
+SHA1-Digest: bdFg7LNYB5Rf0KKjv3RrTH66Zx0=
+

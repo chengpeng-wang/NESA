@@ -1,0 +1,98 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying variables and expressions that may be assigned with specific values and reporting them along with their line numbers.",
+
+    "task": "I want to find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods. Please think step by step and extract these desired variables or expressions and report their corresponding line numbers.",
+
+    "examples": [
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. int a = 0;\n2. int b = 5;\n3. int c = Integer.parseInt(s);",
+            "question": "Please examine the code snippet. Please find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods. Please think step by step and extract these desired variables or expressions and report their corresponding line numbers.",
+            "output": {
+                "explanation": "At line 1, the literal 0 is assigned to variable a. At line 3, parseInt is used and the return value is assigned to variable c. Hence, I will report the variables a at line 1 and c at line 3.",
+                "answer": [
+                    {"Line": 1, "Expression": "a"},
+                    {"Line": 3, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. int a = 10;\n2. int b = input();\n3. int c = a / b;\n4. int d = 100 / b;",
+            "question": "Please examine the code snippet. List the variables or expressions that may be assigned with zero values and their line numbers. Specifically, I want to find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods.",
+            "output": {
+                "explanation": "In the above code, the three patterns of values do not appear. Hence, I will report an empty list.",
+                "answer": []
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. double x = 0.0;\n2. double y = 2.5;\n3. float z = 0.0f;\n4. int w = 7;",
+            "question": "Please examine the code snippet. List the variables or expressions that may be assigned with zero values and their line numbers. Specifically, I want to find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods.",
+            "output": {
+                "explanation": "At line 1, the literal 0.0 is assigned to variable x. At line 3, the literal 0.0f is assigned to variable z. Hence, I will report the variables x at line 1 and z at line 3.",
+                "answer": [
+                    {"Line": 1, "Expression": "x"},
+                    {"Line": 3, "Expression": "z"}
+                ]
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. SecureRandom random = new SecureRandom();\n2. int randomValue = random.nextInt();\n3. float anotherValue = random.nextFloat();",
+            "question": "Please examine the code snippet. List the variables or expressions that may be assigned with zero values and their line numbers. Specifically, I want to find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods.",
+            "output": {
+                "explanation": "At lines 2 and 3, the methods nextInt and nextFloat are used and the return values are assigned to variables randomValue and anotherValue, respectively. Hence, I will repore the variables randomValue at line 2 and anotherValue at line 3.",
+                "answer": [
+                    {"Line": 2, "Expression": "randomValue"},
+                    {"Line": 3, "Expression": "anotherValue"}
+                ]
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. int a = Integer.MAX_VALUE;\n2. int b = Integer.MIN_VALUE;\n3. int c = -1;\n4. float d = 1.0f;\n5. int zero = 0;",
+            "question": "Please examine the code snippet. List the variables or expressions that may be assigned with zero values and their line numbers. Specifically, I want to find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods.",
+            "output": {
+                "explanation": "In the above code, the literal zero 0 is assigned to variable zero at line 5. Hence, I will report the variable zero at line 5.",
+                "answer": [
+                    {"Line": 5, "Expression": "zero"}
+                ]
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. float a = -1.0f;\n2. int b = Integer.MIN_VALUE;\n3. int c = -1;\n4. int d = -1;",
+            "question": "Please examine the code snippet. List the variables or expressions that may be assigned with zero values and their line numbers. Specifically, I want to find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods.",
+            "output": {
+                "explanation": "In the above code, all the values in the assignments are literals, but they are 0, 0.0, and 0.0f. Hence, I will report an empty list.",
+                "answer": [
+                ]
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. String input = getInput();\n2. float parsedValue = parseFloat(input);\n3. float fixedValue = 42.0;\n4. float anotherValue = 0.0f;",
+            "question": "Please examine the code snippet. List the variables or expressions that may be assigned with zero values and their line numbers. Specifically, I want to find expressions assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods.",
+            "output": {
+                "explanation": "At line 2, parseFloat may return 0. At line 4, the literal 0.0f is assigned to variable anotherValue. Hence, I will report the variables parsedValue at line 2 and anotherValue at line 4.",
+                "answer": [
+                    {"Line": 2, "Expression": "parsedValue"},
+                    {"Line": 4, "Expression": "anotherValue"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Identify the variables or expressions required.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code snippet and list the variables or expressions that may be assigned with (1) zero literals such as 0, 0.0, and 0.0f; (2) return values from parseInt and parseFloat methods; and (3) return values from nextInt and nextFloat methods.",
+        "format": [
+            "Please answer the question with explanation and final answer. Do not repeat the question and program. Please think step by step. Before drawing the conclusion, please re-check your explanation. If the reported line contains non-zero literals, such as 1.0f and -1.0f, you should not report it. Moreover, you should follow the following format of output.",
+            "Format of the output:",
+            "Explanation: [Your explanation on whether there are any usage of the listed three patterns of values]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

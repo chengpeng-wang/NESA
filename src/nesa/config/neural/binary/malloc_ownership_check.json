@@ -1,0 +1,37 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "Given a reference and a malloc expression, please check whether the allocated object is attached to the reference.",
+
+    "examples": [
+        {
+            "description": "Given a reference and a malloc expression, please check whether the allocated object is attached to the reference.",
+            "code": "1. void example1() {\n2.     MyClass obj = new MyClass();\n3. }",
+            "question": "Examine the reference obj at line 2 and new MyClass() at line 2. Check whether the allocated object is attached to the reference obj.",
+            "output": {
+                "explanation": "Let us examine the code line by line. At line 2, a new memory object of MyClass is allocated. The reference obj is attached to the allocated memory object. Hence, the reference obj at line 2 is attached to the allocated memory object.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Given a reference and a malloc expression, please check whether the allocated object is attached to the reference.",
+            "code": "1. void example2() {\n2.     MyClass obj1 = new MyClass();\n3.     MyClass obj2 = obj1;\n4. }",
+            "question": "Examine the reference obj2 at line 3 and new MyClass() at line 2. Check whether the allocated object is attached to the reference obj1.",
+            "output": {
+                "explanation": "Let us examine the code line by line. At line 2, a new memory object of MyClass is allocated. The reference obj2 is not directly attached with the allocated object.",
+                "answer": "No"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the reference {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} is attached with the malloc expression {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "Examine whether the reference {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} is attached with the malloc expression {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}?  Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Please follow the above examples and think step by step.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

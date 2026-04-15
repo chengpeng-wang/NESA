@@ -1,0 +1,73 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to determine whether a direct data flow edge exists between two expressions, i.e., if the first expression defines a value, whether that value is directly used by the second expression without being overwritten in between.",
+
+    "task": "Given two specific expressions, denoted by expr_a and expr_b at specific lines l1 and l2 in a single function, please determine whether there is a direct data flow edge from expr_a at l1 to expr_b at l2. A data flow edge exists if the value defined by expr_a at l1 can reach expr_b at l2 without being overwritten on every path between them. Please consider conditional statements and loops. Please ignore all the possible exceptions in the program and assume that each statement can be executed normally.",
+
+    "examples": [
+        {
+            "description": "Please read and understand the following code snippet. Examine whether there is a data flow edge from b at line 1 to b at line 2.",
+            "code": "1. int b = 0;\n2. z = b;",
+            "question": "Examine whether there is a direct data flow edge from b at line 1 to b at line 2. Please think step by step and investigate how the value defined at line 1 reaches line 2.",
+            "output": {
+                "explanation": "The variable b is defined at line 1 and directly used in line 2 with no intervening redefinition. Hence, there is a direct data flow edge from b at line 1 to b at line 2.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine whether there is a data flow edge from b at line 1 to b at line 3.",
+            "code": "1. int b = 0;\n2. b = 3;\n3. z = b;",
+            "question": "Examine whether there is a direct data flow edge from b at line 1 to b at line 3. Please think step by step and investigate how the value defined at line 1 reaches line 3.",
+            "output": {
+                "explanation": "The variable b is defined at line 1 but is unconditionally reassigned at line 2 before being used at line 3. The value from line 1 is killed by line 2 on every execution path to line 3. Therefore, there is no data flow edge from b at line 1 to b at line 3.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine whether there is a data flow edge from b at line 2 to b at line 6.",
+            "code": "1. if (c) {\n2.   b = 1;\n3. } else {\n4.   b = 2;\n5. }\n6. z = b;",
+            "question": "Examine whether there is a direct data flow edge from b at line 2 to b at line 6. Please think step by step and investigate how the value defined at line 2 reaches line 6.",
+            "output": {
+                "explanation": "The variable b is conditionally defined at line 2 (true branch) or at line 4 (false branch). When the true branch is taken, the value of b at line 2 reaches line 6 without being overwritten. Hence, there is a data flow edge from b at line 2 to b at line 6.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine whether there is a data flow edge from b at line 4 to b at line 2.",
+            "code": "1. int b = 2;\n2. while (b > 1) {\n3.   z = b;\n4.   b = b + 1;\n5. }",
+            "question": "Examine whether there is a direct data flow edge from b at line 4 to b at line 2. Please think step by step and investigate how the value defined at line 4 reaches line 2.",
+            "output": {
+                "explanation": "The variable b is updated at line 4 inside the loop. In subsequent iterations, the loop condition at line 2 evaluates b again. No other statement redefines b between line 4 and the next evaluation of line 2. Hence, there is a data flow edge from b at line 4 to b at line 2 via the loop back-edge.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine whether there is a data flow edge from c at line 2 to c at line 4.",
+            "code": "1. int b = input();\n2. int c = 1;\n3. while (b > 1) {\n4.   b = c + 1;\n5.   c += 1;\n6. }",
+            "question": "Examine whether there is a direct data flow edge from c at line 2 to c at line 4. Please think step by step and investigate how the value defined at line 2 reaches line 4.",
+            "output": {
+                "explanation": "The variable c is initialized at line 2. In the first iteration of the loop, c is used at line 4 before it is updated at line 5. There is no redefinition of c between line 2 and line 4 on the first-iteration path. Hence, there is a data flow edge from c at line 2 to c at line 4.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine whether there is a data flow edge from c at line 2 to b at line 4.",
+            "code": "1. int b = input();\n2. int c = 1;\n3. while (b > 1) {\n4.   b = c + 1;\n5.   c += 1;\n6. }",
+            "question": "Examine whether there is a direct data flow edge from c at line 2 to b at line 4. Please think step by step and investigate how the value defined at line 2 reaches b at line 4.",
+            "output": {
+                "explanation": "The variable c defined at line 2 appears on the right-hand side of the assignment at line 4. However, b at line 4 is the target being defined (left-hand side), not a use of the value of c. A data flow edge tracks the same variable from its definition to its use. Since the queried target is b (not c) at line 4, there is no data flow edge from c at line 2 to b at line 4.",
+                "answer": "No"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the value of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "Examine whether there is a direct data flow edge from {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} to {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}. Here \"direct data flow edge\" means that the value defined by {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} can reach {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} without being overwritten on every execution path between them. Please pay attention to conditional branches and loops that may create or block such a path. Please ignore all the possible exceptions in the program and assume that each statement can be executed normally. \n Please think step by step and investigate how the value is propagated. You can follow the following steps: \n (1) First check whether {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} refer to the same variable. If not, directly answer No. Otherwise, go to step (2). \n (2) Then check whether there exists at least one execution path from line {P_LINE_NUMBER_1} to line {P_LINE_NUMBER_2} on which {P_VARIABLE_NAME_1} is not redefined. If such a path exists, answer Yes. Otherwise, answer No. \n (3) Remember: if a loop back-edge creates a path from line {P_LINE_NUMBER_1} to line {P_LINE_NUMBER_2} without an intervening redefinition, it also counts as a valid data flow path.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

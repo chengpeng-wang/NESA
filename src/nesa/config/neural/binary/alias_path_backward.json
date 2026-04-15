@@ -1,0 +1,31 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the preceding reference expressions that point to the same object as the reference used at specific lines.",
+
+    "task": "Analyze the given code snippets and determine all the preceding reference expressions that point to the same object as the reference used at specific lines (i.e., find all aliases that came before).",
+
+    "examples": [
+        {
+            "description": "List all the preceding references that point to the same object as the variable ref at line 2",
+            "code": "1. Object obj = new Object();\n2. Object ref = obj;",
+            "question": "Examine the reference of variable ref at line 2.",
+            "output": {
+                "explanation": "The variable ref is assigned the value of obj at line 2. The value of obj comes from line 1 where a new Object is created. Hence the reference of ref at line 2 points to the same object as obj at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "obj"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine all the preceding references that point to the same object as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}",
+        "code": "{P_CODE}",
+        "question": "List all the preceding references that point to the same object as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} (i.e., find all aliases before this line). Please examine the code as a code interpreter/compiler according to the control flow order and see how the reference is used in other statements. You need to pay attention to the order of how each statement is executed.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}
+

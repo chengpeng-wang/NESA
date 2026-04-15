@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="bot" id="2130837504" />
+    <public type="drawable" name="icon" id="2130837505" />
+    <public type="drawable" name="next" id="2130837506" />
+    <public type="drawable" name="next_button" id="2130837507" />
+    <public type="drawable" name="next_click" id="2130837508" />
+    <public type="drawable" name="nextinactive" id="2130837509" />
+    <public type="layout" name="main" id="2130903040" />
+    <public type="raw" name="data" id="2130968576" />
+    <public type="dimen" name="padding_small" id="2131034112" />
+    <public type="dimen" name="padding_medium" id="2131034113" />
+    <public type="dimen" name="padding_large" id="2131034114" />
+    <public type="string" name="app_name" id="2131099648" />
+    <public type="string" name="app_id" id="2131099649" />
+    <public type="string" name="api_key" id="2131099650" />
+    <public type="string" name="host" id="2131099651" />
+    <public type="style" name="AppTheme" id="2131165184" />
+    <public type="id" name="imageView3" id="2131230720" />
+    <public type="id" name="linearLayout4" id="2131230721" />
+    <public type="id" name="button1" id="2131230722" />
+    <public type="id" name="textView1" id="2131230723" />
+</resources>

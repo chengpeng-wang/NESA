@@ -1,0 +1,147 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the expression pairs that exhibit data dependencies. You should only report unbounded data flows and ignore data flows that are bounded by path conditions.",
+
+    "task": "Analyze the given code snippets and determine all the pairs of an expression `expr` and the expression of which the value is affected by `expr`. IMPORTANT: You should ONLY report unbounded data flows. A 'bounded value' means the variable has only a FINITE number of possible values (e.g., 'if (x > 0 && x < 100)' bounds x to have at most 100 possible values). Note that single-side constraints like 'if (i > 0)' do NOT bound the value because i can still have infinitely many possible values. If a data flow is bounded by path conditions that limit the variable to a finite range, then DO NOT report this data flow relationship. Think step by step and list such expression pairs indicating data dependencies",
+
+    "examples": [
+        {
+            "description": "List all the expression pairs indicating data dependencies.",
+            "code": "1. int b = 0;\n2. z = foo(b + 1);",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+            "output": {
+                "explanation": "The variable b is defined with constant 0 at line 1 and directly used in line 2. However, since b is a constant with only one possible value (0), this is a bounded data flow. We should NOT report bounded data flows.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating data dependencies.",
+            "code": "1. int b = input();\n2. c = b + 1;\n3. z = foo(c + 3);",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+            "output": {
+                "explanation": "The variable b is defined by user input at line 1 and directly used in line 2. Hence, `b` at line 2 depends on `b` at line 1. The argument c + 3 depends on the value of c at line 2.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "b"},
+                        {"Line": 2, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 2, "Variable": "c"},
+                        {"Line": 3, "Variable": "c + 3"}
+                    ],
+                    [
+                        {"Line": 1, "Variable": "b"},
+                        {"Line": 3, "Variable": "c + 3"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating data dependencies.",
+            "code": "1. if (c) {\n2.   b = 1;\n3. } else {\n4.   b = 2;\n5. }\n6. z = b;",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+            "output": {
+                "explanation": "The variable b is conditionally defined in lines 2 or 4 depending on the execution path of the if-else block before it is used at line 6.",
+                "answer": [
+                    [
+                        {"Line": 2, "Variable": "b"},
+                        {"Line": 6, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 4, "Variable": "b"},
+                        {"Line": 6, "Variable": "b"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating data dependencies.",
+            "code": "1. int b = input();\n2. while (b > 1) {\n3.   b = b + 1;\n4. }",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+            "output": {
+                "explanation": "The value of b assigned at line 1 is used at line 2. During the loop's first iteration, the value of b defined at line 1 is used at line 3. Subsequently, each execution of line 3 updates b based on its most recent value thus creating a self-dependency as well, making the value of b used at line 2 and 3 dependent on the value of b defined in the LHS at line 3.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "b"},
+                        {"Line": 2, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 1, "Variable": "b"},
+                        {"Line": 3, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 3, "Variable": "b"},
+                        {"Line": 3, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 3, "Variable": "b"},
+                        {"Line": 2, "Variable": "b"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating data dependencies.",
+            "code": "1. int b = input();\n2. int c = 1;\n3. while (b > 1) {\n4.   b = c + 1;\n5.   c += 1;\n6. }",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+            "output": {
+                "explanation": "The value of b assigned at line 1 is used at line 3. During the loop's first iteration, the value of c defined at line 2 is used at line 4 and line 5. Particularly, the updated value of c at line 5 is further used at line 4 in the subsequent iteration. Also, the new value of b defined at line 4 is used at line 3 in the subsequent iteration.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "b"},
+                        {"Line": 3, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 2, "Variable": "c"},
+                        {"Line": 4, "Variable": "c"}
+                    ],
+                    [
+                        {"Line": 2, "Variable": "c"},
+                        {"Line": 5, "Variable": "c"}
+                    ],
+                    [
+                        {"Line": 5, "Variable": "c"},
+                        {"Line": 4, "Variable": "c"}
+                    ],
+                    [
+                        {"Line": 4, "Variable": "b"},
+                        {"Line": 3, "Variable": "b"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating data dependencies.",
+            "code": "1. int count = input();\n2. if (count > 0 && count < 100) {\n3.     for (int i = 0; i < count; i++) {\n4.         process();\n5.     }\n6. }",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+            "output": {
+                "explanation": "The variable count is initialized at line 1 and used at line 3 as a loop bound. However, there is a path condition at line 2 that bounds count between 0 and 100, giving count only a finite number of possible values (at most 100). Since this data flow is bounded by a path condition to a finite range, we should NOT report it.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating data dependencies.",
+            "code": "1. int size = input();\n2. if (size > 0) {\n3.     for (int i = 0; i < size; i++) {\n4.         process();\n5.     }\n6. }",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+            "output": {
+                "explanation": "The variable size is initialized at line 1 and used at line 3 as a loop bound. Although there is a path condition at line 2 that checks 'size > 0', this is only a single-side constraint. The variable size can still have infinitely many possible values (any positive integer). Since this data flow is NOT bounded to a finite range, we SHOULD report it.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "size"},
+                        {"Line": 3, "Variable": "size"}
+                    ]
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and list all the expression pairs indicating data dependencies..",
+        "code": "{P_CODE}",
+        "question": "Please examine the code as a code interpreter/compiler according to the control flow order. You need to pay attention to the order of how each statement is executed. IMPORTANT: Only report unbounded data flows. If the data flow is bounded by path conditions (e.g., 'if (x > 0 && x < MAX)'), do NOT report it. Examine all the expressions in the code and list all the expression pairs in which the first expression unboundedly affects the value of the second one.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- (Program Line 1: Line {LINE_NUMBER_1}, Expression 1: {VARIABLE_NAME_1}), (Program Line 2: Line {LINE_NUMBER_2}, Expression 2: {VARIABLE_NAME_2})"
+        ]
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:gravity="center" android:background="#666" android:layout_width="match_parent" android:layout_height="40dp">
+        <Button android:id="@+id/btn_map_command" android:background="@drawable/btn_command_click" android:layout_width="30dp" android:layout_height="30dp" android:layout_alignParentRight="true" style="?android:attr/buttonStyleSmall"/>
+        <TextView android:textColor="#ffffff" android:id="@+id/map_update_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="2014/3/27 18:00" android:layout_alignParentLeft="true"/>
+        <Button android:id="@+id/btn_map_update" android:background="@drawable/btn_update_click" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:layout_toRightOf="@+id/map_update_time"/>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <ListView android:id="@+id/new_devices" android:layout_width="match_parent" android:layout_height="match_parent" android:stackFromBottom="true" android:layout_weight="2"/>
+        <Button android:id="@+id/btn_cancel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@android:string/cancel"/>
+    </LinearLayout>
+</LinearLayout>

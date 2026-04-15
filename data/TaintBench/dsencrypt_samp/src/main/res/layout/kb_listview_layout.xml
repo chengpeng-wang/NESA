@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center" android:orientation="vertical" android:background="#fff4f4f4" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/kb_head_menu_layout"/>
+    <RelativeLayout android:background="@drawable/s1" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <RelativeLayout android:background="@drawable/s2" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <ScrollView android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp">
+        <com.kbstar.kb.android.star.MyListView android:id="@+id/kb_general_listview" android:background="@drawable/kb_cert_item" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:listSelector="@drawable/kb_select_listview" android:cacheColorHint="#00000000" android:dividerHeight="1dp"/>
+    </ScrollView>
+    <LinearLayout android:background="@drawable/s7" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <LinearLayout android:background="@drawable/s8" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -1,0 +1,4 @@
+{
+    "src_function": "openFileInput",
+    "sink_function": "writeBytes"
+}

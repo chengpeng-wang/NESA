@@ -1,0 +1,87 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the preceding expressions that have the same values as the values used at specific lines.",
+
+    "task": "Analyze the given code snippets and determine all the preceding expressions that have the same values as the values used at specific lines.",
+
+    "examples": [
+        {
+            "description": "List all the preceding expressions that have the same values as the variable sum at line 4",
+            "code": "1. void calculate(int a, int b) {\n2.   int sum = a;\n3.   int product = b * 2;\n4.   int result = sum + product;\n5. }",
+            "question": "Examine the value of variable sum at line 4.",
+            "output": {
+                "explanation": "The value of the variable sum at line 4 is initially assigned to sum at line 2, where the value of a is assigned. The value of a at line 2 is further determined by the second parameter of the function. Hence, I will report the variable sum at line 2 and the parmeter a at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "a"},
+                    {"Line": 2, "Variable": "sum"}
+                ]
+            }
+        },
+        
+        {
+            "description": "List all the preceding expressions that have the same values as the variable b at line 2",
+            "code": "1. int b = 0;\n2. z = b + 1;",
+            "question": "Examine the value of variable b at line 2.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. The value of b is used in line 2 to assign the value of z. Hence the value of b at line 2 comes from the value of b at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the variable b at line 3",
+            "code": "1. int b = koo(c);\n2. c = 3;\n3. z = foo(b * 2);",
+            "question": "Examine the value of variable b at line 3.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. The value of b is used in line 3 to compute the value of foo. Hence the value of b at line 3 comes from the value of b at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the value of total at line 4",
+            "code": "1. double calculateTotal(double price, double taxRate) {\n2.   double tax = price * taxRate;\n3.   double total = price + tax;\n4.   return total;\n5. }",
+            "question": "Examine the value of total at lin 4.",
+            "output": {
+                "explanation": "The variable total is defined by the sum of two parameters at line 3 and used at line 4. Hence, the origin of the variable total at line 4 is totally determined by the total at line 3.",
+                "answer": [
+                    {"Line": 3, "Variable": "total"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the value of total at line 4",
+            "code": "1. double calculateTotal(double price, double taxRate) {\n2.   double tax = price * taxRate;\n3.   double total = price;\n4.   return total;\n5. }",
+            "question": "Examine the value of total at line 4.",
+            "output": {
+                "explanation": "The variable total is defined by price at line 3 and used at line 4. Hence, the origin of the variable total at line 4 is totally determined by the total at line 3, and thus, determined by price at line 1.",         
+                "answer": [
+                    {"Line": 3, "Variable": "total"},
+                    {"Line": 1, "Variable": "price"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the value of b at line 4",
+            "code": "1. int a = 0;\n2. int b = input();\n3. if (a != 0) {\n4.   c= b / a;\n5. }",
+            "question": "Examine the value of a at line 4.",
+            "output": {
+                "explanation": "The variable a is defined and initialized at line 1. However, the branch condition guarding the line 4 is a != 0. Hence, the value of a at line 4 cannot come from line 1. ",
+                "answer": [
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine all the preceding expressions that have the same values as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}",
+        "code": "{P_CODE}",
+        "question": "List all the preceding expressions that have the same values as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

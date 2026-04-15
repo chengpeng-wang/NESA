@@ -1,0 +1,51 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying the variables assigned with sensitive values and reporting them along with their line numbers",
+
+    "task": "I am going to detect the Cross-Site-Scripting (XSS) bugs. Now I am told that the return values of the following sensitive methods can be sensitive values. Here are the sensitive method list:\n (1) recv\n (2) getProperty\n (3) getCookies\n (4) getString\n (5) nextToken\n (6) getParameter\n (7) readLine. \n You should ignore other methods that do not belong to the above list. I want you to extract the variables assigned with such sensitive values and also report their corresponding line numbers. Think step by step and list pairs of a program line and a variable. \n Specifically, you should first check whether any of the above methods are invoked in the code snippet. If no, you can just finish the analysis and do not report any variables or expressions. If any of the above seven methods are invoked, please list the variables assigned with the return values of these methods along with the corresponding line numbers.",
+
+    "examples": [
+        {
+            "description": "List the variables with sensitive values.",
+            "code": "1. int c = 0;\n2. c = readerBuffered.readLine();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The sensitive method readLine is invoked at line 2. Also, the return value is assigned to the variable c at line 2. Hence, I will report the variable c at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables with sensitive values.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. c = env.getCookies();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The sensitive method getCookies is invoked at line 3. Also, the return value is assigned to the variable c at line 3. Hence, I will report the variable c at line 3.",
+                "answer": [
+                    {"Line": 3, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables with sensitive values.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. c = env.replaceAll();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "Although there is an invocation of replaceAll at line 3, the method replaceAll does not belong to the above list of the methods that may produce sensitive values. Hence, the answer of this question is empty.",
+                "answer": [
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. List the variables with sensitive values.",
+        "code": "{P_CODE}",
+        "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Remember, you should only focus on the invocation of the following methods:\n (1) recv\n (2) getProperty\n (3) getCookies\n (4) getString\n (5) nextToken\n (6) getParameter\n (7) readLine. \n Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on how the sensitive functions are invoked and how their return values are used.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

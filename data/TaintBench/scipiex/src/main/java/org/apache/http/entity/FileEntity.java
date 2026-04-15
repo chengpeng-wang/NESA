@@ -1,0 +1,60 @@
+package org.apache.http.entity;
+
+import com.trilead.ssh2.sftp.AttribFlags;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+public class FileEntity extends AbstractHttpEntity implements Cloneable {
+    protected final File file;
+
+    public FileEntity(File file, String contentType) {
+        if (file == null) {
+            throw new IllegalArgumentException("File may not be null");
+        }
+        this.file = file;
+        setContentType(contentType);
+    }
+
+    public boolean isRepeatable() {
+        return true;
+    }
+
+    public long getContentLength() {
+        return this.file.length();
+    }
+
+    public InputStream getContent() throws IOException {
+        return new FileInputStream(this.file);
+    }
+
+    public void writeTo(OutputStream outstream) throws IOException {
+        if (outstream == null) {
+            throw new IllegalArgumentException("Output stream may not be null");
+        }
+        InputStream instream = new FileInputStream(this.file);
+        try {
+            byte[] tmp = new byte[AttribFlags.SSH_FILEXFER_ATTR_MIME_TYPE];
+            while (true) {
+                int l = instream.read(tmp);
+                if (l == -1) {
+                    break;
+                }
+                outstream.write(tmp, 0, l);
+            }
+            outstream.flush();
+        } finally {
+            instream.close();
+        }
+    }
+
+    public boolean isStreaming() {
+        return false;
+    }
+
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}

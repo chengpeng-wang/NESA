@@ -1,0 +1,16 @@
+Error decode arsc
+java.io.IOException: Skip config parsing, expected offset: 0x37c, actual: 0x380
+	at jadx.core.xmlgen.ParserStream.checkPos(ParserStream.java:123)
+	at jadx.core.xmlgen.ParserStream.skipToPos(ParserStream.java:132)
+	at jadx.core.xmlgen.ResTableParser.parseConfig(ResTableParser.java:317)
+	at jadx.core.xmlgen.ResTableParser.parseTypeChunk(ResTableParser.java:195)
+	at jadx.core.xmlgen.ResTableParser.parsePackage(ResTableParser.java:164)
+	at jadx.core.xmlgen.ResTableParser.decodeTableChunk(ResTableParser.java:111)
+	at jadx.core.xmlgen.ResTableParser.decode(ResTableParser.java:59)
+	at jadx.core.xmlgen.ResTableParser.decodeFiles(ResTableParser.java:64)
+	at jadx.api.ResourcesLoader.loadContent(ResourcesLoader.java:101)
+	at jadx.api.ResourcesLoader.lambda$loadContent$0(ResourcesLoader.java:82)
+	at jadx.api.ResourcesLoader.decodeStream(ResourcesLoader.java:71)
+	at jadx.api.ResourcesLoader.loadContent(ResourcesLoader.java:82)
+	at jadx.api.ResourceFile.loadContent(ResourceFile.java:60)
+

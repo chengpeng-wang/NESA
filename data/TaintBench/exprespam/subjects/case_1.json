@@ -1,0 +1,4 @@
+{
+    "src_function": "managedQuery",
+    "sink_function": "execute"
+}

@@ -1,0 +1,4 @@
+{
+    "src_function": "getSerializableExtra",
+    "sink_function": "execute"
+}

@@ -1,0 +1,51 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: res/drawable-xhdpi/ic_launcher.png
+SHA1-Digest: AfPh3OJoypH966MludSW6f1RHg4=
+
+Name: res/drawable-hdpi/nortonicon.png
+SHA1-Digest: JKfMNLZJnyzxZCwm7C2mGZ7m53g=
+
+Name: resources.arsc
+SHA1-Digest: 2hsXz89yfxbSB+NFx6BrlGYgx7M=
+
+Name: classes.dex
+SHA1-Digest: 9/57OqnHH4FO7wndwJMYSGywNKw=
+
+Name: res/layout/searcher.xml
+SHA1-Digest: HD36CRzEtR3cmbYIDJ84o+XNkr8=
+
+Name: res/drawable-xxhdpi/ic_launcher.png
+SHA1-Digest: GVIfdEOBv4gEny2T1jDhGGsZOBo=
+
+Name: res/layout/sender.xml
+SHA1-Digest: puZFJQtGGOxd3p186EkgaMr6jl8=
+
+Name: res/menu/main.xml
+SHA1-Digest: OSd7qcIstfM6oU5OX2jiN/Qm+Uw=
+
+Name: AndroidManifest.xml
+SHA1-Digest: 9ngabbNH3RBIq7uazafYJsbEmCI=
+
+Name: res/drawable-mdpi/ic_launcher.png
+SHA1-Digest: RRxOSvpmhVfCwiprVV/wZlaqQpw=
+
+Name: res/drawable-hdpi/bg_header.png
+SHA1-Digest: vSXC1Am5ZFLIK9DrqRbe+u1PJ1Y=
+
+Name: res/drawable-hdpi/logos.jpg
+SHA1-Digest: mDgp09TRMLPyhjY1isuk6HncnO4=
+
+Name: res/layout/activity_main.xml
+SHA1-Digest: HZ3c6Oy+bMNMenurEV03rXVX6VA=
+
+Name: res/drawable-hdpi/oie_transparent_1.png
+SHA1-Digest: +rVksUINDBGhV4dwvBDUoR9VjSM=
+
+Name: res/xml/device_admin_sample.xml
+SHA1-Digest: 1ufsYnCCd0Y+N8dD9cVq8jjtRYI=
+
+Name: res/drawable-hdpi/icon.png
+SHA1-Digest: HTMqTblkS0fRHFmt9OIaP/cRWds=
+

@@ -1,0 +1,67 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find the origins of the values used at a specific line.",
+
+    "task": "Analyze the given code snippets and determine all the origins of the values used at a specific line. Particularly, you should check the following form of expressions: (1) the parameters of a function, (2) the variables or expressions in the left-hand sides of the assignments. Think step by step and list pairs of a program line and an expression.",
+
+    "examples": [
+        {
+            "description": "List all the parameters or variables/expressions that the variable sum at line 4 depends on.",
+            "code": "1. void calculate(int a, int b) {\n2.   int sum = a + b;\n3.   int product = b * 2;\n4.   int result = sum + product;\n5. }",
+            "question": "Examine the value of variable sum at line 4.",
+            "output": {
+                "explanation": "The variable sum is defined by the two parameters at line 2 and used at line 4 and then used at line 4. Hence, the value of sum at line 4 depends on the values of a and b at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "a"},
+                    {"Line": 1, "Variable": "b"}
+                ]
+            }
+        },
+        
+        {
+            "description": "List all the parameters or variables/expressions that the variable b at line 2 depends on.",
+            "code": "1. int b = 0;\n2. z = b + 1;",
+            "question": "Examine the value of variable b at line 2.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. The value of b is used in line 2 to assign the value of z. Hence the value of b at line 2 depends on the value of b at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the parameters or variables/expressions that the variable b at line 3 depends on.",
+            "code": "1. int b = koo(c);\n2. c = 3;\n3. z = foo(b * 2);",
+            "question": "Examine the value of variable b at line 3.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. The value of b is used in line 3 to compute the value of foo. Hence the value of b at line 3 depends on the value of b at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the parameters or variables/expressions that the variable total at line 3 depends on.",
+            "code": "1. double calculateTotal(double price, double taxRate) {\n2.   double tax = price * taxRate;\n3.   double total = price + tax;\n4.   return total;\n5. }",
+            "question": "Examine the value of parameter total at line 3.",
+            "output": {
+                "explanation": "The variable total is defined by the two parameters at line 1 and used at line 3. Hence, the value of total at line 3 depends on the values of price and taxRate at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "price"},
+                    {"Line": 1, "Variable": "taxRate"}
+                ]
+            }
+        }
+        
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the origins of the values of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and analyze how the value comes from",
+        "code": "{P_CODE}",
+        "question": "List all the parameters or variables/expressions that {P_VARIABLE_NAME} at line {P_LINE_NUMBER} depend on. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Particularly, you should check the following form of expressions: (1) the parameters of a function, (2) the variables or expressions in the left-hand sides of the assignments. You should think step by step and reason the relationships between the specified variables and parameters and variables/expressions in the left-hand sides of the assignments.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation on how the value of the variable is defined in other statements or passed as parameters]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

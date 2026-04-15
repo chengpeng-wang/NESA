@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2907" android:versionName="2.9.07" package="com.swiping.whale">
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="17"/>
+    <application android:theme="@style/AppTheme" android:label="@string/app_name" android:name="com.android.Laucher.MobulaApplication" android:allowBackup="true">
+        <meta-data android:name="app_license" android:value="57edfa4cf3a987d8ae25d52200508074"/>
+        <provider android:name="com.duapps.ad.stats.DuAdCacheProvider" android:exported="false" android:authorities="com.swiping.whale.DuAdCacheProvider"/>
+        <receiver android:name="com.duapps.ad.base.PackageAddReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.android.ad.du.ShowDuAd" android:screenOrientation="portrait"/>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.android.Laucher.MainActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="portrait" android:noHistory="true"/>
+        <activity-alias android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="com.android.Laucher.MainActivity.alias" android:enabled="true" android:excludeFromRecents="true" android:targetActivity="com.android.Laucher.MainActivity" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+        <service android:name="com.mb.bdapp.service.BaiduService" android:process=":dubai_adv">
+            <intent-filter>
+                <action android:name="com.zdt.action"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="CHANNEL_ID" android:value="121"/>
+        <meta-data android:name="UMENG_APPKEY" android:value="562615b9e0f55a2bc500604c"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="SSP(MOGO)-DP"/>
+        <receiver android:name="com.android.Laucher.Receiver">
+            <intent-filter>
+                <action android:name="com.dai.action"/>
+                <action android:name="com.tdz.action"/>
+                <action android:name="android.intent.action.SCREEN_ON"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.android.Laucher.Se">
+            <intent-filter>
+                <action android:name="com.dai.action"/>
+                <action android:name="com.tdz.action"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <activity android:theme="@style/Theme.Translucent" android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+        <activity android:theme="@style/Theme_IAPTheme" android:name="com.google.android.gms.ads.purchase.InAppPurchaseActivity"/>
+        <activity android:theme="@style/Theme.Black.NoTitleBar.Fullscreen" android:name="com.cmcm.adsdk.nativead.PicksLoadingActivity" android:launchMode="singleTask"/>
+        <activity android:theme="@style/Theme.Black.NoTitleBar.Fullscreen" android:name="com.picksbrowser.PicksBrowser" android:launchMode="singleTask"/>
+        <service android:name="com.picksinit.DownloadService" android:exported="true" android:process=":service"/>
+    </application>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
+</manifest>

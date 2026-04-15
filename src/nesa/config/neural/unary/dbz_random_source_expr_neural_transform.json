@@ -1,0 +1,41 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "You are tasked with identifying variables or expressions assigned with the return value of nextInt or nextFloat.",
+
+    "examples": [
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. SecureRandom random = new SecureRandom();\n2. int randomValue = random.nextInt();\n3. float anotherValue = random.nextFloat();",
+            "question": "Please examine the code snippet. List the variables or expressions assigned with the return value of nextInt or nextFloat.",
+            "output": {
+                "explanation": "At lines 2 and 3, the methods nextInt and nextFloat are used and the return values are assigned to variables randomValue and anotherValue, respectively. Hence, I will repore the variables randomValue at line 2 and anotherValue at line 3.",
+                "answer": [
+                    {"Line": 2, "Expression": "randomValue"},
+                    {"Line": 3, "Expression": "anotherValue"}
+                ]
+            }
+        },
+        {
+            "description": "Identify the variables or expressions required.",
+            "code": "1. int a = 10;\n2. int b = input();\n3. int c = a / b;\n4. int d = 100 / b;",
+            "question": "Please examine the code snippet. List the variables or expressions assigned with the return value of nextInt or nextFloat.",
+            "output": {
+                "explanation": "In the above code, nextFloat and nextInt are not invoked. Hence, I will report an empty list.",
+                "answer": []
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Identify the variables or expressions required.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code snippet. List the variables or expressions assigned with the return value of nextInt or nextFloat.",
+        "format": [
+            "Please answer the question with explanation and final answer. Do not repeat the question and program. Please think step by step. ",
+            "Format of the output:",
+            "Explanation: [Your explanation on whether and how nextInt and nextFloat are invoked.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

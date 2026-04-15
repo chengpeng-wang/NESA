@@ -1,0 +1,54 @@
+Manifest-Version: 1.0
+Created-By: 1.6.0_24 (Sun Microsystems Inc.)
+
+Name: assets/html/style.css
+SHA1-Digest: xEWd6LEawy6yD2UWl/xAnrpAI5I=
+
+Name: res/drawable/next.png
+SHA1-Digest: 51xwtutx4xcbbQ8XfZNtPbAnYgQ=
+
+Name: res/drawable/next_button.xml
+SHA1-Digest: mC50xfHdKUQ2hNglpirTlvb+WUw=
+
+Name: assets/html/index.html
+SHA1-Digest: 1DaieT3GAOt1DJPa1UZn5YrWWDg=
+
+Name: res/drawable/next_click.png
+SHA1-Digest: bv6Ln2sCPHpVt8eokjaNy50ctIs=
+
+Name: resources.arsc
+SHA1-Digest: AzyDVDv2U+21/TKBo6eUSftOYCc=
+
+Name: classes.dex
+SHA1-Digest: 84pPolkOcBjna8WvHAEPHlz1f1A=
+
+Name: assets/html/jquery.fittext.js
+SHA1-Digest: WUHaCA2t0QzpG7Ktcmsw9nqKlkA=
+
+Name: assets/html/jquery.min.js
+SHA1-Digest: 0J06me0l0PH75oVt6eFP/TNVclY=
+
+Name: res/layout/main.xml
+SHA1-Digest: Ay1SGE8gIGoTFu7DPeNXRq9s00I=
+
+Name: AndroidManifest.xml
+SHA1-Digest: vcsBO+trazIRPRmQTaVttFh9nEU=
+
+Name: res/drawable/icon.png
+SHA1-Digest: rdSwfoiAJFghdRWBMFS81ytMUTw=
+
+Name: assets/html/ready.jpg
+SHA1-Digest: qB8msYfPy7sxFigIN9p4f/x/9yQ=
+
+Name: res/raw/data.db
+SHA1-Digest: skZMScBzt0lhxwSdBo5LBMmJJ48=
+
+Name: res/drawable/nextinactive.png
+SHA1-Digest: EBaK9h4eZSKQg66npDGH91DL6qg=
+
+Name: res/drawable/bot.png
+SHA1-Digest: E9EITJk+p1idl/qSLAAs+6d30DM=
+
+Name: assets/html/icon.png
+SHA1-Digest: c6KywifGED0I7Cmj6knM6pXjNp8=
+

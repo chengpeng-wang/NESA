@@ -1,0 +1,51 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying variables assigned with null values and reporting them along with their line numbers.",
+
+    "task": "I am going to detect the null pointer dereference (NPD) bugs, where any variables assigned with null values can be faulty. You should ignore other values that are not null. I want you to extract the variables assigned with null and also report their corresponding line numbers. Think step by step and list pairs of a program line and a variable. \n Specifically, you should first check whether any null assignments are present in the code snippet. If no, you can just finish the analysis and do not report any variables or expressions. If any null assignments are present, please list the variables assigned with null along with the corresponding line numbers.",
+
+    "examples": [
+        {
+            "description": "List the variables with null values.",
+            "code": "1. String s = null;\n2. int x = 0;",
+            "question": "Please examine the variable assignments in the code snippet. Check whether any variables are assigned null values. If so, please list the variables assigned with null along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The variable s is assigned the null value at line 1. Hence, I will report the variable s at line 1.",
+                "answer": [
+                    {"Line": 1, "Expression": "s"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables with null values.",
+            "code": "1. String s = \"Hello\";\n2. s = null;\n3. int y = 0;",
+            "question": "Please examine the variable assignments in the code snippet. Check whether any variables are assigned null values. If so, please list the variables assigned with null along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The variable s is assigned the null value at line 2. Hence, I will report the variable s at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "s"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables with null values.",
+            "code": "1. int z = 5;\n2. String t = \"Goodbye\";",
+            "question": "Please examine the variable assignments in the code snippet. Check whether any variables are assigned null values. If so, please list the variables assigned with null along with the corresponding line numbers.",
+            "output": {
+                "explanation": "None of the variables are assigned null values. Hence, the answer of this question is empty.",
+                "answer": [
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. List the variables with null values.",
+        "code": "{P_CODE}",
+        "question": "Please examine the variable assignments in the code snippet. Check whether any variables are assigned null values. If so, please list the variables assigned with null along with the corresponding line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Remember, you should only focus on the variables assigned with null values. \n Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on how the null values are assigned and how the variables are used.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

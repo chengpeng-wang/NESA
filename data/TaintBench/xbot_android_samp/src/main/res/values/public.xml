@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="icon" id="2130837504" />
+    <public type="layout" name="browser" id="2130903040" />
+    <public type="layout" name="lockmain" id="2130903041" />
+    <public type="layout" name="main" id="2130903042" />
+    <public type="xml" name="ok" id="2130968576" />
+    <public type="raw" name="bootscriptnet" id="2131034112" />
+    <public type="string" name="app_name" id="2131099648" />
+    <public type="id" name="browser" id="2131165184" />
+    <public type="id" name="lockweb" id="2131165185" />
+    <public type="id" name="web" id="2131165186" />
+</resources>

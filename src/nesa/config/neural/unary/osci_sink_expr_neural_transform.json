@@ -1,0 +1,63 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying the expressions with specific patterns and reporting them along with their line numbers",
+
+    "task": "I am going to detect the OS Command Injection (OSCI) bugs. Now I am told that the argument of exec can cause the bugs. Hence, I want you to extract the arguments of the exec invocations and also report their corresponding line numbers. Think step by step and list pairs of a program line and an expression.",
+
+    "examples": [
+        {
+            "description": "List the arguments of exec invocations.",
+            "code": "1. int b = 0;\n2. Runtime.getRuntime().exec(b + 1);",
+            "question": "Please examine the method invocations in the code snippet. List the arguments of exec invocations and their line numbers.",
+            "output": {
+                "explanation": "The method exec is invoked at line 2. The argument is b + 1.",
+                "answer": [
+                    {"Line": 2, "Expression": "b + 1"}
+                ]
+            }
+        },
+        {
+            "description": "List the arguments of exec invocations.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. Runtime.getRuntime().exec(c + c.replace(\" \", \"\"));",
+            "question": "Please examine the method invocations in the code snippet. List the arguments of exec invocations and their line numbers.",
+            "output": {
+                "explanation": "The method exec is invoked at line 3. The argument is c + c.replace(\" \", \"\").",
+                "answer": [
+                    {"Line": 3, "Expression": "c + c.replace(\" \", \"\")"}
+                ]
+            }
+        },
+        {
+            "description": "List the arguments of exec invocations.",
+            "code": "1. int b = input();\n2. int c = 1;\n3. while (b > 1) {\n4.   Runtime.getRuntime().exec(b);\n5.   b += 1;\n6.   Runtime.getRuntime().exec(c * 2 + b);\n7. }",
+            "question": "Please examine the method invocations in the code snippet. List the arguments of exec invocations and their line numbers.",
+            "output": {
+                "explanation": "The method exec is invoked at line 4 and line 6. Specifically, the argument at line 4 is b and the argument at line 6 is c * 2 + b.",
+                "answer": [
+                    {"Line": 4, "Expression": "b"},
+                    {"Line": 6, "Expression": "c * 2 + b"}
+                ]
+            }
+        },
+        {
+            "description": "List the arguments of exec invocations.",
+            "code": "1. int b = input();\n2. int c = 1;\n3. while (b > 1) {\n4.   response.getWriter().send(b);\n5.   b += 1;\n6.   response.getWriter().send(c * 2 + b);\n7. }",
+            "question": "Please examine the method invocations in the code snippet. List the arguments of exec invocations and their line numbers.",
+            "output": {
+                "explanation": "Although there are two invocations of the method send at line 4 and line 6, they are not what we are concerned with; they are not exec invocations. Hence, the answer of this question is empty.",
+                "answer": [
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. List the arguments of exec invocations.",
+        "code": "{P_CODE}",
+        "question": "Please examine the method invocations in the code snippet. List the arguments of exec invocations and their line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on how exec is invoked upon specific expressions as its arguments]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {EXPRESSION}"
+        ]
+    }
+}

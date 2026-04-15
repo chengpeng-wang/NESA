@@ -1,0 +1,50 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying the left-hand side expressions of specific function calls and reporting them along with their line numbers",
+
+    "task": "I am going to detect Resource Exhaustion bugs. I want you to extract the left-hand side expressions (variables) assigned with the return values of the following method calls:\n (1) recv\n (2) getProperty\n (3) getCookies\n (4) getString\n (5) nextToken\n (6) getParameter\n (7) readLine. \n You should ignore other methods that do not belong to the above list. Think step by step and list pairs of a program line and the left-hand side expression. \n Specifically, you should first check whether any of the above methods are invoked in the code snippet. If no, you can just finish the analysis and do not report any variables or expressions. If any of the above seven methods are invoked, please list the left-hand side expressions (variables) assigned with the return values of these methods along with the corresponding line numbers.",
+
+    "examples": [
+        {
+            "description": "List the left-hand side expressions of the specified method calls.",
+            "code": "1. int c = 0;\n2. c = readerBuffered.readLine();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any of the seven specified methods are invoked. If so, please list the left-hand side expressions assigned with the return values along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The method readLine is invoked at line 2. The return value is assigned to the variable c at line 2. Hence, I will report the left-hand side expression c at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "List the left-hand side expressions of the specified method calls.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. c = env.getCookies();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any of the seven specified methods are invoked. If so, please list the left-hand side expressions assigned with the return values along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The method getCookies is invoked at line 3. The return value is assigned to the variable c at line 3. Hence, I will report the left-hand side expression c at line 3.",
+                "answer": [
+                    {"Line": 3, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "List the left-hand side expressions of the specified method calls.",
+            "code": "1. String input = \"123\";\n2. int number = Integer.parseInt(input);",
+            "question": "Please examine the method invocations in the code snippet. Check whether any of the seven specified methods are invoked. If so, please list the left-hand side expressions assigned with the return values along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The method parseInt is invoked at line 2. However, parseInt does not belong to the list of seven specified methods. Hence, the answer is empty.",
+                "answer": []
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. List the left-hand side expressions of the specified method calls.",
+        "code": "{P_CODE}",
+        "question": "Please examine the method invocations in the code snippet. Check whether any of the seven specified methods are invoked. If so, please list the left-hand side expressions assigned with the return values along with the corresponding line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Remember, you should only focus on the invocation of the following methods:\n (1) recv\n (2) getProperty\n (3) getCookies\n (4) getString\n (5) nextToken\n (6) getParameter\n (7) readLine. \n Extract the left-hand side expressions (variables) assigned with the return values of these methods. Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on which methods are invoked and what are their left-hand side expressions.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

@@ -1,0 +1,46 @@
+package org.merry.core;
+
+public class Consts extends Object
+{
+    
+    public static String activityName = null;
+    public static int trafferName = 0;
+    public static int groupName = 0;
+    public static String version = null;
+    public static String userAgent = null;
+    public static String serverAddress = null;
+    public static Boolean locker = false;
+    public static String lockerAddress = null;
+    
+    public final static int STANDARD_BROWSER = 1;
+    public final static int BROWSER = 2;
+    public final static int SCRIPT = 3;
+    
+    public final static int MODE_STANDALONE = 1;
+    public final static int MODE_MULTI = 2;
+    
+    
+    public final static int REGMODE_ONCE_INSTALLED = 1;
+    public final static int REGMODE_DELAY = 2;
+    public static int registrationDelay = 0; // in seconds;
+    public static int queryDelay = 0; // in seconds
+    
+    
+    public final static int SMS_STATUS_SENT = 1;
+    public final static int SMS_STATUS_DELIVERED = 2;
+    public final static int SMS_STATUS_ERROR = 3;
+    
+    static
+    {
+	activityName = "%LABEL%";
+	trafferName = 1;
+	groupName = 5;
+	version = "1.2";
+	userAgent = "xxx";
+	registrationDelay = 30;
+	queryDelay = %QUERYDELAY%;
+	serverAddress = "%ADDRESS%";
+	locker = false;
+	lockerAddress = "%LOCKERADDR%";
+    }
+}

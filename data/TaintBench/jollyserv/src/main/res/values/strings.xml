@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">xtube</string>
+    <string name="loading">Загрузка</string>
+    <string name="hd_loading">Мы проверяем Ваши платежные данные и баланс. Подождите</string>
+    <string name="category_loading">Загружаются категории</string>
+    <string name="movie_loading">Загружаются ролики</string>
+    <string name="error_occured">Произошла ошибка</string>
+    <string name="check_false">Необходимо принять соглашение</string>
+</resources>

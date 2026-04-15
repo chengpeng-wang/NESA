@@ -1,0 +1,15 @@
+package android.support.v4.os;
+
+import android.os.Parcelable.Creator;
+
+/* compiled from: ParcelableCompatHoneycombMR2 */
+class ParcelableCompatCreatorHoneycombMR2Stub {
+    ParcelableCompatCreatorHoneycombMR2Stub() {
+    }
+
+    static <T> Creator<T> instantiate(ParcelableCompatCreatorCallbacks<T> parcelableCompatCreatorCallbacks) {
+        ParcelableCompatCreatorHoneycombMR2 parcelableCompatCreatorHoneycombMR2 = r4;
+        ParcelableCompatCreatorHoneycombMR2 parcelableCompatCreatorHoneycombMR22 = new ParcelableCompatCreatorHoneycombMR2(parcelableCompatCreatorCallbacks);
+        return parcelableCompatCreatorHoneycombMR2;
+    }
+}

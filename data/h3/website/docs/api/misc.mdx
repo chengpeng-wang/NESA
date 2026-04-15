@@ -1,0 +1,1851 @@
+---
+id: misc
+title: Miscellaneous H3 functions
+sidebar_label: Miscellaneous
+slug: /api/misc
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+These functions include descriptions of the H3 grid system.
+
+## degsToRads
+
+Converts degrees to radians.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+double degsToRads(double degrees);
+```
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+Use `java.lang.Math.toRadians(double degrees)` instead.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.degsToRads(degrees)
+```
+
+```js live
+function example() {
+  const degrees = 45;
+  return h3.degsToRads(degrees);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+Use `math.radians(degrees)` instead.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+```go
+degrees * h3.DegsToRads
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+Use `radians(degrees)` instead.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 degsToRads --help
+h3: Converts degrees to radians
+H3 4.1.0
+
+	degsToRads	Converts degrees to radians
+	-d, --degree <DEG>	Required. Angle in degrees
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 degsToRads -d 180
+3.1415926536
+```
+
+</TabItem>
+</Tabs>
+
+## radsToDegs
+
+Converts radians to degrees.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+double radsToDegs(double radians);
+```
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+Use `java.lang.Math.toDegrees(double radians)` instead.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.radsToDegs(h)
+```
+
+```js live
+function example() {
+  const radians = 3.14159;
+  return h3.radsToDegs(radians);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+Use `math.degrees(radians)` instead.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+```go
+radians * h3.RadsToDegs
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+Use `degrees(radians)` instead.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 radsToDegs --help
+h3: Converts radians to degrees
+H3 4.1.0
+
+	radsToDegs	Converts radians to degrees
+	-r, --radian <RAD>	Required. Angle in radians
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 radsToDegs -r 1
+57.2957795131
+```
+
+</TabItem>
+</Tabs>
+
+## getHexagonAreaAvgKm2
+
+Average hexagon area in square kilometers at the given resolution.
+Excludes pentagons.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getHexagonAreaAvgKm2(int res, double *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double getHexagonAreaAvg(int res, AreaUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getHexagonAreaAvg(res, h3.UNITS.km2)
+```
+
+```js live
+function example() {
+  const res = 5;
+  return h3.getHexagonAreaAvg(res, h3.UNITS.km2);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.average_hexagon_area(res, unit='km^2')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.HexagonAreaAvgKm2(res)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_average_hexagon_area(res, 'km^2')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getHexagonAreaAvgKm2 --help
+h3: The average area in square kilometers for a hexagon of a given resolution (excludes pentagons)
+H3 4.1.0
+
+	getHexagonAreaAvgKm2	The average area in square kilometers for a hexagon of a given resolution (excludes pentagons)
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 getHexagonAreaAvgKm2 -r 1
+609788.4417941332
+```
+
+</TabItem>
+</Tabs>
+
+## getHexagonAreaAvgM2
+
+Average hexagon area in square meters at the given resolution.
+Excludes pentagons.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getHexagonAreaAvgM2(int res, double *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double getHexagonAreaAvg(int res, AreaUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getHexagonAreaAvg(res, h3.UNITS.m2)
+```
+
+```js live
+function example() {
+  const res = 5;
+  return h3.getHexagonAreaAvg(res, h3.UNITS.m2);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.average_hexagon_area(res, unit='m^2')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.HexagonAreaAvgM2(res)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_average_hexagon_area(res, 'm^2')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getHexagonAreaAvgM2 --help
+h3: The average area in square meters for a hexagon of a given resolution (excludes pentagons)
+H3 4.1.0
+
+	getHexagonAreaAvgM2	The average area in square meters for a hexagon of a given resolution (excludes pentagons)
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 getHexagonAreaAvgM2 -r 5
+252903858.1819452047
+```
+
+</TabItem>
+</Tabs>
+
+
+## cellAreaRads2
+
+Exact area of specific cell in square radians.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error cellAreaRads2(H3Index h, double *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double cellArea(long h3, AreaUnit unit);
+int cellArea(String h3Address, AreaUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.cellArea(h, h3.UNITS.rads2)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.cellArea(h, h3.UNITS.rads2);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.cell_area(h, unit='rads^2')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.CellAreaRads2(cell)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_cell_area(h, 'rads^2')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 cellAreaRads2 --help
+h3: The exact area of a specific cell in square radians
+H3 4.1.0
+
+	cellAreaRads2	The exact area of a specific cell in square radians
+	-c, --cell <index>	Required. H3 Cell
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 cellAreaRads2 -c 85283473fffffff
+0.0000065310
+```
+
+</TabItem>
+</Tabs>
+
+## cellAreaKm2
+
+Exact area of specific cell in square kilometers.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error cellAreaKm2(H3Index h, double *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double cellArea(long h3, AreaUnit unit);
+int cellArea(String h3Address, AreaUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.cellArea(h, h3.UNITS.km2)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.cellArea(h, h3.UNITS.km2);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.cell_area(h, unit='km^2')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.CellAreaKm2(cell)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_cell_area(h, 'km^2')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 cellAreaKm2 --help
+h3: The exact area of a specific cell in square kilometers
+H3 4.1.0
+
+	cellAreaKm2	The exact area of a specific cell in square kilometers
+	-c, --cell <index>	Required. H3 Cell
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 cellAreaKm2 -c 85283473fffffff
+265.0925581283
+```
+
+</TabItem>
+</Tabs>
+
+## cellAreaM2
+
+Exact area of specific cell in square meters.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error cellAreaM2(H3Index h, double *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double cellArea(long h3, AreaUnit unit);
+int cellArea(String h3Address, AreaUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.cellArea(h, h3.UNITS.m2)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.cellArea(h, h3.UNITS.m2);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.cell_area(h, unit='m^2')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.CellAreaM2(cell)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_cell_area(h, 'm^2')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 cellAreaM2 --help
+h3: The exact area of a specific cell in square meters
+H3 4.1.0
+
+	cellAreaM2	The exact area of a specific cell in square meters
+	-c, --cell <index>	Required. H3 Cell
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 cellAreaM2 -c 85283473fffffff
+265092558.1282823086
+```
+
+</TabItem>
+</Tabs>
+
+## getHexagonEdgeLengthAvgKm
+
+Average hexagon edge length in kilometers at the given resolution.
+Excludes pentagons.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getHexagonEdgeLengthAvgKm(int res, double *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double getHexagonEdgeLengthAvg(int res, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getHexagonEdgeLengthAvg(res, h3.UNITS.km)
+```
+
+```js live
+function example() {
+  const res = 5;
+  return h3.getHexagonEdgeLengthAvg(res, h3.UNITS.km);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.average_hexagon_edge_length(res, unit='km')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.HexagonEdgeLengthAvgKm(res)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_average_hexagon_edge_length(res, 'km')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getHexagonEdgeLengthAvgKm --help
+h3: The average hexagon edge length in kilometers of a given resolution (excludes pentagons)
+H3 4.1.0
+
+	getHexagonEdgeLengthAvgKm	The average hexagon edge length in kilometers of a given resolution (excludes pentagons)
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 getHexagonEdgeLengthAvgKm -r 5
+9.8540909900
+```
+
+</TabItem>
+</Tabs>
+
+
+## getHexagonEdgeLengthAvgM
+
+Average hexagon edge length in meters at the given resolution.
+Excludes pentagons.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getHexagonEdgeLengthAvgM(int res, double *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double getHexagonEdgeLengthAvg(int res, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getHexagonEdgeLengthAvg(res, h3.UNITS.m)
+```
+
+```js live
+function example() {
+  const res = 5;
+  return h3.getHexagonEdgeLengthAvg(res, h3.UNITS.m);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.average_hexagon_edge_length(res, unit='m')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.HexagonEdgeLengthAvgM(res)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_average_hexagon_edge_length(res, 'm')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getHexagonEdgeLengthAvgM --help
+h3: The average hexagon edge length in meters of a given resolution (excludes pentagons)
+H3 4.1.0
+
+	getHexagonEdgeLengthAvgM	The average hexagon edge length in meters of a given resolution (excludes pentagons)
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 getHexagonEdgeLengthAvgM -r 5
+9854.0909900000
+```
+
+</TabItem>
+</Tabs>
+
+
+## edgeLengthKm
+
+Exact edge length of specific unidirectional edge in kilometers.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error edgeLengthKm(H3Index edge, double *length);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double edgeLength(long h3, LengthUnit unit);
+double edgeLength(String h3Address, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.edgeLength(h3, h3.UNITS.km)
+```
+
+```js live
+function example() {
+  const h = '115283473fffffff';
+  return h3.edgeLength(h, h3.UNITS.km);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.edge_length(h, unit='km')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.EdgeLengthKm(edge)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_edge_length(h, 'km')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 edgeLengthKm --help
+h3: The exact edge length of a specific directed edge in kilometers
+H3 4.1.0
+
+	edgeLengthKm	The exact edge length of a specific directed edge in kilometers
+	-c, --cell <index>	Required. H3 Cell
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 edgeLengthKm -c 115283473fffffff
+10.2947360862
+```
+
+</TabItem>
+</Tabs>
+
+
+## edgeLengthM
+
+Exact edge length of specific unidirectional edge in meters.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error edgeLengthM(H3Index edge, double *length);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double edgeLength(long h3, LengthUnit unit);
+double edgeLength(String h3Address, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.edgeLength(h3, h3.UNITS.m)
+```
+
+```js live
+function example() {
+  const h = '115283473fffffff';
+  return h3.edgeLength(h, h3.UNITS.m);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.edge_length(h, unit='m')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.EdgeLengthM(edge)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_edge_length(h, 'm')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 edgeLengthM --help
+h3: The exact edge length of a specific directed edge in meters
+H3 4.1.0
+
+	edgeLengthM	The exact edge length of a specific directed edge in meters
+	-c, --cell <index>	Required. H3 Cell
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 edgeLengthM -c 115283473fffffff
+10294.7360861995
+```
+
+</TabItem>
+</Tabs>
+
+
+## edgeLengthRads
+
+Exact edge length of specific unidirectional edge in radians.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error edgeLengthRads(H3Index edge, double *length);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double edgeLength(long h3, LengthUnit unit);
+double edgeLength(String h3Address, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.edgeLength(h3, h3.UNITS.rads)
+```
+
+```js live
+function example() {
+  const h = '115283473fffffff';
+  return h3.edgeLength(h, h3.UNITS.rads);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.edge_length(h, unit='rads')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.EdgeLengthRads(edge)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_edge_length(h, 'rads')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 edgeLengthRads --help
+h3: The exact edge length of a specific directed edge in radians
+H3 4.1.0
+
+	edgeLengthRads	The exact edge length of a specific directed edge in radians
+	-c, --cell <index>	Required. H3 Cell
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 edgeLengthRads -c 115283473fffffff
+0.0016158726
+```
+
+</TabItem>
+</Tabs>
+
+
+## getNumCells
+
+Number of unique H3 indexes at the given resolution.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getNumCells(int res, int64_t *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+long getNumCells(int res);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getNumCells(res)
+```
+
+```js live
+function example() {
+  const res = 5;
+  return h3.getNumCells(res);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.get_num_cells(res)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.NumCells(res)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_get_num_cells(res)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getNumCells --help
+h3: The number of unique H3 cells for a specified resolution
+H3 4.1.0
+
+	getNumCells	The number of unique H3 cells for a specified resolution
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 getNumCells -r 5
+2016842
+```
+
+</TabItem>
+</Tabs>
+
+
+## getRes0Cells
+
+Provide all the resolution `0` H3 cells.
+These are the coarsest cells that can be represented in the H3 system and are
+the parents/ancestors of all other cells in the H3 grid system.
+The returned cells correspond to the 122 base cells.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getRes0Cells(H3Index *out);
+```
+
+`out` must be an array of at least size `res0CellCount()`.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+Collection<Long> getRes0Cells();
+Collection<String> getRes0CellAddresses();
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getRes0Cells()
+```
+
+```js live
+function example() {
+  return h3.getRes0Cells();
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.get_res0_cells()
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.Res0Cells()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_get_res0_cells()
+```
+```sql
+h3_get_res0_cells_string()
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getRes0Cells --help
+h3: Returns all of the resolution 0 cells
+H3 4.1.0
+
+	getRes0Cells	Returns all of the resolution 0 cells
+	-h, --help	Show this help message.
+	-f, --format <FMT>	'json' for ["CELL", ...], 'newline' for CELL\n... (Default: json)
+```
+
+```bash
+$ h3 getRes0Cells
+[ "8001fffffffffff", "8003fffffffffff", "8005fffffffffff", "8007fffffffffff", "8009fffffffffff", "800bfffffffffff", "800dfffffffffff", "800ffffffffffff", "8011fffffffffff", "8013fffffffffff", "8015fffffffffff", "8017fffffffffff", "8019fffffffffff", "801bfffffffffff", "801dfffffffffff", "801ffffffffffff", "8021fffffffffff", "8023fffffffffff", "8025fffffffffff", "8027fffffffffff", "8029fffffffffff", "802bfffffffffff", "802dfffffffffff", "802ffffffffffff", "8031fffffffffff", "8033fffffffffff", "8035fffffffffff", "8037fffffffffff", "8039fffffffffff", "803bfffffffffff", "803dfffffffffff", "803ffffffffffff", "8041fffffffffff", "8043fffffffffff", "8045fffffffffff", "8047fffffffffff", "8049fffffffffff", "804bfffffffffff", "804dfffffffffff", "804ffffffffffff", "8051fffffffffff", "8053fffffffffff", "8055fffffffffff", "8057fffffffffff", "8059fffffffffff", "805bfffffffffff", "805dfffffffffff", "805ffffffffffff", "8061fffffffffff", "8063fffffffffff", "8065fffffffffff", "8067fffffffffff", "8069fffffffffff", "806bfffffffffff", "806dfffffffffff", "806ffffffffffff", "8071fffffffffff", "8073fffffffffff", "8075fffffffffff", "8077fffffffffff", "8079fffffffffff", "807bfffffffffff", "807dfffffffffff", "807ffffffffffff", "8081fffffffffff", "8083fffffffffff", "8085fffffffffff", "8087fffffffffff", "8089fffffffffff", "808bfffffffffff", "808dfffffffffff", "808ffffffffffff", "8091fffffffffff", "8093fffffffffff", "8095fffffffffff", "8097fffffffffff", "8099fffffffffff", "809bfffffffffff", "809dfffffffffff", "809ffffffffffff", "80a1fffffffffff", "80a3fffffffffff", "80a5fffffffffff", "80a7fffffffffff", "80a9fffffffffff", "80abfffffffffff", "80adfffffffffff", "80affffffffffff", "80b1fffffffffff", "80b3fffffffffff", "80b5fffffffffff", "80b7fffffffffff", "80b9fffffffffff", "80bbfffffffffff", "80bdfffffffffff", "80bffffffffffff", "80c1fffffffffff", "80c3fffffffffff", "80c5fffffffffff", "80c7fffffffffff", "80c9fffffffffff", "80cbfffffffffff", "80cdfffffffffff", "80cffffffffffff", "80d1fffffffffff", "80d3fffffffffff", "80d5fffffffffff", "80d7fffffffffff", "80d9fffffffffff", "80dbfffffffffff", "80ddfffffffffff", "80dffffffffffff", "80e1fffffffffff", "80e3fffffffffff", "80e5fffffffffff", "80e7fffffffffff", "80e9fffffffffff", "80ebfffffffffff", "80edfffffffffff", "80effffffffffff", "80f1fffffffffff", "80f3fffffffffff" ]
+```
+</TabItem>
+</Tabs>
+
+
+## res0CellCount
+
+Number of resolution `0` H3 indexes, which is defined as 122.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int res0CellCount(void);
+```
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+</Tabs>
+
+
+## getPentagons
+
+All the pentagon H3 cells at the specified resolution.
+There are 12 pentagons at each resolution.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getPentagons(int res, H3Index *out);
+```
+
+`out` must be an array of at least size `pentagonIndexCount()`.
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+Collection<Long> h3.getPentagons(int res);
+Collection<String> h3.getPentagonsAddresses(int res);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getPentagons(res)
+```
+
+```js live
+function example() {
+  const res = 5;
+  return h3.getPentagons(res);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.get_pentagons(res)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.Pentagons(res)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_get_pentagons(res)
+```
+```sql
+h3_get_pentagons_string(res)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getPentagons --help
+h3: Returns all of the pentagons at the specified resolution
+H3 4.1.0
+
+	getPentagons	Returns all of the pentagons at the specified resolution
+	-r, --resolution <res>	Required. Resolution, 0-15 inclusive.
+	-h, --help	Show this help message.
+	-f, --format <FMT>	'json' for ["CELL", ...], 'newline' for CELL\n... (Default: json)
+```
+
+```bash
+$ h3 getPentagons -r 5
+[ "85080003fffffff", "851c0003fffffff", "85300003fffffff", "854c0003fffffff", "85620003fffffff", "85740003fffffff", "857e0003fffffff", "85900003fffffff", "85a60003fffffff", "85c20003fffffff", "85d60003fffffff", "85ea0003fffffff" ]
+```
+
+</TabItem>
+</Tabs>
+
+## pentagonCount
+
+Number of pentagon H3 cells per resolution.
+This is always 12, but provided as a convenience.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int pentagonCount(void);
+```
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.NumPentagons
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 pentagonCount --help
+h3: Returns 12
+H3 4.1.0
+
+	pentagonCount	Returns 12
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 pentagonCount
+12
+```
+
+</TabItem>
+</Tabs>
+
+
+## greatCircleDistanceKm
+
+Gives the "great circle" or "haversine" distance between pairs of
+LatLng points (lat/lng pairs) in kilometers.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+double greatCircleDistanceKm(const LatLng *a, const LatLng *b);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double greatCircleDistance(LatLng point1, LatLng point2, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.greatCircleDistance(point1, point2, h3.UNITS.km)
+```
+
+```js live
+function example() {
+  const point1 = [-10, 0];
+  const point2 = [10, 0];
+  return h3.greatCircleDistance(point1, point2, h3.UNITS.km)
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.great_circle_distance(point1, point2, unit='km')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.GreatCircleDistanceKm(h3.NewLatLng(latA, lngA), h3.NewLatLng(latB, lngB))
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_great_circle_distance(point1, point2, 'km')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 greatCircleDistanceKm --help
+h3: Calculates the 'great circle' or 'haversine' distance between two lat, lng points, in kilometers
+H3 4.1.0
+
+	greatCircleDistanceKm	Calculates the 'great circle' or 'haversine' distance between two lat, lng points, in kilometers
+	-i, --file <FILENAME>	The file to load the coordinates from. Use -- to read from stdin.
+	-c, --coordinates <ARRAY>	The array of coordinates to convert. Up to 1500 characters.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 greatCircleDistanceKm -c "[[-10, 0], [10, 0]]"
+2223.9010395046
+```
+
+</TabItem>
+</Tabs>
+
+## greatCircleDistanceM
+
+Gives the "great circle" or "haversine" distance between pairs of
+LatLng points (lat/lng pairs) in meters.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+double greatCircleDistanceM(const LatLng *a, const LatLng *b);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double greatCircleDistance(LatLng point1, LatLng point2, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.greatCircleDistance(point1, point2, h3.UNITS.m);
+```
+
+```js live
+function example() {
+  const point1 = [-10, 0];
+  const point2 = [10, 0];
+  return h3.greatCircleDistance(point1, point2, h3.UNITS.m);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.great_circle_distance(point1, point2, unit='m')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.GreatCircleDistanceM(h3.NewLatLng(latA, lngA), h3.NewLatLng(latB, lngB))
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_great_circle_distance(point1, point2, 'm')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 greatCircleDistanceM --help
+h3: Calculates the 'great circle' or 'haversine' distance between two lat, lng points, in meters
+H3 4.1.0
+
+	greatCircleDistanceM	Calculates the 'great circle' or 'haversine' distance between two lat, lng points, in meters
+	-i, --file <FILENAME>	The file to load the coordinates from. Use -- to read from stdin.
+	-c, --coordinates <ARRAY>	The array of coordinates to convert. Up to 1500 characters.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 greatCircleDistanceM -c "[[-10, 0], [10, 0]]"
+2223901.0395045886
+```
+
+</TabItem>
+</Tabs>
+
+
+## greatCircleDistanceRads
+
+Gives the "great circle" or "haversine" distance between pairs of
+LatLng points (lat/lng pairs) in radians.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+double greatCircleDistanceRads(const LatLng *a, const LatLng *b);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+double greatCircleDistance(LatLng point1, LatLng point2, LengthUnit unit);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.greatCircleDistance(point1, point2, h3.UNITS.rads)
+```
+
+```js live
+function example() {
+  const point1 = [-10, 0];
+  const point2 = [10, 0];
+  return h3.greatCircleDistance(point1, point2, h3.UNITS.rads)
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.great_circle_distance(point1, point2, unit='rads')
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.GreatCircleDistanceRads(h3.NewLatLng(latA, lngA), h3.NewLatLng(latB, lngB))
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3.great_circle_distance(point1, point2, 'rads')
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 greatCircleDistanceRads --help
+h3: Calculates the 'great circle' or 'haversine' distance between two lat, lng points, in radians
+H3 4.1.0
+
+	greatCircleDistanceRads	Calculates the 'great circle' or 'haversine' distance between two lat, lng points, in radians
+	-i, --file <FILENAME>	The file to load the coordinates from. Use -- to read from stdin.
+	-c, --coordinates <ARRAY>	The array of coordinates to convert. Up to 1500 characters.
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 greatCircleDistanceRads -c "[[-10, 0], [10, 0]]"
+0.3490658504
+```
+
+</TabItem>
+</Tabs>
+
+
+## describeH3Error
+
+Provides a human-readable description of an H3Error error code.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+char *describeH3Error(H3Error err);
+```
+
+This function cannot fail, as it just returns a string stating that the
+H3Error value is itself invalid and does not allocate memory to do so.
+Do not call `free` on the result of this function.
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+Just read the `.message` property from the caught error, instead.
+
+:::
+
+```js live
+function example() {
+  let errorMessage = ""
+  try {
+    h3.cellToChildrenSize("asdf", 9);
+  } catch (e) {
+    errorMessage = e.message;
+  }
+  return errorMessage;
+}
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 describeH3Error --help
+h3: Returns a description of the provided H3 error code number, or indicates the number is itself invalid.
+H3 4.1.0
+
+	describeH3ErrorReturns a description of the provided H3 error code number, or indicates the number is itself invalid.
+	-e, --error <CODE>	Required. H3 Error code to describe
+	-h, --help	Show this help message.
+```
+
+```bash
+$ h3 describeH3Error -e 5
+Cell argument was not valid
+```
+
+</TabItem>
+</Tabs>

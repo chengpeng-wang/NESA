@@ -1,0 +1,74 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the expressions of which the values depend on the variable's value at a specific line. You should only report unbounded data flows and ignore data flows that are bounded by path conditions.",
+
+    "task": "Analyze the given code snippets and determine all the expressions of which the values depend on the variable's value at a specific line. IMPORTANT: You should ONLY report unbounded data flows. A 'bounded value' means the variable has only a FINITE number of possible values (e.g., 'if (x > 0 && x < 100)' bounds x to have at most 100 possible values). Note that single-side constraints like 'if (i > 0)' do NOT bound the value because i can still have infinitely many possible values. If a data flow is bounded by path conditions that limit the variable to a finite range, then DO NOT report this data flow relationship. Particularly, you should check the following form of expressions: (1) return value of the function, (2) actual arguments of function calls, (3) operands of commonly used operators. Think step by step and list pairs of a program line and an expression.",
+
+    "examples": [
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. int b = 0;\n2. z = b + 1;",
+            "question": "Examine which expressions' values unboundedly depend on the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined with constant 0 at line 1 and directly used in line 2. However, since b is a constant with only one possible value (0), this is a bounded data flow. We should NOT report bounded data flows.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. int b = input();\n2. b = 3;\n3. z = foo(b * 2);",
+            "question": "Examine which expressions' values unboundedly depend on the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized by user input at line 1. However it is overwritten with a constant at line 2 before it is used at line 3. Hence there is no expression of which the value depends on the unbounded value of b at line 1.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. b = input();\n2. if (c) {\n3.   z = b;\n4. } else {\n5.   z = b + 1;\n6. koo(z + 4);\n7. }",
+            "question": "Examine which expressions' values unboundedly depend on the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized by user input at line 1. Then the variable z is assigned in the if-statement. Two different values are assigned, both of which are dependent on the unbounded value of b. Finally, the value of z + 4 at line 6 depends on the values of z at line 3 and line 5 and thus depend on b at line 1.",
+                "answer": [
+                    {"Line": 3, "Variable": "b"},
+                    {"Line": 5, "Variable": "b + 1"},
+                    {"Line": 6, "Variable": "z + 4"}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. s = input();\n2. if (c) {\n3.   z = s + \"a\";\n4. } else {\n5.   data = s + \"b\";\n6. response.getWriter().println(\"<br>bad(): data = \" + data.replaceAll(\"(<script>)\", \"\"));\n7. }",
+            "question": "Examine which expressions' values unboundedly depend on the value of variable s at line 1.",
+            "output": {
+                "explanation": "The variable s is defined and initialized at line 1. The value of s is used in line 5 to assign the value of data. The value of data is used in line 6 to call the replaceAll method. The value of data.replaceAll(\"(<script>)\", \"\") depends on the value of data at line 5 and thus depends on s at line 1. Hence the expression \"<br>bad(): data = \" + data.replaceAll(\"(<script>)\", \"\") depends on the value of s at line 1.",
+                "answer": [
+                    {"Line": 6, "Variable": "<br>bad(): data = \" + data.replaceAll(\"(<script>)\", \"\")"},
+                    {"Line": 5, "Variable": "s + \"b\""},
+                    {"Line": 3, "Variable": "s + \"a\""}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions of which the values depend on the value of size at line 1.",
+            "code": "1. int size = input();\n2. if (size > 0) {\n3.     for (int i = 0; i < size; i++) {\n4.         process();\n5.     }\n6. }",
+            "question": "Examine which expressions' values unboundedly depend on the value of variable size at line 1.",
+            "output": {
+                "explanation": "The variable size is initialized at line 1 and used at line 3 as a loop bound. Although there is a path condition at line 2 that checks 'size > 0', this is only a single-side constraint. The variable size can still have infinitely many possible values (any positive integer). Since this data flow is NOT bounded to a finite range, we SHOULD report it.",
+                "answer": [
+                    {"Line": 3, "Variable": "size"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and analyze how the value is used in other statements",
+        "code": "{P_CODE}",
+        "question": "List all the expressions of which the values unboundedly depend on the value of {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. IMPORTANT: Only report unbounded data flows. If the data flow is bounded by path conditions (e.g., 'if (x > 0 && x < MAX)'), do NOT report it. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Particularly, you should check the following form of expressions: (1) return value of the function, (2) actual arguments of function calls, (3) operands of commonly used operators.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation on how the value of the variable is used in other statements]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

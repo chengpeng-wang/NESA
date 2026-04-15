@@ -1,0 +1,77 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the use sites of the variable's value at a specific line.",
+
+    "task": "Analyze the given code snippets and determine all the use sites of the value of a specified variable at a particular line. Think step by step and list pairs of a program line and a variable name.",
+
+    "examples": [
+        {
+            "description": "List all the use sites of the value of b at line 1.",
+            "code": "1. int b = 0;\n2. z = b;",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined at line 1 and directly used in line 2. Hence, the use site of the value of b at line 1 is the variable b at line 2.",
+                "answer": [
+                    {"Line": 2, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the use sites of the value of b at line 1.",
+            "code": "1. int b = 0;\n2. b = 3;\n3. z = b;",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. However it is overwritten at line 2 before it is used at line 3. Hence there is no use site of the value of b at line 1.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the use sites of the value of b at line 1.",
+            "code": "1. b = 1;\n2. if (c) {\n3.   z = b;\n4. } else {\n5.   z = b + 1;\n6. }",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. Then the variable z is assigned in the if-statement. Two different values are assigned, both of which are dependent on the value of b. Hence, the use sites of the value of b at line 1 are the variables z at lines 3 and 5.",
+                "answer": [
+                    {"Line": 3, "Variable": "b"},
+                    {"Line": 5, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the use sites of the value of b at line 3 in a loop context.",
+            "code": "1. int b = input();\n2. while (b > 1) {\n3.   b = b + 1;\n4. }\n5. z = b;",
+            "question": "Examine the value of variable b at line 3.",
+            "output": {
+                "explanation": "The value of b is updated at line 3 in the loop and then used at line 2 for the comparison. Also, the value can be utilized by the same statement at line 3 as b is also on the right-hand side of the assignment. When the loop exists, the updated value at line 3 is finally used at line 5. Hence, the use sites of the value of b at line 3 include line 2, line 3, and line 5.",
+                "answer": [
+                    {"Line": 2, "Variable": "b"},
+                    {"Line": 3, "Variable": "b"},
+                    {"Line": 5, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the use sites of the value of b at line 5 in a nested loop context.",
+            "code": "1. int b = input();\n2. int c = 1;\n3. while (b > 1) {\n4.   c = b + 1;\n5.   b += 1;\n6. }",
+            "question": "Examine the value of variable b at line 5.",
+            "output": {
+
+                "explanation": "At line 5, the value of b is incremented by 1 in the loop, indicating that the value defined at line 5 can be also utilized at line 5 in the subsequent iterations. Similarly, b appears at the right-hand side of the assignemtn at line 4, indicating that the value of b defined at line 5 can also be used by line 4 in the subsequent iterations Hence, the use sites of the value of b at line 5 include line 4 and line 5.",
+                "answer": [
+                    {"Line": 4, "Variable": "b"},
+                    {"Line": 5, "Variable": "b"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and analyze how the value is used in other statements",
+        "code": "{P_CODE}",
+        "question": "List all the use sites of the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Remember to find all the possible statements using the value.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation on how the value of the variable is used in other statements]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

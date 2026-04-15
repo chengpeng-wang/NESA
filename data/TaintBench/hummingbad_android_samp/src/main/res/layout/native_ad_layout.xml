@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="@drawable/ad_border" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:padding="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@+id/big_iv_icon" android:layout_width="50dp" android:layout_height="50dp" android:src="@drawable/ic_ad_icon_default" android:scaleType="centerCrop"/>
+        <LinearLayout android:orientation="vertical" android:paddingLeft="10dp" android:paddingRight="10dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@+id/big_btn_install" android:layout_toRightOf="@+id/big_iv_icon" android:layout_centerVertical="true">
+            <TextView android:textSize="18sp" android:id="@+id/big_main_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="FaceBook" android:singleLine="true"/>
+            <TextView android:textSize="14sp" android:id="@+id/big_sub_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="Social App Total 23MB" android:singleLine="true"/>
+        </LinearLayout>
+        <Button android:textSize="14sp" android:textColor="#ffffff" android:id="@+id/big_btn_install" android:background="#00cc99" android:layout_width="70dp" android:layout_height="32dp" android:text="Go" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <ImageView android:id="@+id/iv_main" android:visibility="gone" android:layout_width="match_parent" android:layout_height="180dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:src="@drawable/default_bg" android:scaleType="fitXY"/>
+    <TextView android:textSize="14sp" android:ellipsize="end" android:id="@+id/text_body" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="6dp" android:layout_marginRight="10dp" android:layout_marginBottom="6dp" android:lines="2"/>
+</LinearLayout>

@@ -1,0 +1,70 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "Given a reference, please list all the defined references that MAY refer to the same memory object as the specified reference used at a specific line. Here the defined references may be local variables defined by specific lines, parameters of the functions, expressions (such as access paths) in the left-hand sides of assignments.",
+
+    "examples": [
+        {
+            "description": "Given a reference, please list all the defined references that MAY refer to the same memory object as the specified reference used at a specific line. Here the defined references may be local variables defined by specific lines, parameters of the functions, expressions (such as access paths) in the left-hand sides of assignments. Particularly, the reference used at a specific program line refers to the same memory object as the one where it is defined.",
+            "code": "1. void sample(A a, A b) {\n2.     A c = a;\n3.     A d = b;\n4.     A e = c;\n5. }",
+            "question": "Examine the reference c used at line 4. List all the defined references that MAY refer to the same memory object as the reference c at line 4.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference a is used to initialize the reference c at line 2. The reference c is further used to initialize the reference e at line 4. Hence, the references a at line 1 and c at line 2 MAY refer to the same memory object.",
+                "answer": [
+                    {"Line": 1, "Variable": "a"},
+                    {"Line": 2, "Variable": "c"}
+                ]
+            }
+        },
+        {
+            "description": "Given a reference, please list all the defined references that MAY refer to the same memory object as the specified reference used at a specific line. Here the defined references may be local variables defined by specific lines, parameters of the functions, expressions (such as access paths) in the left-hand sides of assignments. Particularly, the reference used at a specific program line refers to the same memory object as the one where it is defined.",
+            "code": "1. void sample(A a, A b) {\n2.     A c = a;\n3.     A d = b;\n4.     A e = c;\n5.   d = e;\n6. }",
+            "question": "Examine the reference e used at line 5. List all the defined references that MAY point to the same memory object as the reference e at line 5.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference e used at line 5 is defined at line 4, which is initialized with c. The reference c is initialized with a at line 2. Hence, the references a at line 1 and c at line 2 MAY refer to the same memory object. As e is defined at line 4, the reference e at line 5 refers to the same memory object as the reference e at line 4 trivially.",
+                "answer": [
+                    {"Line": 1, "Variable": "a"},
+                    {"Line": 2, "Variable": "c"},
+                    {"Line": 4, "Variable": "e"}
+                ]
+            }
+        },
+        {
+            "description": "Given a reference, please list all the defined references that MAY refer to the same memory object as the specified reference used at a specific line. Here the defined references may be local variables defined by specific lines, parameters of the functions, expressions (such as access paths) in the left-hand sides of assignments. Particularly, the reference used at a specific program line refers to the same memory object as the one where it is defined.",
+            "code": "1. void sample(List<A> list) {\n2.     A a = new A();\n3.     list.add(a);\n4.     A b = list.get(0);\n5. A c = b;\n6.}",
+            "question": "Examine whether the reference b used at line 5. List all the defined references that MAY point to the same memory object as the reference b at line 5.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference b used at line 5 is defined at line 4, which is initialized with the object retrieved from the list. At line 3, the newly created object is inserted to the list. Hence, the references b used at line 5 and the reference a defined at line 2 MAY refer to the same memory object. ",
+                "answer": [
+                    {"Line": 2, "Variable": "a"},
+                    {"Line": 4, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "Given a reference, please list all the defined references that MAY refer to the same memory object as the specified reference used at a specific line. Here the defined references may be local variables defined by specific lines, parameters of the functions, expressions (such as access paths) in the left-hand sides of assignments. Particularly, the reference used at a specific program line refers to the same memory object as the one where it is defined.",
+            "code": "1. void sample(List<A> list) {\n2.     A a1 = new A();\n3.     A a2 = new A();\n4.     list.add(a1);\n5.     list.add(a2);\n6.     A b = list.get(0);\n7. A e = b;\n8.}",
+            "question": "Examine whether the reference b used at line 7. List all the defined references that MAY point to the same memory object as the reference b at line 7.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference b used at line 7 is defined at line 6, which is initialized with the object retrieved from the list. At line 4 and 5, two different objects are inserted to the list. Hence, the references b used at line 7 and the reference a1 defined at line 2 MAY refer to the same memory object.",
+                "answer": [
+                    {"Line": 2, "Variable": "a1"},
+                    {"Line": 6, "Variable": "b"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the reference {P_VARIABLE_NAME} used at line {P_LINE_NUMBER} and list all the defined references that MAY refer to the same memory object as the reference {P_VARIABLE_NAME} at line {P_LINE_NUMBER}.",
+
+        "code": "{P_CODE}",
+        "question": "List all the defined references that MAY refer to the same memory object as {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Please follow the above examples and think step by step.",
+
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation on how the references are assigned and used.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

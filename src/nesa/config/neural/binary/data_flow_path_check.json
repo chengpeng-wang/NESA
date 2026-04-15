@@ -1,0 +1,64 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to detemine whether the values of two expressions at two program locations are dependent.",
+
+    "task": "Given a specific expresion, denoted by expr_a, at a specific line, denoted by l1, and another expression, denoted by expr_b, at another line l2 in a single function, please determine whether the value of expr_b before the execution of line l2 depends on the value of expr_a after the line l1, where the execution of the line l1 is before the execution of l2.",
+
+    "examples": [
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of b at line 1 and z at line 2.",
+            "code": "1. int b = 0;\n2. z = b + 1;",
+            "question": "Examine whether the value of z at line 2 depends on the value of b at line 1. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable b is defined at line 1 and used as the operand of the addition operator at line 2. Also, the addition result is assigned to the variable z at line 2. If the value of b at line 1 changes, the value of z at line 2 also changes. Hence, the value of z at line 2 depends on the value of b at line 1.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of b at line 1 and z at line 3.",
+            "code": "1. int b = 0;\n2. b = 3;\n3. z = b;",
+            "question": "Examine whether the value of z at line 3 depends on the value of b at line 1. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable b is assigned with 0 at line 1 and then reassigned with 3 at line 2. The value of b at line 1 is not used after line 2. The value of b at line 1 does not affect the value of z at line 3. Hence, the value of z at line 3 does not depend on the value of b at line 1.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of b at line 2 and z at line 6.",
+            "code": "1. if (c) {\n2.   b = 1;\n3. } else {\n4.   b = 2;\n5. }\n6. z = b - 5;",
+            "question": "Examine whether the value of z at line 6 depends on the value of b at line 2. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The value of b at line 2 is defined based on the value of c. The value of b at line 2 is used as the operand of the subtraction operator at line 6. If the value of b at line 2 changes, the value of z at line 6 also changes. Hence, the value of z at line 6 depends on the value of b at line 2.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of b at line 2 and z at line 4.",
+            "code": "1. if (c) {\n2.   b = 1;\n3. } else {\n4.   b = b + 1;\n5. }\n6. z = b - 5;",
+            "question": "Examine whether the value of z at line 4 depends on the value of b at line 2. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "When c is true, the value of b is assigned with 1 at line 2. When c is false, the value of b is updated by adding 1 to the current value of b at line 4. The value of b at line 2 is not used in the else branch, indicating that the value of b at line 2 does not affect the value of z at line 4. Hence, the value of z at line 4 does not depend on the value of b at line 2.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of z at line 6 and b at line 1.",
+            "code": "1. int b = 1;\n2. int c = -1;\n3. while (c > 1) {\n4.   b = Math.abs(b);\n5.   c += 1;\n6. int z = b + 3;\n7. }",
+            "question": "Examine whether the value of z at line 6 depends on the value of b at line 1. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The value of b is initialized at line 1 and updated by the return value of Math.abs(b), which is determined by the value of b passed as the argument. At line 6, the value of b is used as the operand of the addition operator and the addition result is assigned to z. If the value of b at line 1 changes, the value of z at line 6 also changes. Hence, the value of z at line 6 depends on the value of b at line 1.",
+                "answer": "Yes"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the value of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "Examine whether the value of {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} depends on the value of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1}. Please think step by step and investigate how the values are used and generated.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

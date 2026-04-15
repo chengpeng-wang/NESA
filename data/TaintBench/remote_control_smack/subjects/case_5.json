@@ -1,0 +1,4 @@
+{
+    "src_function": "getLong",
+    "sink_function": "append"
+}

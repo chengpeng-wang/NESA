@@ -1,0 +1,46 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "Please help me list all the reference definitions in the scope of a given function. Here, the defined references may be local variables defined by specific lines, parameters of the functions, expressions (such as access paths) in the left-hand sides of assignments.",
+
+    "examples": [
+        {
+            "description": "List all the reference definitions in the code snippets.",
+            "code": "1. A a = new A();\n2. A b = a;\n3. int c = 1.0;",
+            "question": "Identify the reference definitions and the line numbers whether they are defined.",
+            "output": {
+                "explanation": "The variables 'a' and 'b' are references. The variable 'a' is defined in line 1 and 'b' is defined in line 2.",
+                "answer": [
+                    {"Line": 1, "Expression": "a"},
+                    {"Line": 2, "Expression": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the reference definitions in the code snippets.",
+            "code": "1. voi sample(A a, A b) {\n2.     A c = a;\n3.     A d = b;\n4.     int e = 1.0;\n5.     c.f.g = b;. }",
+            "question": "Identify the reference definitions and the line numbers whether they are defined.",
+            "output": {
+                "explanation": "The variables 'a' and 'b' are references. The variable 'a' is defined in line 1 and 'b' is defined in line 1. The variables 'c' and 'd' are references. The variable 'c' is defined in line 2 and 'd' is defined in line 3. At line 5, the expression 'c.f.g' is assigned with b, indicating that c.f.g is a reference.",                                                                                                                                                            
+                "answer": [
+                    {"Line": 1, "Expression": "a"},
+                    {"Line": 1, "Expression": "b"},
+                    {"Line": 2, "Expression": "c"},
+                    {"Line": 3, "Expression": "d"},
+                    {"Line": 5, "Expression": "c.f.g"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. List all the reference definitions in the code snippets.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code snippet. List all the reference definitions in the code snippets.",
+        "format": [
+            "Please answer the question with explanation and final answer. Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on how references are declared, initilized, and used in the code snippet]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {EXPRESSION}"
+        ]
+    }
+}

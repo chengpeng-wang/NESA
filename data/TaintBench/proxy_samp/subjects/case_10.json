@@ -1,0 +1,4 @@
+{
+    "src_function": "getDisplayMessageBody",
+    "sink_function": "write"
+}

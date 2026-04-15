@@ -1,0 +1,4 @@
+{
+    "src_function": "getDisplayOriginatingAddress",
+    "sink_function": "sendTextMessage"
+}

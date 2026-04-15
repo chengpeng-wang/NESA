@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <ImageView android:layout_gravity="center" android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/logo_big"/>
+    <ScrollView android:id="@+id/scrollView1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:typeface="sans" android:textStyle="bold" android:textColor="#ffffff" android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="2dp" android:layout_marginRight="5dp" android:text="Оплата доступа"/>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp">
+                <Button android:id="@+id/monthButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Месяц 300руб"/>
+                <Button android:id="@+id/weekSignButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Неделя 80руб"/>
+                <Button android:id="@+id/autoSignButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Автоматическая подписка"/>
+            </LinearLayout>
+            <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:typeface="sans" android:textColor="#ffffff" android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10dp" android:layout_marginRight="5dp" android:text="Стоимость доступа к HD-контенту устанавливается Вашим оператором"/>
+            <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:typeface="sans" android:textColor="#ffffff" android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10dp" android:layout_marginRight="5dp" android:text="Подробную информацию можно получить в разделе &quot;Услуги по коротким номерам&quot; на сайте Вашего оператора или позвонив в службу поддержки Вашего оператора"/>
+            <Button android:id="@+id/menuButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Вернуться в меню"/>
+            <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:typeface="sans" android:textColor="#ffffff" android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10dp" android:layout_marginRight="5dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

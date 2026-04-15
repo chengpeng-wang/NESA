@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:id="@+id/scrollView1" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="20dp" android:layout_above="@+id/buttonthnx" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:id="@+id/textView1" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="20dp"/>
+        </FrameLayout>
+    </ScrollView>
+    <Button android:id="@+id/buttonthnx" android:layout_width="150dp" android:layout_height="50dp" android:text="I ACCEPT" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"/>
+</RelativeLayout>

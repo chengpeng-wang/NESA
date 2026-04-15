@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:gravity="center" android:orientation="vertical" android:background="#ffffff" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:visibility="visible" android:layout_width="match_parent" android:layout_height="match_parent">
+        <RelativeLayout android:background="@drawable/bpush_top_bg" android:layout_width="match_parent" android:layout_height="50dp">
+            <Button android:textColor="#ffffff" android:id="@+id/bpush_media_list_return_btn" android:background="@drawable/bpush_return_btn" android:paddingLeft="15dp" android:paddingTop="5dp" android:paddingRight="10dp" android:paddingBottom="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:text="返回" android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>
+            <TextView android:textSize="18sp" android:textStyle="bold" android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="富媒体管理中心" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/bpush_media_none_layout" android:background="#ffffff" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="match_parent">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bpush_gray_logo"/>
+            <TextView android:textSize="13sp" android:textStyle="bold" android:textColor="#5f5f5f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="对不起，您暂时没有富媒体消息"/>
+        </LinearLayout>
+        <ListView android:id="@+id/bpush_type_listview" android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="40dp" android:cacheColorHint="#00000000" android:dividerHeight="0dp"/>
+    </LinearLayout>
+</LinearLayout>

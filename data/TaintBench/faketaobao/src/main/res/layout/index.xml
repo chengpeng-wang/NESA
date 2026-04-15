@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:id="@+id/top_bar" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:background="@drawable/header_bg" android:layout_width="match_parent" android:layout_height="45sp">
+        <TextView android:textSize="17sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/app_name" android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/login_information_layout" android:background="@drawable/otherinfo_items_bg" android:padding="0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_marginTop="10dp" android:layout_marginRight="8dp">
+        <FrameLayout android:id="@+id/username" android:layout_width="match_parent" android:layout_height="45dp">
+            <TextView android:textSize="16sp" android:gravity="center" android:layout_gravity="left|center_vertical|center_horizontal|center" android:id="@+id/text_username" android:background="@color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14dp" android:text="@string/username" style="@style/TextView_SubTitle"/>
+            <EditText android:textSize="16sp" android:layout_gravity="left|right|center_vertical|center_horizontal|fill_horizontal|center" android:id="@+id/edit_username" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="55dp" android:layout_marginRight="50dp" android:hint="@string/username_hint" android:imeOptions="actionDone" style="@style/EditText_Normal"/>
+        </FrameLayout>
+        <View android:id="@+id/anchor" android:layout_marginLeft="1px" android:layout_marginRight="1px" style="@style/ListItem_Divider"/>
+        <FrameLayout android:id="@+id/password" android:layout_width="match_parent" android:layout_height="45dp">
+            <TextView android:textSize="16sp" android:layout_gravity="left|center_vertical|center_horizontal|center" android:id="@+id/text_password" android:background="@color/transparent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14dp" android:text="密码:" style="@style/TextView_SubTitle"/>
+            <EditText android:textSize="16sp" android:layout_gravity="center_vertical" android:id="@+id/edit_password" android:tag="login_EditText@+id/edit_password" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="55dp" android:layout_marginRight="50dp" android:hint="@string/password_hint" android:password="true" android:maxLength="64" android:imeOptions="actionDone" style="@style/EditText_Normal"/>
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/login_bt_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_marginTop="20dp" android:layout_marginRight="8dp" android:layout_centerHorizontal="true">
+        <Button android:textSize="18sp" android:textColor="#ffffff" android:id="@+id/login" android:tag="login_ImageButton@+id/login" android:background="@drawable/btn_selector" android:layout_width="match_parent" android:layout_height="45sp" android:layout_marginLeft="4dp" android:text="@string/login" android:layout_weight="1"/>
+    </LinearLayout>
+    <TextView android:textSize="14sp" android:textColor="@color/gray" android:id="@+id/tv" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:layout_marginTop="12sp"/>
+</LinearLayout>

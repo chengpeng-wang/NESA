@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="#121212" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView android:layout_gravity="center" android:id="@+id/imageView1" android:layout_width="250dp" android:layout_height="250dp" android:layout_marginTop="20dp" android:src="@drawable/oie_transparent_1"/>
+    <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:textColor="#d3d3d3" android:gravity="center" android:layout_gravity="center" android:id="@+id/textView1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40dp" android:text="Checking Illegal Content"/>
+    <ProgressBar android:id="@+id/progress" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="50dp" android:layout_marginTop="20dp" android:layout_marginRight="50dp" android:maxWidth="120dp" android:maxHeight="110dp" style="@style/CustomProgressBarHorizontal"/>
+    <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ffc125" android:gravity="center" android:id="@+id/textView2" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="RESULT:"/>
+    <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:textColor="#cd0000" android:gravity="center" android:id="@+id/tvSearch" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="00 FILES FOUND!"/>
+</LinearLayout>

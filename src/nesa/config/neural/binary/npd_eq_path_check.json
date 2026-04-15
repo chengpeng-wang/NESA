@@ -1,0 +1,73 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to determine if the first variable/expression is evaluated to null, whether the variable or expression used at another line is also null.",
+
+    "task": "Given a specific reference variable at a particular line in a single function, please determine if the first variable/expression is evaluated to null, whether the variable or expression used at another line is also null. Please consider conditional statements that may prevent null values from propagating, such as true, false, and x != null. Please ignore all the possible exceptions in the program and assume that each statement can be executed normally.",
+
+    "examples": [
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of obj at line 1 and line 2.",
+            "code": "1. Object obj = null;\n2. obj.toString();",
+            "question": "Examine if the value of obj at line 1 is null, whether the value of obj used at line 2 is null. Please think step by step and investigate how the value of obj is used and modified.",
+            "output": {
+                "explanation": "At line 1, obj is explicitly assigned a null value. Since there are no other assignments before line 2, obj will still be null when the toString method is called. Hence, the value of obj used at the line 2 is also null.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of obj at line 1 and line 3.",
+            "code": "1. Object obj = null;\n2. obj = new Object();\n3. obj.toString();",
+            "question": "Examine if the value of obj at line 1 is null, whether the value of obj used at line 3 is null. Please think step by step and investigate how the value of obj is used and modified.",
+            "output": {
+                "explanation": "At line 1, obj is assigned null, but at line 2, it is reassigned to a new Object instance. Therefore, by the time line 3 is executed, the obj used at line 3 will not be null.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of obj at line 1 and line 3.",
+            "code": "1. Object obj = input();\n2. if (obj != null) {\n3.   obj.toString();\n4. }\n5. obj.toString();",
+            "question": "Examine if the value of obj at line 1 is null, whether the value of obj used at line 3 is null. Please think step by step and investigate how the value of obj is used and modified.",
+            "output": {
+                "explanation": "At line 1, obj is assigned the return value of the input() method. If the input() method returns null, then obj will be null. However, the if condition at line 2 checks if obj is not null before calling the toString method at line 3. Therefore, the value of obj used at line 3 will not be null even if the input() method returns null.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of obj at line 3 and line 5.",
+            "code": "1. Object obj = new Object();\n2. if (false) {\n3.   obj = null;\n4. }\n5. obj.toString();",
+            "question": "Examine whether the value of obj at line 3 and the value of obj at line 5 can both be null. That is whether the value of obj at line 5 is null if the value of obj at line 3 is null. Please think step by step and investigate how the value of obj is used and modified.",
+            "output": {
+                "explanation": "At line 1, obj is assigned a new Object instance. The if condition at line 2 is always false, so the assignment at line 3 is never executed. Therefore, the value of obj used at the line 5 can not be null.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of obj at line 3 and line 5.",
+            "code": "1. int flag = 5;\n2. if (flag != 5) {\n3.   obj = null;\n4. }\n5. obj.toString();",
+            "question": "Examine whether the value of obj at line 3 and the value of obj at line 5 can both be null. That is whether the value of obj at line 5 is null if the value of obj at line 3 is null. Please think step by step and investigate how the value of obj is used and modified.",
+            "output": {
+                "explanation": "At line 1, flag is assigned 5. The if condition at line 2 checks if flag is not equal to 5, which is false. Therefore, the assignment at line 3 is never executed. Therefore, the value of obj used at the line 5 can not be null.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of obj at line 1 and line 3.",
+            "code": "1. String obj = null;\n2. \n3. if ((obj != null) && (obj.length() > 0))\n4. {\n5.     System.out.println(\"The string length is greater than 0\");\n6. }",
+            "question": "Examine if the value of obj at line 1 is null, whether the value of obj used at line 3 (in obj.length()) is null. Please think step by step and investigate how the value of obj is used and modified.",
+            "output": {
+                "explanation": "At line 1, obj is explicitly assigned null. At line 3, there is a compound condition using the && operator. The left side checks if obj is not null. Since && is a short-circuit operator, if the left side evaluates to false (i.e., obj is null), the right side (obj.length() > 0) will not be evaluated at all. Therefore, when obj.length() is actually executed, obj cannot be null because the null check (obj != null) must have passed. Hence, the value of obj used in obj.length() at line 3 is not null.",
+                "answer": "No"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the value of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "If {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} is evaluated to null, please determine whether {P_VARIABLE_NAME_2} dereferenced at line {P_LINE_NUMBER_2} can be null. Please think step by step and follow the following steps: \n (1) First check whether {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} can have the same value; If not, directly answer No. Otherwise, go to step (2). \n (2) Check whether the line {P_LINE_NUMBER_1} and the line {P_LINE_NUMBER_2} are dead code. If so, answer No. Otherwise, go to step (3);\n (3) Check whether {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} is guarded by {P_VARIABLE_NAME_2} != null. If so, answer No directly. Otherwise, answer Yes. \n (4) Remember (This is very important!!!): If {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} causes a null pointer exception, you should regard the value of {P_VARIABLE_NAME_2} used at line {P_LINE_NUMBER_2} IS null and then answer Yes to this question.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

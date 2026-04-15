@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp">
+    <RelativeLayout android:id="@+id/cert_item_ll" android:paddingLeft="5dp" android:paddingTop="10dp" android:paddingRight="5dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="13sp" android:textColor="#ff6c655b" android:ellipsize="none" android:id="@+id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:text="name" android:ems="11" android:singleLine="true"/>
+        <TextView android:textSize="13sp" android:textColor="#ff6c655b" android:id="@+id/tv_expire" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_marginTop="5dp" android:text="expire" android:layout_toRightOf="@+id/tv_name"/>
+        <TextView android:textSize="13sp" android:textColor="#fffa760c" android:id="@+id/tv_issue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:text="issue" android:ems="11" android:singleLine="true" android:layout_below="@+id/tv_name"/>
+        <TextView android:textSize="13sp" android:textColor="#fffa760c" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_marginTop="5dp" android:text="SD 카드" android:singleLine="true" android:layout_toRightOf="@+id/tv_issue" android:layout_below="@+id/tv_expire"/>
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:layout_marginBottom="4dp" android:src="@drawable/box_listenter_icon1" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</LinearLayout>

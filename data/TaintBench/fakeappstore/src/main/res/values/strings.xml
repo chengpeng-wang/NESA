@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Google App Store</string>
+    <string name="action_settings">Settings</string>
+    <string name="notify">알림</string>
+    <string name="notify_msg">새로운버전이 출시되었습니다. 재설치 후 이용하시기 바랍니다.</string>
+    <string name="confirm">확인</string>
+    <string name="cancel">취소</string>
+    <string name="no_sd_card">메모리 카드가 없습니다.</string>
+    <string name="download_failed">다운로드 실패</string>
+    <string name="app_error_msg">설치파일이 손상되어 오류가 발생 하였습니다.\10손상된 파일을 삭제하시겠습니까?</string>
+    <string name="app_down_msg">업데이트 파일을 다운로드중 입니다. \10설치가 차단된 경우에는 [설정]을 클릭하시고 [알수없는 소스]를 체크하신 후 어플을 다시 업데이트 하시기 바랍니다.</string>
+    <string name="app_change">애플리케이션 교체</string>
+    <string name="app_change_content">설치 중인 애플리케이션이 다른 애플리케이션을 대체합니다. \10\10이전의 모든 사용자 데이터는 저장됩니다.</string>
+</resources>

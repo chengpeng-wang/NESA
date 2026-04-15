@@ -1,0 +1,62 @@
+{
+    "system": "You are a static analysis assistant, tasked with reasoning about whether an allocated heap memory object does NOT escape outside the current function.",
+    "task": "Given an allocation-related expression in a single function, perform the following judgment.\n1. Determine whether that allocated memory object does NOT escape outside the current function.\n2. If the allocated memory is passed back to the caller through returning the pointer itself, or through returning a struct/object/aggregate whose field contains that pointer or an alias of it, then the allocated memory escapes outside the current function.\n3. If the allocated memory is passed to a callee through the pointer itself as an argument, or through an argument whose field contains that pointer or an alias of it, and the callee may use/read/write/store/return the pointed-to memory, then treat the allocated memory as escaping.\n4. If only a field inside the allocated memory escapes, but the allocated memory object itself does not become reachable outside the current function, then do NOT treat the whole allocated memory object as escaped. Also treat assigning the pointer to a global or static variable, storing it into externally reachable memory, or otherwise making it reachable after the function returns as escaping.\n5. The final Yes/No answer is for this single judgment only. Answer Yes only if you can definitely establish that the allocated memory does NOT escape. If there is any uncertainty, answer No.",
+    "examples": [
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 2 does not escape outside the current function.",
+            "code": "1. void example1(void) {\n2.     char *buf = (char *)malloc(64);\n3.     buf[0] = 'A';\n4. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 2 does not escape outside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 2, the allocation expression malloc(64) creates a heap object, and buf refers to that allocated memory. The pointer is only used locally inside the function. It is not returned, not passed to any callee, and not stored into any global, static, or externally reachable location. Therefore the memory created by malloc(64) does not escape outside the current function. Final answer: since this non-escape judgment can be established with certainty for the allocated memory created by malloc(64) at line 2, the answer is Yes.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 3 does not escape outside the current function.",
+            "code": "1. char *g_buf;\n2. void example2(void) {\n3.     char *buf = (char *)malloc(64);\n4.     g_buf = buf;\n5. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 3 does not escape outside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 3, the allocation expression malloc(64) creates a heap object, and buf refers to that allocated memory. At line 4, the pointer is assigned to the global variable g_buf. This makes the memory created by malloc(64) reachable after the function returns, so that allocated memory escapes outside the current function. Final answer: because the allocated memory created by malloc(64) at line 3 escapes, the answer is No.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 3 does not escape outside the current function.",
+            "code": "1. extern void consume(char *p);\n2. void example3(void) {\n3.     char *buf = (char *)malloc(64);\n4.     consume(buf);\n5. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 3 does not escape outside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 3, the allocation expression malloc(64) creates a heap object, and buf refers to that allocated memory. At line 4, buf is passed to the callee consume. Under the conservative escape rule for this task, if the callee may use the pointed-to memory and safety is not established, then the memory created by malloc(64) must be treated as escaping. Final answer: because the code does not definitely establish non-escape for the allocated memory created by malloc(64) at line 3, the answer is No.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 4 does not escape outside the current function.",
+            "code": "1. typedef struct Wrapper { char *p; } Wrapper;\n2. Wrapper example4(void) {\n3.     Wrapper w;\n4.     w.p = (char *)malloc(64);\n5.     return w;\n6. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 4 does not escape outside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 4, the allocation expression malloc(64) creates a heap object, and w.p refers to that allocated memory. At line 5, the function returns the aggregate w, whose field p carries the pointer to the caller. Returning the pointer through a field of the return value counts as escaping outside the current function. Final answer: because the allocated memory created by malloc(64) at line 4 escapes to the caller, the answer is No.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(sizeof(Node)) at line 4 does not escape outside the current function.",
+            "code": "1. char *g_buf;\n2. typedef struct Node { char *inner; int tag; } Node;\n3. void example5(void) {\n4.     Node *n = (Node *)malloc(sizeof(Node));\n5.     n->inner = (char *)malloc(16);\n6.     g_buf = n->inner;\n7. }",
+            "question": "Examine whether the allocated memory created by malloc(sizeof(Node)) at line 4 does not escape outside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 4, the allocation expression malloc(sizeof(Node)) creates a heap-allocated Node object, and n refers to that allocated memory. At line 6, only the field n->inner escapes because its value is stored into the global variable g_buf. Under this task's rule, that does not mean the Node object created by malloc(sizeof(Node)) itself escapes, because that Node object is not returned, not stored globally, and does not otherwise become reachable outside the function. Final answer: since the non-escape judgment can be established for the allocated memory created by malloc(sizeof(Node)) at line 4, the answer is Yes.",
+                "answer": "Yes"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the allocated memory created by the allocation expression at line {P_LINE_NUMBER_1}, referenced in the code by {P_VARIABLE_NAME_1}.",
+        "code": "{P_CODE}",
+        "question": "Please reason in the following order. First, analyze whether that allocated memory does NOT escape outside the current function. Use a conservative definition of escape. If the allocated memory is passed back to the caller through returning the pointer itself, or through returning a struct/object/aggregate whose field contains that pointer or an alias of it, then it escapes. If the allocated memory is passed to a callee through the pointer itself as an argument, or through an argument whose field contains that pointer or an alias of it, and the callee may use/read/write/store/return the pointed-to memory, then treat the allocated memory as escaping. If only a field inside the allocated memory escapes, but the allocated memory object itself does not become reachable outside the current function, then do NOT treat the whole allocated memory object as escaped. Also pay attention to aliasing, assignments to global/static state, and storing pointers into externally reachable memory. Second, give the Final answer. Answer Yes only if you can definitely establish that the allocated memory does NOT escape. If there is any uncertainty, answer No. In your explanation, explicitly separate the reasoning for the Judgment and the Final answer. Please think step by step.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

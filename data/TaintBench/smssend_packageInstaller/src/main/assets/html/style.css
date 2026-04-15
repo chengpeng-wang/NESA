@@ -1,0 +1,54 @@
+/* CSS Document */
+
+*
+{
+	padding:0px;
+	margin:0px;
+	border:0px;	
+}
+
+html
+{
+	
+}
+
+body
+{
+	overflow:hidden;
+	font-family:Verdana, Geneva, sans-serif;
+	text-align:center;
+}
+
+.ready
+{
+	position:absolute;
+	padding-top:45%;
+}
+
+.body
+{
+	position:absolute;
+	width:100%;
+}
+
+.text_1
+{
+	padding-top:74%;
+	font-weight:bold;
+}
+
+.text_2
+{
+	padding-top:2%;
+	font-weight:bold;
+}
+
+.text_1:before
+{
+	content:"Установка завершена!";
+}
+
+.text_2:before
+{
+	content:"Нажмите Далее для запуска приложения";
+}

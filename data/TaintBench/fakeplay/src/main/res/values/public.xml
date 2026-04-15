@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="ic_launcher" id="2130837504" />
+    <public type="layout" name="activity_main" id="2130903040" />
+    <public type="xml" name="lock_screen" id="2130968576" />
+    <public type="string" name="app_name" id="2131034112" />
+    <public type="string" name="app_name2" id="2131034113" />
+    <public type="style" name="AppBaseTheme" id="2131099648" />
+    <public type="style" name="AppTheme" id="2131099649" />
+    <public type="id" name="webView" id="2131165184" />
+</resources>

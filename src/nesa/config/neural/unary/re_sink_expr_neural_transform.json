@@ -1,0 +1,62 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying and extracting expressions that match specific patterns and reporting them along with their line numbers",
+
+    "task": "I want you to extract expressions that match EXACTLY these two patterns:\n (1) Loop bounds - expressions found in loop headers (e.g., 'n' in 'for (int i = 0; i < n; i++)' or 'n' in 'while (i < n)'). IMPORTANT: Only extract expressions from loop headers (for/while conditions), NOT from if statements.\n (2) Thread.sleep() arguments - expressions passed to Thread.sleep() calls\n Only report expressions matching these two patterns. Think step by step and list pairs of a program line and an expression.",
+
+    "examples": [
+        {
+            "description": "List the expressions that match the specified patterns.",
+            "code": "1. int count = input();\n2. Thread.sleep(count);",
+            "question": "Please examine the code snippet. Identify expressions that match the two patterns: loop bounds (in loop headers) or Thread.sleep() arguments.",
+            "output": {
+                "explanation": "At line 2, Thread.sleep is called with the argument count. This matches pattern (2): Thread.sleep() argument. Hence, I will extract and report count at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "count"}
+                ]
+            }
+        },
+        {
+            "description": "List the expressions that match the specified patterns.",
+            "code": "1. int count = input();\n2. for (int i = 0; i < count; i++) {\n3.     IO.writeLine(\"Hello\");\n4. }",
+            "question": "Please examine the code snippet. Identify expressions that match the two patterns: loop bounds (in loop headers) or Thread.sleep() arguments.",
+            "output": {
+                "explanation": "At line 2, a for loop uses count as its upper bound in the loop header 'for (int i = 0; i < count; i++)'. This matches pattern (1): loop bound in loop header. Hence, I will extract and report count at line 2.",
+                "answer": [
+                    {"Line": 2, "Expression": "count"}
+                ]
+            }
+        },
+        {
+            "description": "List the expressions that match the specified patterns.",
+            "code": "1. int size = input();\n2. int limit = 100;\n3. while (size > 0) {\n4.     Thread.sleep(size * 1000);\n5.     size--;\n6. }",
+            "question": "Please examine the code snippet. Identify expressions that match the two patterns: loop bounds (in loop headers) or Thread.sleep() arguments.",
+            "output": {
+                "explanation": "At line 3, a while loop header 'while (size > 0)' uses size as its loop condition. This matches pattern (1): loop bound in loop header. At line 4, Thread.sleep is called with the argument size * 1000. This matches pattern (2): Thread.sleep() argument. Hence, I will extract and report both.",
+                "answer": [
+                    {"Line": 3, "Expression": "size"},
+                    {"Line": 4, "Expression": "size * 1000"}
+                ]
+            }
+        },
+        {
+            "description": "List the expressions that match the specified patterns.",
+            "code": "1. int a = input();\n2. int b = a + 5;\n3. System.out.println(b);",
+            "question": "Please examine the code snippet. Identify expressions that match the two patterns: loop bounds (in loop headers) or Thread.sleep() arguments.",
+            "output": {
+                "explanation": "Although variable b is derived from user input, it is only used in a println call at line 3. This does not match either pattern (1) loop bounds in loop headers or pattern (2) Thread.sleep() arguments. Hence, the answer is empty.",
+                "answer": []
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Identify expressions that match the two specific patterns.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code snippet. Identify and extract expressions that match EXACTLY these two patterns: (1) loop bounds found in loop headers (e.g., 'n' in 'for (int i = 0; i < n; i++)' or 'n' in 'while (i < n)'), or (2) Thread.sleep() arguments. IMPORTANT: Only extract expressions from loop headers, NOT from if statements. Report these expressions with their line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Only report expressions that match one of these two patterns:\n (1) Loop bounds - expressions found in loop headers (e.g., 'n' in 'for (int i = 0; i < n; i++)' or 'n' in 'while (i < n)'). IMPORTANT: Only extract from loop headers, NOT from if statements.\n (2) Thread.sleep() arguments - expressions passed to Thread.sleep() calls\n Do not report any other expressions. Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on which expressions match the two patterns and why you extract them]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {EXPRESSION}"
+        ]
+    }
+}

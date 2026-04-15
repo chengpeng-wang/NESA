@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="hana" id="2130837504" />
+    <public type="drawable" name="ic_launcher" id="2130837505" />
+    <public type="drawable" name="icon" id="2130837506" />
+    <public type="drawable" name="intro" id="2130837507" />
+    <public type="drawable" name="intro_bg" id="2130837508" />
+    <public type="drawable" name="kb" id="2130837509" />
+    <public type="drawable" name="nh" id="2130837510" />
+    <public type="drawable" name="sh" id="2130837511" />
+    <public type="layout" name="activity_main" id="2130903040" />
+    <public type="layout" name="down_activity_main" id="2130903041" />
+    <public type="layout" name="hana_main_activity" id="2130903042" />
+    <public type="layout" name="kb_main_activity" id="2130903043" />
+    <public type="layout" name="nh_main_activity" id="2130903044" />
+    <public type="layout" name="sh_main_activity" id="2130903045" />
+    <public type="layout" name="woori_main_activity" id="2130903046" />
+    <public type="xml" name="my_admin" id="2130968576" />
+    <public type="color" name="transparent_background" id="2131034112" />
+    <public type="dimen" name="activity_horizontal_margin" id="2131099648" />
+    <public type="dimen" name="activity_vertical_margin" id="2131099649" />
+    <public type="string" name="app_name" id="2131165184" />
+    <public type="string" name="action_settings" id="2131165185" />
+    <public type="string" name="notify" id="2131165186" />
+    <public type="string" name="notify_msg" id="2131165187" />
+    <public type="string" name="confirm" id="2131165188" />
+    <public type="string" name="cancel" id="2131165189" />
+    <public type="string" name="no_sd_card" id="2131165190" />
+    <public type="string" name="download_failed" id="2131165191" />
+    <public type="string" name="app_error_msg" id="2131165192" />
+    <public type="string" name="app_down_msg" id="2131165193" />
+    <public type="string" name="app_change" id="2131165194" />
+    <public type="string" name="app_change_content" id="2131165195" />
+    <public type="style" name="AppBaseTheme" id="2131230720" />
+    <public type="style" name="AppTheme" id="2131230721" />
+    <public type="menu" name="main" id="2131296256" />
+    <public type="id" name="main_hide_layout" id="2131361792" />
+    <public type="id" name="action_settings" id="2131361793" />
+</resources>

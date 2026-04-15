@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@android:drawable/status_bar_item_app_background" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:paddingTop="8dp" android:focusable="true" android:clickable="true" android:layout_width="40dp" android:layout_height="match_parent" android:layout_marginLeft="8dp">
+            <ImageView android:layout_gravity="center" android:id="@+id/bpush_download_icon" android:layout_width="30dp" android:layout_height="30dp"/>
+            <TextView android:textSize="10sp" android:layout_gravity="center_horizontal" android:id="@+id/bpush_progress_percent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"/>
+        </LinearLayout>
+        <RelativeLayout android:orientation="vertical" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="15dp">
+            <LinearLayout android:orientation="horizontal" android:paddingTop="10dp" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+                <TextView android:textSize="18sp" android:id="@+id/bpush_progress_title" android:paddingLeft="2dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"/>
+                <TextView android:textSize="14sp" android:id="@+id/bpush_progress_text" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true"/>
+            </LinearLayout>
+            <ProgressBar android:id="@+id/bpush_download_progress" android:paddingRight="20dp" android:paddingBottom="8dp" android:layout_width="match_parent" android:layout_height="10dp" android:layout_alignParentBottom="true" style="@style/Widget.ProgressBar.Horizontal"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <ImageView android:layout_width="match_parent" android:layout_height="wrap_content" android:src="@android:drawable/divider_horizontal_bright"/>
+</LinearLayout>

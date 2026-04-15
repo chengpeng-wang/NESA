@@ -1,0 +1,49 @@
+{
+    "system": "You are a static analysis assistant. You are tasked with identifying the variables assigned with SHA-512 MessageDigest objects and reporting them along with their line numbers",
+
+    "task": "I am going to detect unsalted hash bugs. I want you to identify MessageDigest objects created with the SHA-512 algorithm. Specifically, I want you to extract the left-hand side expressions (variables) assigned with the return values of MessageDigest.getInstance(\"SHA-512\") calls. Think step by step and list pairs of a program line and a variable. \n Specifically, you should first check whether MessageDigest.getInstance(\"SHA-512\") is invoked in the code snippet. If no, you can just finish the analysis and do not report any variables or expressions. If MessageDigest.getInstance(\"SHA-512\") is invoked, please list the variables assigned with the return values along with the corresponding line numbers.",
+
+    "examples": [
+        {
+            "description": "List the variables assigned with SHA-512 MessageDigest objects.",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA-512\");\n2. MessageDigest hash2 = MessageDigest.getInstance(\"SHA-256\");",
+            "question": "Please examine the method invocations in the code snippet. Check whether MessageDigest.getInstance(\"SHA-512\") is invoked. If so, please list the variables assigned with the return values along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The method MessageDigest.getInstance is invoked at line 1 with the argument \"SHA-512\", and the return value is assigned to the variable hash. At line 2, MessageDigest.getInstance is invoked with \"SHA-256\", which is not SHA-512, so we do not report hash2. Hence, I will only report the variable hash at line 1.",
+                "answer": [
+                    {"Line": 1, "Expression": "hash"}
+                ]
+            }
+        },
+        {
+            "description": "List the variables assigned with SHA-512 MessageDigest objects.",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA-256\");\n2. hash.update(data);",
+            "question": "Please examine the method invocations in the code snippet. Check whether MessageDigest.getInstance(\"SHA-512\") is invoked. If so, please list the variables assigned with the return values along with the corresponding line numbers.",
+            "output": {
+                "explanation": "The method MessageDigest.getInstance is invoked at line 1, but with the argument \"SHA-256\", not \"SHA-512\". Hence, the answer is empty.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List the variables assigned with SHA-512 MessageDigest objects.",
+            "code": "1. String data = \"example\";\n2. int length = data.length();\n3. System.out.println(length);",
+            "question": "Please examine the method invocations in the code snippet. Check whether MessageDigest.getInstance(\"SHA-512\") is invoked. If so, please list the variables assigned with the return values along with the corresponding line numbers.",
+            "output": {
+                "explanation": "There is no invocation of MessageDigest.getInstance in the code snippet. Hence, the answer is empty.",
+                "answer": []
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. List the variables assigned with SHA-512 MessageDigest objects.",
+        "code": "{P_CODE}",
+        "question": "Please examine the method invocations in the code snippet. Check whether MessageDigest.getInstance(\"SHA-512\") is invoked. If so, please list the variables assigned with the return values along with the corresponding line numbers.",
+        "format": [
+            "Please answer the question with explanation and final answer. Remember, you should only focus on the invocation of MessageDigest.getInstance(\"SHA-512\"). Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on whether MessageDigest.getInstance(\"SHA-512\") is invoked and what variables are assigned with its return values.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}
+

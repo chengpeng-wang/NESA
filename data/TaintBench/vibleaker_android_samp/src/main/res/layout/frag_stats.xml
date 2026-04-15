@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@drawable/card3" android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/tvTitle" android:padding="@dimen/main_button_margin_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true"/>
+    <ListView android:id="@+id/list" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_above="@+id/adView" android:layout_below="@+id/tvTitle"/>
+    <com.google.android.gms.ads.AdView android:id="@+id/adView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" app:adSize="SMART_BANNER" app:adUnitId="@string/banner_ad_unit_stats"/>
+</RelativeLayout>

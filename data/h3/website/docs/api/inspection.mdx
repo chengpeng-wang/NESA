@@ -1,0 +1,1069 @@
+---
+id: inspection
+title: Index inspection functions
+sidebar_label: Inspection
+slug: /api/inspection
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+These functions provide metadata about an H3 index, such as its resolution or base cell, and provide utilities for converting into and out of the 64-bit representation of an H3 index.
+
+## getResolution
+
+Returns the resolution of the index.
+(Works for cells, edges, and vertexes.)
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int getResolution(H3Index h);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+int getResolution(long h3);
+int getResolution(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getResolution(h)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.getResolution(h);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.get_resolution(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.Resolution()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_get_resolution(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getResolution --help
+h3: Extracts the resolution (0 - 15) from the H3 cell
+H3 4.1.0
+
+	getResolution	Extracts the resolution (0 - 15) from the H3 cell
+	-h, --help	Show this help message.
+	-c, --cell <index>	Required. H3 Cell
+```
+
+```bash
+$ h3 getResolution -c 85283473fffffff
+5
+```
+
+</TabItem>
+</Tabs>
+
+
+## getBaseCellNumber
+
+Returns the base cell number of the index.
+(Works for cells, edges, and vertexes.)
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int getBaseCellNumber(H3Index h);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+int getBaseCellNumber(long h3);
+int getBaseCellNumber(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getBaseCellNumber(h)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.getBaseCellNumber(h);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.get_base_cell_number(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.BaseCellNumber()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_get_base_cell_number(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getBaseCellNumber --help
+h3: Extracts the base cell number (0 - 121) from the H3 cell
+H3 4.1.0
+
+	getBaseCellNumber	Extracts the base cell number (0 - 121) from the H3 cell
+	-h, --help	Show this help message.
+	-c, --cell <index>	Required. H3 Cell
+```
+
+```bash
+$ h3 getBaseCellNumber -c 85283473fffffff
+20
+```
+
+</TabItem>
+</Tabs>
+
+## getIndexDigit
+
+Returns an [indexing digit](https://h3geo.org/docs/library/index/cell) of the index.
+Works for cells, edges and vertexes.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    // {label: 'Java', value: 'java'},
+    // {label: 'JavaScript (Live)', value: 'javascript'},
+    // {label: 'Python', value: 'python'},
+    // {label: 'Go', value: 'go'},
+    // {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getIndexDigit(H3Index h, int res, H3Index *out);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+int getIndexDigit(long h3, int res);
+int getIndexDigit(String h3Address, int res);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getIndexDigit(h, res)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  const res = 2;
+  return h3.getIndexDigit(h, res);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.get_index_digit(h, res)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.IndexDigit(res)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_get_index_digit(h, res)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getIndexDigit --help
+h3: Extracts the indexing digit (0 - 7) from the H3 cell
+H3 4.3.0
+
+	getIndexDigit	Extracts the indexing digit (0 - 7) from the H3 cell
+	-h, --help	Show this help message.
+	-c, --cell <index>	Required. H3 Cell
+	-r, --res <res>	Required. Indexing resolution (1 - 15)
+```
+
+```bash
+$ h3 getIndexDigit -c 85283473fffffff -r 2
+7
+```
+
+</TabItem>
+</Tabs>
+
+Digits are 1-indexed starting with the resolution 1 digit.
+
+This function will return unused index digits as well as used ones,
+in that case they will be 7 for valid cells.
+
+## constructCell
+
+Creates a cell from its components (resolution, base cell number, and indexing digits).
+This is the inverse operation of `getResolution`, `getBaseCellNumber`, and `getIndexDigit`.
+Only allows for constructing valid H3 cells, and will return an error if the provided components would create an invalid cell.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error constructCell(int res, int baseCellNumber, const int *digits, H3Index *out);
+```
+
+- `res`: Resolution (0-15)
+- `baseCellNumber`: Base cell number (0-121)
+- `digits`: Array of indexing digits (0-6) of length `res`. Each digit `digits[i]` corresponds to the digit at resolution `i+1`. Can be `NULL` if `res` is 0.
+- `out`: Output parameter for the constructed cell
+
+Returns 0 (`E_SUCCESS`) on success. Returns an error code on failure:
+- `E_RES_DOMAIN`: Invalid resolution (must be 0-15)
+- `E_BASE_CELL_DOMAIN`: Invalid base cell number (must be 0-121)
+- `E_DIGIT_DOMAIN`: Invalid digit value (must be 0-6)
+- `E_DELETED_DIGIT`: Attempted to use digit 1 in a pentagon base cell (deleted subsequence)
+
+</TabItem>
+<TabItem value="java">
+
+```java
+long constructCell(int baseCellNumber, List<Integer> digits);
+long constructCell(int baseCellNumber, List<Integer> digits, int res);
+String constructCellAddress(int baseCellNumber, List<Integer> digits);
+String constructCellAddress(int baseCellNumber, List<Integer> digits, int res);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.constructCell(baseCellNumber, digits)
+h3.constructCell(baseCellNumber, digits, res)
+```
+
+```js live
+function example() {
+  const baseCellNumber = 0;
+  const res = 1;
+  return h3.constructCell(baseCellNumber, [0], res);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function may not be available in all bindings.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+:::note
+
+This function may not be available in all bindings.
+
+:::
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_construct_cell(base_cell_number, digits)
+h3_construct_cell(base_cell_number, digits, res)
+h3_construct_cell_string(base_cell_number, digits)
+h3_construct_cell_string(base_cell_number, digits, res)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 constructCell --help
+H3 4.3.0
+
+    constructCell   Construct an H3 cell from resolution, base cell, and digits
+    -h, --help      Show this help message.
+    -r, --resolution <res>  Resolution, 0-15 inclusive. Inferred from digits if not provided. If provided, an error will be returned if there is a mismatch with the number of digits provided.
+    -b, --baseCell <base>   Required. Base cell number, 0-121 inclusive.
+    -d, --digits <d0,d1,...>        Comma-separated list of child digits (0-6) of length resolution.
+    -f, --format <FMT>      'json' for "CELL"\n, 'newline' for CELL\n (Default: json)
+```
+
+```bash
+$ h3 constructCell -r 3 -b 73 -d 1,2,3
+"839253fffffffff"
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+
+When constructing a cell from a pentagon base cell, digit `1` (K_AXES_DIGIT) is not allowed to follow immediately after a sequence of `0` digits. In this case, the function will return `E_DELETED_DIGIT`.
+
+:::
+
+## stringToH3
+
+Converts the string representation to `H3Index` (`uint64_t`) representation.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error stringToH3(const char *str, H3Index *out);
+```
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+long stringToH3(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+The H3 JavaScript binding supports only the string representation of an H3 index.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.str_to_int(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+h3.IndexFromString(str)
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_string_to_h3(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+:::note
+
+The H3 CLI supports only the string representation of an H3 index.
+
+:::
+
+
+</TabItem>
+</Tabs>
+
+## h3ToString
+
+Converts the `H3Index` representation of the index to the string representation.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error h3ToString(H3Index h, char *str, size_t sz);
+```
+
+`str` must be at least of length 17.
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+String h3ToString(long h3);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+The H3 JavaScript binding supports only the string representation of an H3 index.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.int_to_str(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.String()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_h3_to_string(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+:::note
+
+The H3 CLI supports only the string representation of an H3 index.
+
+:::
+
+</TabItem>
+</Tabs>
+
+
+
+## isValidCell
+
+Returns non-zero if this is a valid H3 cell index.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int isValidCell(H3Index h);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+boolean isValidCell(long h3);
+boolean isValidCell(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.isValidCell(h)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.isValidCell(h);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.is_valid_cell(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.IsValid()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_is_valid_cell(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 isValidCell --help
+h3: Checks if the provided H3 index is actually valid
+H3 4.1.0
+
+	isValidCell	Checks if the provided H3 index is actually valid
+	-h, --help	Show this help message.
+	-c, --cell <index>	Required. H3 Cell
+	-f, --format <FMT>	'json' for true or false, 'numeric' for 1 or 0 (Default: json)
+```
+
+```bash
+$ h3 isValidCell -c 85283473fffffff
+true
+```
+
+</TabItem>
+</Tabs>
+
+
+## isValidIndex
+
+Returns non-zero if this is a valid H3 index for any mode (cell, directed edge, or vertex).
+That is, this returns true if any of the functions `isValidCell`, `isValidDirectedEdge`, or `isValidVertex` would return true.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int isValidIndex(H3Index h);
+```
+
+Returns 1 if the H3 index is valid for any supported type (cell, directed edge, or vertex), 0 otherwise.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+boolean isValidIndex(long h3);
+boolean isValidIndex(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+This function may not be available in all bindings.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function may not be available in all bindings.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+:::note
+
+This function may not be available in all bindings.
+
+:::
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_is_valid_index(h)
+```
+
+</TabItem>
+</Tabs>
+
+
+## isResClassIII
+
+Returns non-zero if this index has a resolution with Class III orientation.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int isResClassIII(H3Index h);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+boolean isResClassIII(long h3);
+boolean isResClassIII(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.isResClassIII(h)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.isResClassIII(h);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.is_res_class_III(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.IsResClassIII()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_is_res_class_iii(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 isResClassIII --help
+h3: Checks if the provided H3 index has a Class III orientation
+H3 4.1.0
+
+	isResClassIII	Checks if the provided H3 index has a Class III orientation
+	-h, --help	Show this help message.
+	-c, --cell <index>	Required. H3 Cell
+	-f, --format <FMT>	'json' for true or false, 'numeric' for 1 or 0 (Default: json)
+```
+
+```bash
+$ h3 isResClassIII -c 85283473fffffff
+true
+```
+
+</TabItem>
+</Tabs>
+
+
+## isPentagon
+
+Returns non-zero if this index represents a pentagonal cell.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+int isPentagon(H3Index h);
+```
+
+</TabItem>
+<TabItem value="java">
+
+```java
+boolean isPentagon(long h3);
+boolean isPentagon(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.isPentagon(h)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.isPentagon(h);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.is_pentagon(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.IsPentagon()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_is_pentagon(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 isPentagon --help
+h3: Checks if the provided H3 index is a pentagon instead of a hexagon
+H3 4.1.0
+
+	isPentagon	Checks if the provided H3 index is a pentagon instead of a hexagon
+	-h, --help	Show this help message.
+	-c, --cell <index>	Required. H3 Cell
+	-f, --format <FMT>	'json' for true or false, 'numeric' for 1 or 0 (Default: json)
+```
+
+```bash
+$ h3 isPentagon -c 85283473fffffff
+false
+```
+
+</TabItem>
+</Tabs>
+
+
+## getIcosahedronFaces
+
+Find all icosahedron faces intersected by a given H3 cell.
+Faces are represented as integers from 0-19, inclusive.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error getIcosahedronFaces(H3Index h, int* out);
+```
+
+Face values are placed in the array `out`.
+`out` must be at least length of `maxFaceCount(h)`.
+The array is sparse, and empty (no intersection) array values are represented by -1.
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+```java
+Collection<Integer> getIcosahedronFaces(long h3);
+Collection<Integer> getIcosahedronFaces(String h3Address);
+```
+
+</TabItem>
+<TabItem value="javascript">
+
+```js
+h3.getIcosahedronFaces(h)
+```
+
+```js live
+function example() {
+  const h = '85283473fffffff';
+  return h3.getIcosahedronFaces(h);
+}
+```
+
+</TabItem>
+<TabItem value="python">
+
+```py
+h3.get_icosahedron_faces(h)
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+cell.IcosahedronFaces()
+```
+
+</TabItem>
+<TabItem value="duckdb">
+
+```sql
+h3_get_icosahedron_faces(h)
+```
+
+</TabItem>
+<TabItem value="shell">
+
+```sh
+$ h3 getIcosahedronFaces --help
+h3: Returns the icosahedron face numbers (0 - 19) that the H3 index intersects
+H3 4.1.0
+
+	getIcosahedronFaces	Returns the icosahedron face numbers (0 - 19) that the H3 index intersects
+	-h, --help	Show this help message.
+	-c, --cell <index>	Required. H3 Cell
+	-f, --format <FMT>	'json' for [faceNum, ...], 'newline' for faceNum\n... (Default: json)
+```
+
+```bash
+$ h3 getIcosahedronFaces -c 85283473fffffff
+[7]
+```
+</TabItem>
+</Tabs>
+
+## maxFaceCount
+
+Returns the maximum number of icosahedron faces the given H3 index may intersect.
+
+<Tabs
+  groupId="language"
+  defaultValue="c"
+  values={[
+    {label: 'C', value: 'c'},
+    {label: 'Java', value: 'java'},
+    {label: 'JavaScript (Live)', value: 'javascript'},
+    {label: 'Python', value: 'python'},
+    {label: 'Go', value: 'go'},
+    {label: 'DuckDB', value: 'duckdb'},
+    {label: 'Shell', value: 'shell'},
+  ]
+}>
+<TabItem value="c">
+
+```c
+H3Error maxFaceCount(H3Index h3, int *out);
+```
+
+Returns 0 (`E_SUCCESS`) on success.
+
+</TabItem>
+<TabItem value="java">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="javascript">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="python">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="go">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="duckdb">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+<TabItem value="shell">
+
+:::note
+
+This function exists for memory management and is not exposed.
+
+:::
+
+</TabItem>
+</Tabs>

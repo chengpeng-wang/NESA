@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="top|center_vertical|center_horizontal|center" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:typeface="sans" android:textStyle="bold" android:textColor="#ffffff" android:id="@+id/TextView01" android:paddingLeft="20dp" android:paddingTop="5dp" android:paddingRight="20dp" android:paddingBottom="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="видео для взрослых на"/>
+    <ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/logo_big" android:adjustViewBounds="true"/>
+    <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:typeface="sans" android:textStyle="normal" android:gravity="center_horizontal" android:id="@+id/textView1" android:paddingLeft="40dp" android:paddingRight="40dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Платеж успешно осуществлен. Сумма платежа составила"/>
+    <TextView android:textAppearance="?android:attr/textAppearanceLarge" android:textSize="40sp" android:textStyle="bold" android:id="@+id/amount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="300рублей"/>
+    <Button android:id="@+id/openMoviesButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Перейти к просмотру"/>
+</LinearLayout>

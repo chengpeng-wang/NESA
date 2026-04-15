@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center_horizontal" android:background="@drawable/bg1" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RadioGroup android:orientation="horizontal" android:id="@+id/editText2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/editText1" android:layout_alignLeft="@+id/editText1">
+        <RadioButton android:textColor="@android:color/background_light" android:id="@+id/type1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5dp" android:checked="true" android:text="SKT"/>
+        <RadioButton android:textColor="@android:color/background_light" android:id="@+id/type2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="KT"/>
+        <RadioButton android:textColor="@android:color/background_light" android:id="@+id/type3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="LG"/>
+    </RadioGroup>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/ll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/editText3" android:layout_alignParentLeft="true" android:layout_alignParentRight="true">
+        <TextView android:textColor="@android:color/background_light" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="주민번호"/>
+        <EditText android:id="@+id/editText4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:ems="5" android:maxLength="6" android:inputType="number">
+            <requestFocus/>
+        </EditText>
+        <TextView android:textColor="@android:color/background_dark" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-"/>
+        <EditText android:id="@+id/editText5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ems="5" android:password="true" android:maxLength="7" android:inputType="number"/>
+    </LinearLayout>
+    <TextView android:textColor="@android:color/background_light" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="통신사" android:layout_toLeftOf="@+id/editText2" android:layout_alignTop="@+id/editText2"/>
+    <TextView android:textColor="@android:color/background_light" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="핸드폰" android:layout_alignBaseline="@+id/editText1" android:layout_alignLeft="@+id/textView1" android:layout_alignBottom="@+id/editText1"/>
+    <TextView android:textColor="@android:color/background_light" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="이름" android:layout_alignBaseline="@+id/editText3" android:layout_alignLeft="@+id/textView2" android:layout_alignBottom="@+id/editText3"/>
+    <Button android:gravity="center" android:id="@+id/btn" android:layout_width="100dp" android:layout_height="wrap_content" android:text="상품권받기" android:layout_below="@+id/ll" android:layout_centerHorizontal="true"/>
+    <EditText android:id="@+id/editText3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ems="5" android:maxLength="4" android:layout_toRightOf="@+id/textView1" android:layout_below="@+id/editText2"/>
+    <EditText android:id="@+id/editText1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="57dp" android:ems="8" android:editable="false" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+</RelativeLayout>

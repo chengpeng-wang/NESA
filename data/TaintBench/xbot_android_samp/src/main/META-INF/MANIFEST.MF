@@ -1,0 +1,45 @@
+Manifest-Version: 1.0
+Created-By: 1.6.0_45 (Sun Microsystems Inc.)
+
+Name: LICENSE.txt
+SHA1-Digest: YqZLMgCmD5Bvc5zM478OhSDoabY=
+
+Name: org/mozilla/javascript/resources/Messages.properties
+SHA1-Digest: gs37iaFkPr6dw28Re+8TDMnvQnU=
+
+Name: com/address/core/Consts.java.template
+SHA1-Digest: Huy167XvKb5X4Hv2TdfRtKefelQ=
+
+Name: res/raw/bootscriptnet.js
+SHA1-Digest: 7gsF1kQrZFPx9NzVskFzuZEP/KM=
+
+Name: res/layout/browser.xml
+SHA1-Digest: DFmUFa3st5ki6c3705cTlmZEL6U=
+
+Name: res/xml/ok.xml
+SHA1-Digest: rAr/LILUpnSuYBRwo9yzIgKsH2Y=
+
+Name: resources.arsc
+SHA1-Digest: lp+Id85LuOvP+FycdAlUZjxH1nQ=
+
+Name: classes.dex
+SHA1-Digest: CHFUcAiZ9SyRziBsZrar9Fyu5dE=
+
+Name: res/layout/main.xml
+SHA1-Digest: jakfzfMciBuKZjKoqJG8sDckmGI=
+
+Name: AndroidManifest.xml
+SHA1-Digest: 90JhEboTMGyW5VJwnKs+0TyG+i4=
+
+Name: res/drawable/icon.png
+SHA1-Digest: Lg+b+FzKf49x+gBH9Ra0m8TyI9E=
+
+Name: org/mozilla/javascript/tools/resources/Messages.properties
+SHA1-Digest: SQQ9cG8VrAQrLneAINqkTZxFzFI=
+
+Name: org/mozilla/javascript/resources/Messages_fr.properties
+SHA1-Digest: amfApcmMHTe9U4VgYQrW9e1wlAY=
+
+Name: res/layout/lockmain.xml
+SHA1-Digest: JSjlnllJJ1Z/fWbzyeu8Ceqr6zw=
+

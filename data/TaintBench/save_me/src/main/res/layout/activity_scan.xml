@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="match_parent" android:layout_height="match_parent">
+    <Button android:id="@+id/save" android:layout_width="170dp" android:layout_height="wrap_content" android:layout_marginTop="40dp" android:text="Save Contacts" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+    <Button android:id="@+id/restore" android:layout_width="170dp" android:layout_height="wrap_content" android:text="Restore Contacts" android:layout_below="@+id/save" android:layout_alignLeft="@+id/save"/>
+    <Button android:id="@+id/add" android:layout_width="170dp" android:layout_height="wrap_content" android:text="Add Contact" android:layout_below="@+id/restore" android:layout_alignLeft="@+id/restore"/>
+    <Button android:id="@+id/delete" android:layout_width="170dp" android:layout_height="wrap_content" android:text="Delete Contact" android:layout_below="@+id/add" android:layout_alignLeft="@+id/add"/>
+    <Button android:id="@+id/savesms" android:layout_width="170dp" android:layout_height="wrap_content" android:text="Save SMS" android:layout_below="@+id/delete" android:layout_alignLeft="@+id/delete"/>
+    <Button android:id="@+id/sos" android:layout_width="170dp" android:layout_height="wrap_content" android:text="Message SOS" android:layout_below="@+id/savesms" android:layout_alignLeft="@+id/savesms"/>
+</RelativeLayout>

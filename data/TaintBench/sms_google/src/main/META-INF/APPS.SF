@@ -1,0 +1,38 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: j30fXwMuyUNMD8CkhJNLiV/4i5U=
+Created-By: 1.6.0_26 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: wDeBXSulVfRDFlTcFjK8GNCs6Ck=
+
+Name: res/layout/loading.xml
+SHA1-Digest: lpm33cl7Wq54kAt30TTOsRTrAEc=
+
+Name: res/layout/main.xml
+SHA1-Digest: zPwelv27b6DZwLMSAbHUZh3anGA=
+
+Name: AndroidManifest.xml
+SHA1-Digest: mxI34df981O5IlC/k1NNu9fNQ1E=
+
+Name: res/drawable/button_start.xml
+SHA1-Digest: /4vVlmQZl4ODpMoZBv9Ruij0K1s=
+
+Name: res/drawable/icon.png
+SHA1-Digest: 3L3a0x+MXAN1QzXK1LIn2mW0r98=
+
+Name: assets/file
+SHA1-Digest: 9UZNMuZ2h3XnJ4jjQdZcD0cVCJk=
+
+Name: res/drawable/background.jpg
+SHA1-Digest: q6ohS1eu4KahV1SpS51FobsaBso=
+
+Name: resources.arsc
+SHA1-Digest: uix8s0SImy/UfQD/da6U+HS4Vd4=
+
+Name: classes.dex
+SHA1-Digest: akpzIVPkY61RPSjASJDtgxAbpag=
+
+Name: assets/data.res
+SHA1-Digest: 7bawMyhRSH1dEkOXwvEMTQ9Sp3w=
+
+Name: res/drawable/device_admin.xml
+SHA1-Digest: QTEdnz7XobG+WLN49dFTg7yi+h8=
+

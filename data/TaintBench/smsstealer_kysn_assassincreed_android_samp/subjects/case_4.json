@@ -1,0 +1,4 @@
+{
+    "src_function": "getInputStream",
+    "sink_function": "sendMultipartTextMessage"
+}

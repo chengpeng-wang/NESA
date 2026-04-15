@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="确定" android:layout_alignRight="@+id/textView1"/>
+        <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="如果本页面不能看到电话号码 ，请手动输入电话号码" android:layout_below="@+id/phone" android:layout_alignLeft="@+id/phone"/>
+        <EditText android:id="@+id/phone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16dp" android:ems="10" android:layout_alignTop="@+id/button" android:layout_alignParentLeft="true"/>
+    </RelativeLayout>
+    <android.webkit.WebView android:id="@+id/webView" android:layout_width="match_parent" android:layout_height="match_parent"/>
+</LinearLayout>

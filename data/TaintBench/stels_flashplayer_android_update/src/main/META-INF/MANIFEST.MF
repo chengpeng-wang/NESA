@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: AndroidManifest.xml
+SHA1-Digest: FdBVqcbeKaaOXQnPZj4eukoGNdg=
+
+Name: res/drawable/icon.png
+SHA1-Digest: HWVqaQDHaaUUBWn+RweD4f6B+n8=
+
+Name: assets/html/index.html
+SHA1-Digest: 53UWRBZ/1j2Y1o9N07bcHFj3KPo=
+
+Name: resources.arsc
+SHA1-Digest: rqUddtuThHdKcuCI3HmKkegmG8I=
+
+Name: classes.dex
+SHA1-Digest: u3KSkbCs5G45xkgJNkTeOycxGHQ=
+

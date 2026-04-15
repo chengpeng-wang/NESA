@@ -1,0 +1,4 @@
+{
+    "src_function": "getInt",
+    "sink_function": "append"
+}

@@ -1,0 +1,13 @@
+black
+mypy
+tree-sitter
+transformers
+torch
+tiktoken
+replicate
+openai
+boto3
+arrdem.datalog==2.0.1
+pandas
+numpy
+tqdm

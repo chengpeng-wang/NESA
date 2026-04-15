@@ -1,0 +1,14 @@
+re_bug(a1, a2) :- re_source_expr(a1), dep_summary(a1, a2), re_sink_expr(a2).
+dep_summary(a1, a2) :- summary_start_expr(a1), unbounded_data_flow_path(a1, a2), summary_end_expr(a2).
+dep_summary(a1, a2) :- dep_summary(a1, a3), function_return_expr(a3), return_out_match(a3, a4), callsite_output_expr(a4), dep_summary(a4, a2).
+dep_summary(a1, a2) :- dep_summary(a1, a3), callsite_arg_expr(a3), arg_para_match(a3, a4), function_parameter_expr(a4), dep_summary(a4, a2).
+
+summary_start_expr(a1) :- re_source_expr(a1).
+summary_start_expr(a1) :- function_parameter_expr(a1).
+summary_start_expr(a1) :- callsite_output_expr(a1).
+summary_end_expr(a1) :- re_sink_expr(a1).
+summary_end_expr(a1) :- function_return_expr(a1).
+summary_end_expr(a1) :- callsite_arg_expr(a1).
+
+re_source_expr(a1) :- re_source_expr_neural(a1), callsite_output_all_expr(a1).
+re_sink_expr(a1) :- re_sink_expr_neural(a1).

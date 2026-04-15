@@ -1,0 +1,78 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all definitions of the variable's value at a specific line.",
+
+    "task": "Analyze the given code snippets and determine all the definitions of the value of a specified variable at a particular line. Think step by step and list pairs of a program line and a variable name.",
+
+    "examples": [
+        {
+            "description": "List all the definitions of the value of b at line 2.",
+            "code": "1. int b = 0;\n2. z = b;",
+            "question": "Examine the value of variable b at line 2.",
+            "output": {
+                "explanation": "The variable b is defined at line 1 and directly used in line 2. Hence, the definition of the value of b at line 2 traces back to line 1 where b is initially assigned the value 0.",
+                "answer": [
+                    {"Line": 1, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the definitions of the value of b at line 3.",
+            "code": "1. int b = 0;\n2. b = 3;\n3. z = b;",
+            "question": "Examine the value of variable b at line 3.",
+            "output": {
+                "explanation": "The variable b is reassigned at line 2 before being used at line 3. Therefore, the active definition influencing the value of b at line 3 is found in line 2.",
+                "answer": [
+                    {"Line": 2, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the definitions of the value of b at line 6.",
+            "code": "1. if (c) {\n2.   b = 1;\n3. } else {\n4.   b = 2;\n5. }\n6. z = b;",
+            "question": "Examine the value of variable b at line 6.",
+            "output": {
+                "explanation": "The variable b is conditionally defined in lines 2 or 4 depending on the execution path of the if-else block before it is used at line 6.",
+                "answer": [
+                    {"Line": 2, "Variable": "b"},
+                    {"Line": 4, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the definitions of the value of b at line 3 in a loop context.",
+            "code": "1. int b = input();\n2. while (b > 1) {\n3.   b = b + 1;\n4. }",
+            "question": "Examine the value of variable b at line 3.",
+            "output": {
+                "explanation": "During the loop's first iteration, the value of b defined at line 1 is used. Subsequently, each execution of line 3 updates b based on its most recent value thus creating a self-dependency as well.",
+                "answer": [
+                    {"Line": 1, "Variable": "b"},
+                    {"Line": 3, "Variable": "b"}
+                ]
+            }
+        },
+        {
+            "description": "List all the definitions of the value of c at line 4 in a nested loop context.",
+            "code": "1. int b = input();\n2. int c = 1;\n3. while (b > 1) {\n4.   b = c + 1;\n5.   c += 1;\n6. }",
+            "question": "Examine the value of variable c at line 4.",
+            "output": {
+
+                "explanation": "In the first iteration of the loop, the value of c used at line 4 is defined at line 2. In subsequent iterations, c is redefined at line 5 before it is used again at line 4.",
+                "answer": [
+                    {"Line": 2, "Variable": "c"},
+                    {"Line": 5, "Variable": "c"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}.",
+        "code": "{P_CODE}",
+        "question": "List all the definitions of the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order. You need to pay attention to the order of how each statement is executed.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

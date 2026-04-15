@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/RelativeLayout1" android:background="@drawable/the_lv_bg" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:gravity="center" android:id="@+id/relativeLayout2" android:layout_width="wrap_content" android:layout_height="match_parent">
+        <TableLayout android:gravity="center" android:id="@+id/TableLayout1" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TableRow android:gravity="center" android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="20sp" android:gravity="center_vertical" android:id="@+id/tv1" android:layout_width="match_parent" android:layout_height="match_parent" android:text="手機號碼:"/>
+                <EditText android:textSize="15dp" android:id="@+id/edit_phonenum" android:layout_width="150dp" android:layout_height="match_parent" android:text="0922123123" android:ems="10"/>
+            </TableRow>
+            <TableRow android:gravity="center" android:id="@+id/tableRow2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="20sp" android:gravity="center_vertical" android:id="@+id/tv2" android:layout_width="match_parent" android:layout_height="match_parent" android:text="啟用碼:"/>
+                <EditText android:textSize="15sp" android:id="@+id/edit_startpsw" android:layout_width="150dp" android:layout_height="match_parent" android:text="123456789" android:ems="10" android:inputType="textPassword"/>
+            </TableRow>
+            <TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <TableRow android:id="@+id/tableRow4" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </TableLayout>
+        <Button android:id="@+id/btn_login" android:background="@drawable/photo_login_up" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_below="@+id/TableLayout1" android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+</RelativeLayout>

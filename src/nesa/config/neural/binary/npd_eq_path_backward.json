@@ -1,0 +1,77 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the preceding expressions that have the same values as the values used at specific lines.",
+
+    "task": "Analyze the given code snippets and determine all the preceding expressions that have the same values as the values used at specific lines.",
+
+    "examples": [
+        {
+            "description": "List all the preceding expressions that have the same values as the variable obj at line 4",
+            "code": "1. void process(Object a, Object b) {\n2.   Object obj = a;\n3.   Object temp = b;\n4.   Object result = obj;\n5. }",
+            "question": "Examine the value of variable obj at line 4.",
+            "output": {
+                "explanation": "The value of the variable obj at line 4 is initially assigned to obj at line 2, where the value of a is assigned. The value of a at line 2 is further determined by the first parameter of the function. Hence, I will report the variable obj at line 2 and the parameter a at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "a"},
+                    {"Line": 2, "Variable": "obj"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the variable obj at line 2",
+            "code": "1. Object obj = null;\n2. obj.toString();",
+            "question": "Examine the value of variable obj at line 2.",
+            "output": {
+                "explanation": "The variable obj is defined and initialized to null at line 1. The value of obj is used in line 2 to call the toString method. Hence the value of obj at line 2 comes from the value of obj at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "obj"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the variable obj at line 3",
+            "code": "1. Object obj = getObject(c);\n2. c = null;\n3. String result = obj.toString();",
+            "question": "Examine the value of variable obj at line 3.",
+            "output": {
+                "explanation": "The variable obj is defined and initialized at line 1. The value of obj is used in line 3 to call the toString method. Hence the value of obj at line 3 comes from the value of obj at line 1.",
+                "answer": [
+                    {"Line": 1, "Variable": "obj"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the value of result at line 4",
+            "code": "1. Object processData(Object data, Object param) {\n2.   Object temp = data;\n3.   Object result = data;\n4.   return result;\n5. }",
+            "question": "Examine the value of result at line 4.",
+            "output": {
+                "explanation": "The variable result is defined by data at line 3 and used at line 4. Hence, the origin of the variable result at line 4 is totally determined by the result at line 3, and thus, determined by data at line 1.",
+                "answer": [
+                    {"Line": 3, "Variable": "result"},
+                    {"Line": 1, "Variable": "data"}
+                ]
+            }
+        },
+        {
+            "description": "List all the preceding expressions that have the same values as the value of obj at line 4",
+            "code": "1. Object a = null;\n2. Object obj = input();\n3. if (a != null) {\n4.   obj.toString();\n5. }",
+            "question": "Examine the value of obj at line 4.",
+            "output": {
+                "explanation": "The variable obj is defined and initialized at line 2. However, the branch condition guarding the line 4 is a != null, which checks a different variable. The value of obj at line 4 comes from line 2.",
+                "answer": [
+                    {"Line": 2, "Variable": "obj"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine all the preceding expressions that have the same values as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}",
+        "code": "{P_CODE}",
+        "question": "List all the preceding expressions that have the same values as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}
+

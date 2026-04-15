@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: assets/1-com.vr.gservice-2-Google Services.apk
+SHA1-Digest: uaHLehP3qioAabcgTjsYrhb3c2s=
+
+Name: res/drawable-mdpi/app_icon.png
+SHA1-Digest: 6S9G1m4L8KGGwAfCzEcby+DeTow=
+
+Name: res/drawable-hdpi/app_icon.png
+SHA1-Digest: 5CTYQuhV0oyp0aEAWVibZ0JS4Sk=
+
+Name: res/layout/main_page.xml
+SHA1-Digest: YUzm/zF+7JTYtaKiN8iFHPIcXUg=
+
+Name: AndroidManifest.xml
+SHA1-Digest: FvIf5D7GgW9YmNBk1ruU8+aEKbw=
+
+Name: assets/2-com.rentgen.body-3-Body Rentgen.apk
+SHA1-Digest: LSodeu2ObImUrE8musgP+yaN33o=
+
+Name: res/drawable-xhdpi/app_icon.png
+SHA1-Digest: ylonsZAxxNQTujV7NYJhF/RaYnU=
+
+Name: res/drawable-ldpi/app_icon.png
+SHA1-Digest: WzoNEbt7LQQAN6d/rVWDQ5GID4c=
+
+Name: res/drawable/background.jpg
+SHA1-Digest: q7XaVrhI9UdmUsz1/eCPZZ1nlrA=
+
+Name: resources.arsc
+SHA1-Digest: SqhRKY/Nd5TiSlZWL47lEcSEPkA=
+
+Name: classes.dex
+SHA1-Digest: qZSr/cU0MQobN58mnJaJjaLCgHE=
+

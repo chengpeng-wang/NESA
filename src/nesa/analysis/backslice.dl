@@ -1,0 +1,4 @@
+backslice(a3) :- seed_expr(a1), stmt_def_use(a1, a2), data_flow_edge(a3, a2).
+backslice(a2) :- seed_expr(a1), control_flow(a2, a1).
+backslice(a3) :- backslice(a1), stmt_def_use(a1, a2), data_flow_edge(a3, a2).
+backslice(a2) :- backslice(a1), control_flow(a2, a1).

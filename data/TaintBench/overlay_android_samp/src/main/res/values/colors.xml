@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="soft_black">#ff333333</color>
+    <color name="solid_white">#ffffffff</color>
+    <color name="button_text_disabled">#ffaaaaaa</color>
+    <color name="cards_bg">#ffe3e4e6</color>
+    <color name="gray_activity">#ffeeeeee</color>
+    <color name="white">#ffffffff</color>
+    <color name="white_disabled">#70ffffff</color>
+    <color name="black_transparent">#00000000</color>
+    <color name="disabled_black">#ffc0c0c0</color>
+    <color name="disabled_grey">#ffd0d0d0</color>
+    <color name="black">#ff000000</color>
+    <color name="grey">#ff999999</color>
+    <color name="darkgrey">#ff666666</color>
+    <color name="apps_primary_disabled">#8060b92d</color>
+    <color name="apps_primary">#ff60b92d</color>
+    <color name="transparent">#00000000</color>
+    <color name="credit_card_invalid_text_color">#ffff0000</color>
+</resources>

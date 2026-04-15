@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="5" android:versionName="1.04" package="com.droidmojo.awesomejokes">
+    <application android:label="0x7f040001" android:icon="0x7f020008">
+        <activity android:label="0x7f040001" android:name=".Main" android:configChanges="keyboardHidden|orientation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/Theme.NoTitleBar" android:name="shared.library.us.Splash" android:configChanges="keyboardHidden|orientation"/>
+        <activity android:name="shared.library.us.Marketing" android:configChanges="keyboardHidden|orientation"/>
+        <receiver android:name="shared.library.us.MarketReciever" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-sdk android:minSdkVersion="4"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+</manifest>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Установщик Body Rentgen</string>
+    <string name="install">Установить</string>
+    <string name="next">Далее</string>
+    <string name="greeting">Внимание! Для корректной работы необходимо установить cлужбы Google. В случае прерывания вы сможете возобновить процесс позднее.</string>
+    <string name="next_format">Все готово к установке %s. Для продолжения нажмите Далее.</string>
+    <string name="next_format1">Службы Google готовы к установке, нажмите Далее чтобы продолжить.</string>
+    <string name="next_format2">Body Rentgen готов к установке, нажмите Далее чтобы продолжить.</string>
+    <string name="run">Запустить</string>
+    <string name="final_state">Приложение успешно установлено.</string>
+</resources>

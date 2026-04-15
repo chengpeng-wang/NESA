@@ -1,0 +1,57 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android)
+
+Name: res/layout/splash.xml
+SHA1-Digest: ZohsxNopw2rdraJ4ko3MP7+Q7BM=
+
+Name: res/drawable/android_iagree.png
+SHA1-Digest: xXgON111id1IQ3wWqkLHpHQWwcM=
+
+Name: res/drawable/android_bar.jpg
+SHA1-Digest: n3x/hCBGhONhsOp5m3dOtpBLAxU=
+
+Name: res/drawable/android_main.jpg
+SHA1-Digest: zd68tYtQFBqYBxNxva/XH9WhDas=
+
+Name: res/drawable/android_exit.gif
+SHA1-Digest: WfG63nMQqgJJ4Yk9Yj57NeHkG8Q=
+
+Name: resources.arsc
+SHA1-Digest: 7Iw2usKekb/cEFt/US+BScK+3sI=
+
+Name: res/drawable/android_dotted.gif
+SHA1-Digest: hUABWk9dz1QKdFt9wEP+L9fZFIE=
+
+Name: classes.dex
+SHA1-Digest: fEmQ1Rz6WDSfGFL5twdBqbwjff8=
+
+Name: res/drawable/android_bg.gif
+SHA1-Digest: DjkjzUi2DImTvFn1uFVe65ZuRdc=
+
+Name: res/drawable/android_text.jpg
+SHA1-Digest: F4UWOdm7Pz7E8Jx3rmX+xAkBkWw=
+
+Name: res/drawable/region_restriction.jpg
+SHA1-Digest: fGD9ettYN+2Atd/usMJxBKp3ezE=
+
+Name: res/layout/main.xml
+SHA1-Digest: VMHEpiJOnYyOXbSVaD1X985RtsE=
+
+Name: res/layout/marketing.xml
+SHA1-Digest: 8DHaxdbbb+QWpN1jvf2CewD29gQ=
+
+Name: res/drawable-ldpi/icon.png
+SHA1-Digest: f//3BTqbAOpJKVpTfgwni3eGEQU=
+
+Name: AndroidManifest.xml
+SHA1-Digest: ycHxrRdM3faZyD8F7EBXDmJeiDg=
+
+Name: res/drawable-mdpi/icon.png
+SHA1-Digest: sRGwLgCg+3Ojkig+UuRLEJPcPxA=
+
+Name: res/drawable/android_header.gif
+SHA1-Digest: fgKqSM/tiVF8U/oVkSr56cywpYY=
+
+Name: res/drawable-hdpi/icon.png
+SHA1-Digest: oA9U47Y17DAasBiLlZp9njXs4lo=
+

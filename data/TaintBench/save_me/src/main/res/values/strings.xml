@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="abc_action_mode_done">Done</string>
+    <string name="abc_action_bar_home_description">Navigate home</string>
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="abc_searchview_description_search">Search</string>
+    <string name="abc_searchview_description_query">Search query</string>
+    <string name="abc_searchview_description_clear">Clear query</string>
+    <string name="abc_searchview_description_submit">Submit query</string>
+    <string name="abc_searchview_description_voice">Voice search</string>
+    <string name="abc_activitychooserview_choose_application">Choose an app</string>
+    <string name="abc_activity_chooser_view_see_all">See all</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_shareactionprovider_share_with">Share with</string>
+    <string name="app_name">Search Me</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="vs_logo">Logo</string>
+    <string name="vs_pw">Please Wait ...</string>
+    <string name="title_activity_begin_scan">BeginScan</string>
+    <string name="title_activity_scan">Virus Scan</string>
+    <string name="neversc">Never Scanned</string>
+    <string name="fields" />
+    <string name="pscan">scan in progress</string>
+    <string name="name">Nom</string>
+    <string name="prog">progress1</string>
+    <string name="nmpr">Nom &amp; Prenom</string>
+    <string name="title_activity_call">Call Number</string>
+    <string name="title_activity_hidedial">Hidden Call</string>
+    <string name="logo2">logo2</string>
+    <string name="country_prompt">Choose a country</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="title_activity_action_drawer">ActionDrawer</string>
+    <string name="title_activity_action_drawer_basic">ActionDrawer</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    <string name="title_activity_action_barac">ActionBarac</string>
+</resources>

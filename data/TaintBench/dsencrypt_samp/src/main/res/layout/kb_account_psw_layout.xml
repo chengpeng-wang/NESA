@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="#ffd8dcd8" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="40dp">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:layout_marginBottom="4dp" android:src="@drawable/kb_account_psw_large"/>
+        <EditText android:textSize="15sp" android:textStyle="bold" android:id="@+id/et_account_psw" android:background="@drawable/kb_cert_editbox" android:padding="8dp" android:layout_width="match_parent" android:layout_height="42dp" android:layout_marginLeft="20dp" android:layout_marginTop="5dp" android:layout_marginRight="20dp" android:hint="@string/hint_psw_four" android:password="true" android:singleLine="true" android:maxLength="4" android:inputType="number"/>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="7dp">
+            <ImageView android:id="@+id/btn_confirm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btn_confirm_off_gnw"/>
+            <ImageView android:id="@+id/btn_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:src="@drawable/btn_cancel_off_gnb"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

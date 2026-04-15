@@ -1,0 +1,38 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to determine whether two reference variables can point to the same object simultaneously, i.e., if the first one points to a specific object, whether the second one also points to that same object (alias relationship).",
+
+    "task": "Given two specific reference expressions, denoted by expr_a and expr_b at specific lines l1 and l2 in a single function, please determine whether both expressions can point to the same object (i.e., they are aliases). Please consider conditional statements and assignments that may affect the alias relationship. Please ignore all the possible exceptions in the program and assume that each statement can be executed normally.",
+
+    "examples": [
+        {
+            "description": "Please read and understand the following code snippet. Examine the references of hash at line 1 and hash2 at line 2.",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA\");\n2. MessageDigest hash2 = hash;\n3. hash.update(data);",
+            "question": "Examine whether both hash at line 1 and hash2 at line 2 can point to the same object simultaneously. Please think step by step and investigate how the references are used and assigned.",
+            "output": {
+                "explanation": "The variable hash is assigned a MessageDigest object at line 1. At line 2, hash2 is assigned the reference from hash, making hash2 point to the same object as hash. Therefore, both hash at line 1 and hash2 at line 2 point to the same object.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the references of obj at line 1 and ref at line 3.",
+            "code": "1. Object obj = new Object();\n2. obj = new Object();\n3. Object ref = obj;",
+            "question": "Examine whether both obj at line 1 and ref at line 3 can point to the same object simultaneously. Please think step by step and investigate how the references are used and assigned.",
+            "output": {
+                "explanation": "The variable obj is initially assigned a new Object at line 1 but is reassigned to a different new Object at line 2. Thus, the object created at line 1 is no longer referenced by obj. At line 3, ref is assigned the value of obj, which now points to the object created at line 2. Since obj at line 1 points to a different object than obj at line 2, they cannot be aliases.",
+                "answer": "No"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the reference of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "Examine whether both {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} can point to the same object simultaneously (i.e., they are aliases). Here \"can\" means that the two variables or expressions can possibly reference the same object. Please pay attention to the branch conditions that may affect alias relationships and assignments that may reassign references. Please ignore all the possible exceptions in the program and assume that each statement can be executed normally. \n Please think step by step and investigate how the references are used and assigned. You can follow the following steps: \n (1) First check whether {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} can have the same reference; If not, directly answer No. Otherwise, go to step (2). \n (2) Then check whether {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} is reassigned to a different object or guarded by any constraint that would prevent the alias relationship. If so, answer No directly. Otherwise, answer Yes.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}
+

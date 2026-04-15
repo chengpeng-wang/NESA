@@ -1,0 +1,53 @@
+{
+    "system": "You are a static analysis assistant, tasked with reasoning about whether an allocated heap memory object is definitely NOT freed inside the current function.",
+    "task": "Given an allocation-related expression in a single function, perform the following judgment.\n1. Determine whether that allocated memory object is definitely NOT freed anywhere inside the current function.\n2. Be strict. Conclude that the allocated memory is NOT freed only when you can positively establish that there is no free, delete, cleanup helper, destructor-triggered deallocation, alias-based deallocation, callee-based release, or other release of that same allocated memory object anywhere in the current function on any feasible path.\n3. Treat freeing the allocated memory through the original pointer, through any alias, or through another variable that refers to the same allocation as being freed.\n4. It is not enough to simply fail to see an explicit free. If you cannot prove that the allocated memory is definitely not freed, then treat it as possibly freed.\n5. The final Yes/No answer is for this single judgment only. Answer Yes only if you can definitely establish that the allocated memory is NOT freed. If there is any uncertainty, answer No.",
+    "examples": [
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 2 is definitely not freed inside the current function.",
+            "code": "1. void example1(void) {\n2.     char *buf = (char *)malloc(64);\n3.     buf[0] = 'A';\n4. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 2 is definitely not freed inside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 2, the allocation expression malloc(64) creates a heap object, and buf refers to that allocated memory. There is no free, delete, cleanup helper, destructor-triggered deallocation, alias-based deallocation, or callee-based release of that allocated memory anywhere in the function. Therefore the code positively establishes that the memory created by malloc(64) is not freed. Final answer: since the not-freed judgment can be established with certainty for the allocated memory created by malloc(64) at line 2, the answer is Yes.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 2 is definitely not freed inside the current function.",
+            "code": "1. void example2(void) {\n2.     char *buf = (char *)malloc(64);\n3.     free(buf);\n4. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 2 is definitely not freed inside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 2, the allocation expression malloc(64) creates a heap object, and buf refers to that allocated memory. At line 3, the function explicitly calls free(buf), so the memory created by malloc(64) is definitely freed inside the current function. Final answer: because the allocated memory created by malloc(64) at line 2 is freed, the answer is No.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 2 is definitely not freed inside the current function.",
+            "code": "1. void example3(int flag) {\n2.     char *buf = (char *)malloc(64);\n3.     char *alias = buf;\n4.     if (flag) {\n5.         free(alias);\n6.     }\n7. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 2 is definitely not freed inside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 2, the allocation expression malloc(64) creates a heap object, and buf refers to that allocated memory. Line 3 creates an alias alias, and line 5 frees the same allocated memory through that alias on a feasible control-flow path. For this task, freeing through any alias that refers to the same allocation counts as freeing the memory created by malloc(64). Final answer: because the allocated memory created by malloc(64) at line 2 is freed on a feasible path, the answer is No.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code. Examine whether the allocated memory created by malloc(64) at line 3 is definitely not freed inside the current function.",
+            "code": "1. extern void maybeRelease(char *p);\n2. void example4(void) {\n3.     char *buf = (char *)malloc(64);\n4.     maybeRelease(buf);\n5. }",
+            "question": "Examine whether the allocated memory created by malloc(64) at line 3 is definitely not freed inside the current function. Please think step by step and investigate how this allocated memory is used.",
+            "output": {
+                "explanation": "Judgment: At line 3, the allocation expression malloc(64) creates a heap object, and buf refers to that allocated memory. At line 4, buf is passed to the callee maybeRelease. The code does not positively prove that the callee will not free the memory created by malloc(64), so the not-freed judgment cannot be established with certainty. Final answer: because the allocated memory created by malloc(64) at line 3 may be freed and uncertainty must be answered conservatively, the answer is No.",
+                "answer": "No"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the allocated memory created by the allocation expression at line {P_LINE_NUMBER_1}, referenced in the code by {P_VARIABLE_NAME_1}.",
+        "code": "{P_CODE}",
+        "question": "First, analyze whether that allocated memory is definitely NOT freed anywhere inside the current function. Be strict. Answer Yes for this judgment only if you can positively prove that every feasible path in the current function avoids free, delete, cleanup helpers, destructor-triggered deallocation, callee-based release, and alias-based deallocation for that same allocated memory object. It is not enough to simply fail to see an explicit free. Also pay attention to free operations through the original pointer or any alias that refers to the same allocation. Second, give the Final answer. Answer Yes only if you can definitely establish that the allocated memory is NOT freed. If there is any uncertainty, answer No. In your explanation, explicitly separate the reasoning for the Judgment and the Final answer. Please think step by step.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

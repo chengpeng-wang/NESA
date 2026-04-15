@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@drawable/card1" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:id="@+id/skata" android:paddingBottom="@dimen/activity_horizontal_margin" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dialog_points_left_right_margin" android:layout_marginTop="@dimen/activity_horizontal_margin" android:layout_marginRight="@dimen/dialog_points_left_right_margin">
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl1" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dialog_points_between_margin" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl2" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl3" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl4" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et4" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl5" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et5" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl6" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv6" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et6" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl7" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv7" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et7" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl8" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv8" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et8" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl9" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv9" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et9" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl10" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv10" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et10" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl11" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv11" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et11" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/layPl12" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dialog_points_between_margin">
+            <TextView android:textSize="@dimen/textSize" android:textStyle="bold" android:id="@+id/tv12" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="3"/>
+            <EditText android:textSize="@dimen/textSize" android:textStyle="bold" android:gravity="center" android:id="@+id/et12" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,68 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the reference expression pairs that exhibit alias relations.",
+
+    "task": "Analyze the given code snippets and determine all the pairs of reference expressions where both expressions point to the same object (i.e., they are aliases). Think step by step and list such expression pairs indicating alias relations",
+
+    "examples": [
+        {
+            "description": "List all the expression pairs indicating alias relations.",
+            "code": "1. Object obj = new Object();\n2. Object ref = obj;",
+            "question": "Examine all the references in the code and list all the expression pairs where both expressions point to the same object",
+            "output": {
+                "explanation": "The variable obj is assigned a new Object at line 1. At line 2, ref is assigned the value of obj, making both point to the same object. Hence, obj at line 2 and ref at line 2 are aliases of obj at line 1.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 2, "Variable": "obj"}
+                    ],
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 2, "Variable": "ref"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating alias relations.",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA\");\n2. MessageDigest hash2 = hash;\n3. hash2.update(data);",
+            "question": "Examine all the references in the code and list all the expression pairs where both expressions point to the same object",
+            "output": {
+                "explanation": "The variable hash is assigned at line 1. At line 2, hash2 is assigned the value of hash, making them aliases. At line 3, hash2 is used and still points to the same object.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "hash"},
+                        {"Line": 2, "Variable": "hash"}
+                    ],
+                    [
+                        {"Line": 1, "Variable": "hash"},
+                        {"Line": 2, "Variable": "hash2"}
+                    ],
+                    [
+                        {"Line": 1, "Variable": "hash"},
+                        {"Line": 3, "Variable": "hash2"}
+                    ],
+                    [
+                        {"Line": 2, "Variable": "hash"},
+                        {"Line": 3, "Variable": "hash2"}
+                    ],
+                    [
+                        {"Line": 2, "Variable": "hash2"},
+                        {"Line": 3, "Variable": "hash2"}
+                    ]
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and list all the expression pairs indicating alias relations.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code as a code interpreter/compiler according to the control flow order. You need to pay attention to the order of how each statement is executed. Examine all the references in the code and list all the expression pairs where both expressions point to the same object (i.e., they are aliases).",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- (Program Line 1: Line {LINE_NUMBER_1}, Expression 1: {VARIABLE_NAME_1}), (Program Line 2: Line {LINE_NUMBER_2}, Expression 2: {VARIABLE_NAME_2})"
+        ]
+    }
+}
+

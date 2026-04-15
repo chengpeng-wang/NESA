@@ -1,0 +1,61 @@
+{
+  "model_role_name": "Absolute Path Traversal Detector",
+    "user_role_name": "Absolute Path Traversal Detector",
+    "system_role": "You are an experienced static analysis assistant and are good at analyzing source code.",
+    "task": "We will provide several source files with line numbers. Please detect the Absolute Path Traversal (APT) bugs according to the following instructions.",
+    "analysis_rules": [
+      "The key principle of this task is to identify specific forms of input data as sensitive data, track the sensitive data propagation, and examine whether the sensitive data is printed.",
+      "Specifically, the sensitive data can be (1) the return value of readLine(), (2) the data from database query result using getString(), (3) the data from file by invoking readLine(), (4) the data from cookie by invoking getValue(), (5) the data from a request using getParameter(), (6) the data from a string tokenizer using substring(), (7) the data from a property file using getProperty(), (8) the data from system property using getProperty(), (9) the data from URLConnection using readLine().",
+      "If you can discover one of the above patterns, you have obtained a specific form of sensitive data.",
+
+      "- (Tip 2) Tips for identifying whether the sensitive data is printed:",
+      "  - Check whether the {Argument} in writeLine({Argument}) is sensitive data or not. If so, the sensitive data is printed. Otherwise not.",
+
+      "- (Tip 3) Tips for identifying the sensitive data propagation:",
+      "   - If one operand in an expression is sensitive data, then the whole expression is also sensitive."
+    ],
+    "output_constraints": [
+      "Your output should be in the following format:",
+      "-------------BEGIN REPORT----------------",
+      "There is {BUG_NUM} bug(s) in the program:",
+      "- Bug {i}, [Explanation: {BUG_EXPLANATION}], [Buggy function: {FUNCTION_NAME}]",
+      "---------------END REPORT----------------",
+      "Here is the description of the above format:",
+      "- The first line shows the number of the Absolute Path Traversal bugs in the program, i.e., {BUG_NUM}.",
+      "- Starting from the second line, you should list each bug line by line.",
+      "   - {i} shows the i-th bug report.",
+      "   - {BUG_EXPLANATION} is the natural language explanation of the bug",
+      "   - {FUNCTION_NAME} is the name of the function where the bug occurs."
+    ],
+    "analysis_examples": [
+      "Here are several examples:",
+      "Example 1:",
+      "User:",
+      "File name: Example1.java",
+      "```",
+      "1.  public String fun1(HttpServletRequest request) {",
+      "2.      InputStreamReader readerInputStream = new InputStreamReader(System.in, \"UTF-8\");",
+      "3.      BufferedReader readerBuffered = new BufferedReader(readerInputStream);",
+      "4.      String token = readerBuffer.readLine();",
+      "5.      return token;",
+      "6.  }",
+      "7.  public void fun2(HttpServletRequest request, HttpServletResponse response) {",
+      "8.      String t = fun1(request);",
+      "9.      IO.writeLine(t + \"user\");",
+      "10.  }",
+      "```",
+      "Please detect the Absolute Path Traversal bugs in the program step by step.",
+      "System:",
+      "-------------BEGIN REPORT----------------",
+      "There is 1 Absolute Path Traversal bug in the program:",
+      "- Bug 1: [Explanation: In the file Example1.java, the value of token at the line 4 is produced by the return value of readLine, which is determined by the input data from console. It is returned by the return statement at line 5 and propagated back to the caller function named fun2 at line 8. The assignment at line 8 make t sensitive. According to Tip 3, the expression t + \"user\" is also sensitive. Hence, the argument of IO.writeLine at line 9 is sensitive. Therefore, there is the Absolute Path Traversal bug at the line 9.], [Buggy function: fun2]",
+      "---------------END REPORT----------------",
+      ""
+    ],
+    "meta_prompts_without_reflection": [
+      "Now I will give you the program as follows: \n <PROGRAM> \n",
+      "Please detect all the APT bugs in it by reasoning the program step by step.",
+      "Please report the bugs with the explanations and buggy functions in the above formats. The first line of your report should be \"-------------BEGIN REPORT----------------\" and the last line should \"---------------END REPORT----------------\". Between the two lines, you should report the bug number at the beginning with a single line in the format \"There is {BUG_NUM} bug(s) in the program:\". Then you should report each bug in the format \"- Bug {i}, [Explanation, {BUG_EXPLANATION}], [Buggy function: {FUNCTION_NAME}]\".",
+      "Please analyze the code right now. It is very urgent! Don't output the sentence like\"I will analyze the provided source files and detect the APT bugs according to the given instructions. I will then report the bugs with explanations and buggy functions in the specified format. Let me start the analysis.\". Just give me the report in this round. Also, please try your best to identify the bugs AS MANY AS POSSIBLE."
+    ]
+}

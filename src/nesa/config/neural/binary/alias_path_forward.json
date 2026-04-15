@@ -1,0 +1,45 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the reference expressions that point to the same object as the reference produced at specific lines.",
+
+    "task": "Given a reference variable at a specific line, analyze the given code snippets and determine all the expressions that point to the same object after that line (i.e., find all aliases that come after).",
+
+    "examples": [
+        {
+            "description": "List all the references evaluated after line 1 that point to the same object as the reference of obj at line 1.",
+            "code": "1. Object obj = new Object();\n2. Object ref = obj;",
+            "question": "Examine the reference of variable obj at line 1.",
+            "output": {
+                "explanation": "The variable obj is assigned a new Object at line 1. At line 2, ref is assigned the value of obj, making ref point to the same object. Hence, the references obj at line 2 and ref at line 2 both point to the same object as obj at line 1.",
+                "answer": [
+                    {"Line": 2, "Variable": "obj"},
+                    {"Line": 2, "Variable": "ref"}
+                ]
+            }
+        },
+        {
+            "description": "List all the references evaluated after line 1 that point to the same object as the reference of hash at line 1.",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA\");\n2. MessageDigest hash2 = hash;\n3. hash2.update(data);",
+            "question": "Examine the reference of variable hash at line 1.",
+            "output": {
+                "explanation": "The variable hash is assigned a MessageDigest object at line 1. At line 2, hash2 is assigned the reference from hash. At line 3, hash2 is used and still points to the same object. Hence hash at line 2, hash2 at line 2, and hash2 at line 3 all point to the same object as hash at line 1.",
+                "answer": [
+                    {"Line": 2, "Variable": "hash"},
+                    {"Line": 2, "Variable": "hash2"},
+                    {"Line": 3, "Variable": "hash2"}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the reference of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and determine all the references evaluated after line {P_LINE_NUMBER} that point to the same object as the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER}.",
+        "code": "{P_CODE}",
+        "question": "List all the references evaluated after line {P_LINE_NUMBER} that point to the same object as {P_VARIABLE_NAME} at line {P_LINE_NUMBER} (i.e., find all aliases after this line). Please examine the code as a code interpreter/compiler according to the control flow order and see how the reference is used in other statements. You need to pay attention to the order of how each statement is executed.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}
+

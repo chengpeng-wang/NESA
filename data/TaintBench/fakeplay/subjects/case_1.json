@@ -1,0 +1,4 @@
+{
+    "src_function": "getLine1Number",
+    "sink_function": "write"
+}

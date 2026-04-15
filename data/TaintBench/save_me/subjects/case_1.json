@@ -1,0 +1,4 @@
+{
+    "src_function": "getText",
+    "sink_function": "put"
+}

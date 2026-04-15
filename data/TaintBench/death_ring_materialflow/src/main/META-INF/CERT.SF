@@ -1,0 +1,37 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+SHA1-Digest-Manifest: BSeG6hX1FVKZ/JI1lHJlInrwl0o=
+
+Name: AndroidManifest.xml
+SHA1-Digest: 7L1RPNHD8htliQIIiB09qadu+rk=
+
+Name: res/layout/abc_view.xml
+SHA1-Digest: SOOgI90DZ7X7yx4DYkcKHoIQnGw=
+
+Name: res/layout/warming_layout.xml
+SHA1-Digest: KFZ7+rV+4ZecBxzEEPv5eAaUI3k=
+
+Name: res/drawable/abc_close.png
+SHA1-Digest: tEI7jI695O9FwGXvUo63YmVIkCs=
+
+Name: res/layout/abc_icon_title.xml
+SHA1-Digest: CwkvAc0wfM8JfW+/1Z44plrSTyY=
+
+Name: res/layout/abc_onlyimage.xml
+SHA1-Digest: 6QwY04v5GyuascxA3e+3ACsCFjE=
+
+Name: resources.arsc
+SHA1-Digest: F4LkSLgNoG/C+jwyXtVQ8RHNBl4=
+
+Name: classes.dex
+SHA1-Digest: 1WKpwZHizkKzs+/HbXPxW1XioNs=
+
+Name: res/drawable/abc_sms_icon.png
+SHA1-Digest: v1hII+DXdD9pEhU1u4tdZ6ldL94=
+
+Name: res/drawable/abc_icon.png
+SHA1-Digest: tO8U9QtjmcO19U9jconH1Gqdqgc=
+
+Name: res/layout/abc_icon_title_descrption.xml
+SHA1-Digest: U5mwqgmjLythVsV6vG4GBKZeWWQ=
+

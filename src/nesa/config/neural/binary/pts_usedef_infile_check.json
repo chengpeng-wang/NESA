@@ -1,0 +1,73 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "Given a pair of a reference used at a specific line and the other reference defined at a specific line, please chech whether they MAY refer to the same objects.  Here are several typical cases you need to carefully address: (1) If a refers to an object and the object is stored in an array or collection refered by b, then a and b cannot refer to the same object; (2) Two references refer to the same object if their types are consistent, i.e., they have the same types or one type is subclass/superclass of the other; (3) If a reference is assigned to another reference, then they refer to the same object.",
+
+    "examples": [
+        {
+            "description": "Given a pair of references, please check whether they MAY refer to the same memory object.",
+            "code": "1. void sample(A a, A b) {\n2.     A c = a;\n3.     A d = b;\n4.     A e = c;\n5. }",
+            "question": "Examine whether the reference c used at line 4 and the reference c defined at line 2 MAY refer to the same memory object at line 4.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference c defined at line 2 is directly used to initialize the reference e at line 4. Hence, the reference c used at line 4 and the reference c defined at line 2 refer to the same memory object at line 4.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Given a pair of references, please check whether they MAY refer to the same memory object.",
+            "code": "1. void sample(A a, A b) {\n2.     A c = a;\n3.     A d = b;\n4.     A e = c;\n5. }",
+            "question": "Examine whether the reference c used at line 4 and the parameter a defined at line 1 MAY refer to the same memory object at line 4.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference a is used to initialize the reference c at line 2. The reference c is further used to initialize the reference e at line 4. Hence, the reference c used at line 4 and the parameter a defined at line 1 MAY refer to the same memory object at line 4.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Given a pair of references, please check whether they MAY refer to the same memory object.",
+            "code": "1. void sample(A a, A b) {\n2.     A c = a;\n3.     A d = b;\n4.     A e = c;\n5. d = e;\n6.}",
+            "question": "Examine whether the reference c used at line 4 and the parameter d defined at line 3 MAY refer to the same memory object at line 4.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference a is used to initialize the reference c at line 2. The reference c is further used to initialize the reference e at line 4. Although d is assigned with e at line 5, it is after line 4. When we consider the program state at line 4, d does not refer to the same object as e. Hence, the reference c used at line 4 and the parameter d defined at line 3 cannot refer to the same memory object.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Given a pair of references, please check whether they MAY refer to the same memory object.",
+            "code": "1. void sample(List<A> list) {\n2.     A a = new A();\n3.     list.add(a);\n4.     A b = list.get(0);\n5. A c = b;\n6.}",
+            "question": "Examine whether the reference b used at line 5 and the parameter list defined at line 1 MAY refer to the same memory object at line 5.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference list is used to insert the object a at line 3. The reference b is assigned the object retrieved from the list at line 4 and used at line 5. Although b is assigned an object from the list, list itself is a collection and not a single object. Hence, the reference list used at line 3 and the reference b defined at line 5 cannot refer to the same memory object.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Given a pair of references, please check whether they MAY refer to the same memory object.",
+            "code": "1. void sample(List<A> list) {\n2.     A a1 = new A();\n3.     A a2 = new A();\n4.     list.add(a1);\n5.     list.add(a2);\n6.     A b = list.get(0);\n7. A e = b;\n8.}",
+            "question": "Examine whether the reference b used at line 7 and the reference a2 defined at line 3 MAY refer to the same memory object at line 7.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference a1 is created and added to the list at lines 2 and 4. The reference a2 is created and added to the list at lines 3 and 5. The reference b is assigned the object retrieved from the list at line 6 and used at line 7, which is the first element added (a1). Hence, the reference b used at line 7 and the reference a2 defined at line 3 cannot refer to the same memory object.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Given a pair of references, please check whether they MAY refer to the same memory object.",
+            "code": "1. void sample() {\n2.     List<A>list = new ArrayList();\n3.        A a1 = new A();\n4.     A a2 = new A();\n5.     list.add(a1);\n6.     list.add(a2);\n7.     A b = list.get(0);\n8. A e = b;\n10.}",
+            "question": "Examine whether the reference list used at line 2 and the reference a2 at line 3 MAY refer to the same memory object at line 7.",
+            "output": {
+                "explanation": "Let us examine the code line by line. The reference list is created at line 2. The reference a1 is created and added to the list at lines 3 and 5. The reference a2 is created and added to the list at lines 4 and 6. The reference b is assigned the object retrieved from the list at line 7 and used at line 8, which is the first element added (a1). However, list is a container, referecing to a container object instead of an A object. According to the above rule (2), the reference list used at line 2 and the reference a2 defined at line 3 cannot refer to the same memory object.",
+                "answer": "No"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the reference {P_VARIABLE_NAME_1} used at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} defined at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "Examine whether the reference {P_VARIABLE_NAME_1} used at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} defined at line {P_LINE_NUMBER_2} MAY refer to the same memory object at line {P_LINE_NUMBER_1}?  Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Please follow the above examples and think step by step. You should ignore the statements that are executed after the line {P_LINE_NUMBER_1}.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

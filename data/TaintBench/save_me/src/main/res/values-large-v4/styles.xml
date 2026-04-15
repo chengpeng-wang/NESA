@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Base.AppCompat.DialogWhenLarge">
+    </style>
+    <style name="Theme.Base.AppCompat.Light.DialogWhenLarge">
+    </style>
+</resources>

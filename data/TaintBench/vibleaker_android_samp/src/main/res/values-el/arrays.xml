@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="stats_tabs">
+        <item>Σύνολο νικών</item>
+        <item>Συνολικοί πόντοι</item>
+        <item>Τελευταία Νίκη</item>
+        <item>Μικρότερη νίκη</item>
+    </array>
+</resources>

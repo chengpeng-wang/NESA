@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="ic_action_search" id="2130837504" />
+    <public type="drawable" name="ic_launcher" id="2130837505" />
+    <public type="drawable" name="movie_image" id="2130837506" />
+    <public type="layout" name="main" id="2130903040" />
+    <public type="string" name="app_name" id="2130968576" />
+    <public type="string" name="hello_world" id="2130968577" />
+    <public type="string" name="menu_settings" id="2130968578" />
+    <public type="string" name="title_activity_asyn_task_example" id="2130968579" />
+    <public type="string" name="btn_title" id="2130968580" />
+    <public type="id" name="gridLayout1" id="2131034112" />
+    <public type="id" name="btnProgressBar" id="2131034113" />
+    <public type="id" name="imageView1" id="2131034114" />
+</resources>

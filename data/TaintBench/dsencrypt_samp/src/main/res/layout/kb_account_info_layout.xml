@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="center" android:orientation="vertical" android:background="#ffe8e0d0" android:layout_width="match_parent" android:layout_height="match_parent">
+    <include layout="@layout/kb_account_head_layout"/>
+    <ScrollView android:orientation="vertical" android:padding="8dp" android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/securerunning_img"/>
+            </LinearLayout>
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:layout_marginTop="20dp" android:src="@drawable/kb_name"/>
+            <EditText android:textSize="15dp" android:textStyle="bold" android:id="@+id/et_name" android:background="@drawable/kb_cert_editbox" android:padding="10dp" android:layout_width="220dp" android:layout_height="38dp" android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:singleLine="true" android:maxLength="20" android:inputType="textPersonName"/>
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:layout_marginTop="20dp" android:src="@drawable/kb_person_id"/>
+            <LinearLayout android:gravity="left|center_vertical|center_horizontal|center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginRight="50dp">
+                <EditText android:textSize="15sp" android:textStyle="bold" android:gravity="center" android:id="@+id/et_id_first" android:background="@drawable/kb_cert_editbox" android:padding="5dp" android:layout_width="match_parent" android:layout_height="38dp" android:layout_marginLeft="5dp" android:maxLength="6" android:layout_weight="1" android:inputType="number"/>
+                <TextView android:textSize="15sp" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" - "/>
+                <EditText android:textSize="15sp" android:textStyle="bold" android:gravity="center" android:id="@+id/et_id_second" android:background="@drawable/kb_cert_editbox" android:padding="5dp" android:layout_width="match_parent" android:layout_height="38dp" android:layout_marginRight="10dp" android:password="true" android:maxLength="7" android:layout_weight="1" android:inputType="number"/>
+            </LinearLayout>
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:layout_marginTop="20dp" android:src="@drawable/kb_account"/>
+            <EditText android:textSize="15dp" android:id="@+id/et_account" android:background="@drawable/kb_cert_editbox" android:padding="10dp" android:layout_width="match_parent" android:layout_height="38dp" android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:layout_marginRight="10dp" android:hint="@string/hint_without_line" android:singleLine="true" android:maxLength="14" android:inputType="number"/>
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:layout_marginTop="20dp" android:src="@drawable/kb_account_psw"/>
+            <EditText android:textSize="15dp" android:id="@+id/et_account_psw" android:background="@drawable/kb_cert_editbox" android:padding="10dp" android:layout_width="match_parent" android:layout_height="38dp" android:layout_marginLeft="5dp" android:layout_marginTop="5dp" android:layout_marginRight="10dp" android:hint="@string/hint_psw_four" android:password="true" android:singleLine="true" android:maxLength="4" android:editable="false" android:inputType="number"/>
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginBottom="20dp">
+                <ImageView android:id="@+id/btn_confirm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:src="@drawable/btn_next"/>
+                <ImageView android:id="@+id/btn_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:src="@drawable/btn_cancel"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

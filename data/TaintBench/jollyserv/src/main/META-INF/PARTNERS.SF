@@ -1,0 +1,200 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: 0fp4bePkR2ls6O6QFcYyFv+IOyY=
+Created-By: 1.7.0_17 (Oracle Corporation)
+SHA1-Digest-Manifest: xoVVcbsyGVCqQPk1SKv6oOV3fLw=
+
+Name: res/layout-small/video.xml
+SHA1-Digest: 9ruQIBhVU1T+pI62Yjk8U29s5n8=
+
+Name: res/layout-normal/video.xml
+SHA1-Digest: x7yWkTtCqjNBk6ra2uwit9bdLYY=
+
+Name: res/drawable/logo_holder.png
+SHA1-Digest: qRVRp/U/Zidzd8q2a7Xyokd4OBo=
+
+Name: res/layout-large/welcome.xml
+SHA1-Digest: fEP0SsvtB6/JKgKgcm1Jd1/jPvk=
+
+Name: res/layout-xlarge/list_item.xml
+SHA1-Digest: Ucu3XPsAJnjqB1cRmNmpo9GbbRg=
+
+Name: res/layout-xlarge/hd.xml
+SHA1-Digest: jLqML8iPSvO1Zk4+7Tu2murf6fs=
+
+Name: res/layout-large/paymentsuccess.xml
+SHA1-Digest: 8oSeLEMqU1UW7AXvqcUAIdyCRnA=
+
+Name: res/layout-xlarge/video.xml
+SHA1-Digest: wh9yb+pyRWeT+QTRNKklAG9nuWg=
+
+Name: res/layout-small/hd.xml
+SHA1-Digest: n5FLSMIKvLDoHf7uWfGMwFX+qlI=
+
+Name: res/drawable/logo.png
+SHA1-Digest: yxp5VA8OVt+2xcXEEmob0oDd6u0=
+
+Name: res/drawable/hd_btn.xml
+SHA1-Digest: nbfaBQzam8q0emc6k8tudNBbA1o=
+
+Name: res/layout-large/picture.xml
+SHA1-Digest: CVL4bmErqeXiFAMPRJ2YKmE55Lk=
+
+Name: res/layout-xlarge/noconnection.xml
+SHA1-Digest: dfJgDCbfXqedYo/zDiQoKMvCoX8=
+
+Name: res/drawable/adapter_icon_holder.png
+SHA1-Digest: sQGKJ0DSGp18rHgkuEz49nG1vCg=
+
+Name: res/drawable/hd_button.9.png
+SHA1-Digest: eMI1oBNEklUcVQv/hvKXXb8F+sQ=
+
+Name: res/layout-xlarge/list_hd.xml
+SHA1-Digest: UWWqe1rnoIXai5thyvqBfudEI20=
+
+Name: res/layout-xlarge/paid.xml
+SHA1-Digest: etBFMfIJKCoX4Uz9e2W7XH9zQ5Q=
+
+Name: res/layout-large/noconnection.xml
+SHA1-Digest: WOjz3UDbRE2+tamVpfP+pXyk4pI=
+
+Name: res/drawable/free_btn.xml
+SHA1-Digest: IK4TzKIZGNQgi9UkQBUBzppxF6Y=
+
+Name: res/layout-xlarge/paymentsuccess.xml
+SHA1-Digest: KdoI2XVzxf+Y61OfPsw+ho4lShE=
+
+Name: res/layout-normal/noconnection.xml
+SHA1-Digest: P3aQGQIPehpv3S45peD1EXGpecw=
+
+Name: res/drawable/logo_big_gray.png
+SHA1-Digest: vzQ1AODJbTxqR4S/cVopxOIPGD8=
+
+Name: res/layout-normal/paymentsuccess.xml
+SHA1-Digest: WAKNZxjKE6tONkvjTIpbcbRP61w=
+
+Name: res/layout-normal/list_item.xml
+SHA1-Digest: SUWw2NX8UAq1jJOzZ/DW+lp+VeQ=
+
+Name: res/layout-small/list_hd.xml
+SHA1-Digest: TrAvWGTaDeZEN+nmbtfvwbQHFgk=
+
+Name: res/drawable/logo_small.png
+SHA1-Digest: zu+x+Z/FQmIWqiRnoqLwN21uJ6A=
+
+Name: res/layout-small/noconnection.xml
+SHA1-Digest: VkKkU3fBVAGw+/Dpg2AaO2zSl2I=
+
+Name: res/layout-large/video.xml
+SHA1-Digest: RMAN7Nso3ZVaN8LL5ag/QoIbLy0=
+
+Name: res/layout-normal/paid.xml
+SHA1-Digest: Ov8FDp4NgWxBLVR6O4FNNmMCtsE=
+
+Name: res/layout-small/paid.xml
+SHA1-Digest: KbMU1lTwqM9mk5fqmjpedgOH57c=
+
+Name: res/layout-small/payment.xml
+SHA1-Digest: Rjkr5vfmBoUBskm6qYbQ4CmsLDs=
+
+Name: res/layout-large/main.xml
+SHA1-Digest: b5sc+9lmEeWPKT40OGiwuSAdmjg=
+
+Name: res/layout-xlarge/picture.xml
+SHA1-Digest: /3vIPytOUW7PvfoI+G8YV4gzBUo=
+
+Name: res/layout-large/list_hd.xml
+SHA1-Digest: MBsOQyASUULQUctR9JZhgpVFkLg=
+
+Name: resources.arsc
+SHA1-Digest: c+/rGTnynXpYjp8nJZjcoJwmwT8=
+
+Name: res/layout-normal/list_hd.xml
+SHA1-Digest: TmRergBwD+UF1Wa+0MRYXmPRxog=
+
+Name: AndroidManifest.xml
+SHA1-Digest: LIj2xD790rWbHEp1d/Qx6LLKJNc=
+
+Name: res/layout-normal/main.xml
+SHA1-Digest: X9gIVRpepE7SXUDOWhCwKIr/Cmc=
+
+Name: res/layout-large/payment.xml
+SHA1-Digest: eF3YWlItC0baVIOJEwBFpZQc+Cc=
+
+Name: res/layout-small/main.xml
+SHA1-Digest: ihaOAXNip/y8glSFHRUHgr6fQHk=
+
+Name: res/layout-normal/hd.xml
+SHA1-Digest: mVPTC3gJhCRMUSAKV9TjGkw5hmI=
+
+Name: res/layout-xlarge/main.xml
+SHA1-Digest: jMce6ASTWOJN+IRvr5747S1Jt08=
+
+Name: res/layout-large/list_item.xml
+SHA1-Digest: q2CIV0xuvZDDOQCjPXd8GozqH2w=
+
+Name: res/layout-large/hd.xml
+SHA1-Digest: y7n8WtKWv7Bo+1+eMgqRn1joBvk=
+
+Name: res/layout-normal/list.xml
+SHA1-Digest: TTlYqQki/Mwu2MYC3BcHTrqo4o8=
+
+Name: res/layout-xlarge/payment.xml
+SHA1-Digest: 4ut1gE9RSwnsLZh3+be9epRkhEU=
+
+Name: res/layout-small/list_item.xml
+SHA1-Digest: 4zJBSeNzhNdDIMZ2ydQWXjYVdDM=
+
+Name: res/drawable/hd_button_pressed.9.png
+SHA1-Digest: HL/BwuPIl1HXnrxSdRFI4mvh4kw=
+
+Name: res/drawable/free_button.9.png
+SHA1-Digest: gyhM/hwWIjO9g/QOAIOmAgVeE2U=
+
+Name: res/layout-normal/welcome.xml
+SHA1-Digest: fc/JbtkPEC5mywSaehNyAwRO0s8=
+
+Name: res/layout-normal/picture.xml
+SHA1-Digest: ghYMR4NIM/u4OrWEUqQRAZOLLpI=
+
+Name: res/layout-large/list.xml
+SHA1-Digest: 44OGCSJsvRh13VdRoX37eYSHv9s=
+
+Name: classes.dex
+SHA1-Digest: PgLm+dRdI1PbwXail+8U42VJAhQ=
+
+Name: res/layout-small/welcome.xml
+SHA1-Digest: lD9Hq2Fic7fyYQGqOgTitf2kbMg=
+
+Name: res/layout-xlarge/list.xml
+SHA1-Digest: FPdtBLxwdFSIsWwVGLaJj3hklIk=
+
+Name: res/layout-small/list.xml
+SHA1-Digest: mpdeJA5Ad1wzBWo9YXBy8d8ser4=
+
+Name: res/layout-xlarge/welcome.xml
+SHA1-Digest: XgjmEPKXQ3CGy8vY328Yx91EzQk=
+
+Name: res/layout-small/paymentsuccess.xml
+SHA1-Digest: Gw2OHpn6lVkn2g1eZk4Z4Tjht4Q=
+
+Name: res/layout-small/picture.xml
+SHA1-Digest: D6Wr5HHYojX/xE/JuJClR3LPSbM=
+
+Name: res/layout-large/paid.xml
+SHA1-Digest: ND5MSFCIDSC7vCMIg06qF16FBk4=
+
+Name: res/layout-normal/payment.xml
+SHA1-Digest: rT1txrwxculGjxGbnrv2l6SuzCI=
+
+Name: res/drawable/logo_big.png
+SHA1-Digest: UOH5ESznrR2+trsE9jPXng0Ev0k=
+
+Name: res/drawable/xtube.png
+SHA1-Digest: x+nRhBacbv9jViB96FUYxwx2eHU=
+
+Name: res/drawable/list_selector.xml
+SHA1-Digest: ynI13+iGA+Z9ebGdjUl7iIvAzIk=
+
+Name: com/androidquery/util/web_image.html
+SHA1-Digest: wTPlXmTSfC+ndWpJhNXW6szTvNc=
+

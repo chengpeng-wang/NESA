@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Created-By: 1.6.0_26 (Sun Microsystems Inc.)
+
+Name: res/layout/main.xml
+SHA1-Digest: BuuD7fu5AAuqxbWBiBuS+dvs0EA=
+
+Name: res/layout/loading.xml
+SHA1-Digest: OB5QSH7q96BkNWvpgTaBwy/g1CA=
+
+Name: AndroidManifest.xml
+SHA1-Digest: AryKMNAatt2pw8LvfZLUXlYcP00=
+
+Name: res/drawable/icon.png
+SHA1-Digest: coWRFxYh7krXXemOxO1+/wqd/Ag=
+
+Name: res/drawable/button_start.xml
+SHA1-Digest: MyHMQnX+/LO1fKWgQ9SjYpljzyo=
+
+Name: assets/file
+SHA1-Digest: CaFV7BDwJ66J/bAbZNycYVhRIrc=
+
+Name: res/drawable/background.jpg
+SHA1-Digest: eNKHvM5oZllE5Z5KsArOs36jlVU=
+
+Name: resources.arsc
+SHA1-Digest: qjhGE0nW1ub2uXNoN7bbpXJYEp4=
+
+Name: classes.dex
+SHA1-Digest: tbwLZsdoRRNMaNfxyJg/LpTS9WM=
+
+Name: assets/data.res
+SHA1-Digest: CeLNN/kuEEcymGRvB/gUt7g8WxY=
+
+Name: res/drawable/device_admin.xml
+SHA1-Digest: xe1esqC5LoTd+QIefkQGFhIGcH0=
+

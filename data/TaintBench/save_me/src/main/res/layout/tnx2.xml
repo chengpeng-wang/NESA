@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ScrollView android:id="@+id/scrollView1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/ImageView05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:src="@drawable/ic_id"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:textStyle="bold" android:id="@+id/TextView10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:text="Identité" android:textAlignment="center"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:id="@+id/TextView09" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="50dp" android:layout_marginRight="20dp" android:text="Permettre à l&apos;application d&apos;utiliser un ou plusieurs des éléments suivants : comptes sur l&apos;appareil, données de profil"/>
+            </FrameLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/ImageView04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:src="@drawable/ic_wifi"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:textStyle="bold" android:id="@+id/TextView08" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:text="Informations relatives à la connexion Wi-Fi" android:textAlignment="center"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:id="@+id/TextView07" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="50dp" android:layout_marginRight="20dp" android:text="Permettre à l&apos;application d&apos;accéder à des informations sur les réseaux Wi-Fi afin de savoir si une connexion Wi-Fi est activée et de connaître le nom des appareils connectés au Wi-Fi, par exemple"/>
+            </FrameLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/ImageView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:src="@drawable/ic_vib"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:textStyle="bold" android:id="@+id/TextView06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:text="Controler le vibreur" android:textAlignment="center"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:id="@+id/TextView05" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="50dp" android:layout_marginRight="20dp"/>
+            </FrameLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/ImageView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:src="@drawable/ic_tel"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:textStyle="bold" android:id="@+id/TextView04" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:text="Téléphone" android:textAlignment="center"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:id="@+id/TextView03" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="50dp" android:layout_marginRight="20dp" android:text="Permettre à l&apos;application d&apos;utiliser un ou plusieurs des éléments suivants : téléphone, journal d&apos;appels. "/>
+            </FrameLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/ImageView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:src="@drawable/ic_cont"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:textStyle="bold" android:id="@+id/TextView02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:text="Contacts/Agenda" android:textAlignment="center"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="50dp" android:layout_marginRight="20dp" android:text="Permettre à l&apos;application d&apos;utiliser un ou plusieurs des éléments suivants : agenda, informations relatives aux contacts et la recuperation de l&apos;annuaire"/>
+            </FrameLayout>
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@+id/imageView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:src="@drawable/ic_sms"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:textStyle="bold" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="20dp" android:layout_marginRight="20dp" android:text="SMS" android:textAlignment="center"/>
+                <TextView android:textAppearance="?android:attr/textAppearanceSmall" android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="50dp" android:layout_marginRight="20dp" android:text="Permettre à l&apos;application d&apos;utiliser un ou plusieurs des éléments suivants : SMS, MMS. "/>
+            </FrameLayout>
+            <Button android:layout_gravity="right" android:id="@+id/savecon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="J&apos;accepte"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="stats_tabs">
+        <item>Total wins</item>
+        <item>Total points</item>
+        <item>Last win</item>
+        <item>Smaller win</item>
+    </array>
+</resources>

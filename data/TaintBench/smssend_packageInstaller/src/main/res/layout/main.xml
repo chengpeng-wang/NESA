@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView android:id="@+id/imageView3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0dp" android:src="@drawable/bot" android:scaleType="fitXY" android:adjustViewBounds="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="false" android:layout_alignParentRight="true" android:layout_alignParentBottom="true"/>
+    <LinearLayout android:orientation="vertical" android:id="@+id/linearLayout4" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@+id/imageView3"/>
+    <Button android:id="@+id/button1" android:background="@drawable/next_button" android:layout_width="120dp" android:layout_height="40dp" android:layout_marginTop="7dp" android:layout_marginRight="15dp" android:layout_alignTop="@+id/imageView3" android:layout_alignParentRight="true" android:onClick="onClickNext"/>
+    <TextView android:textSize="5pt" android:id="@+id/textView1" android:layout_width="170dp" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="Согласен с правилами" android:layout_alignBaseline="@+id/button1" android:layout_alignBottom="@+id/button1" android:layout_alignParentLeft="true"/>
+</RelativeLayout>

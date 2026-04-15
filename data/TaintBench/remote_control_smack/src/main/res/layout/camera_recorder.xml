@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:id="@+id/RelativeLayout1" android:background="@drawable/recording_bg" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:id="@+id/StartService" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="開始錄音"/>
+        <Button android:id="@+id/StopService" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="結束錄音"/>
+        <Button android:id="@+id/Play" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="5dp" android:text="播放錄音"/>
+    </LinearLayout>
+</RelativeLayout>

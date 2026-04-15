@@ -1,0 +1,59 @@
+.TH NVRAM_EXPORT 1 "Sep 28, 2013"
+.\" Please adjust this date whenever revising the manpage.
+.SH NAME
+nvram_export \- Cisco NVRAM configuration export
+.SH SYNOPSIS
+.B nvram_export
+.I nvram_file
+.I config_file
+[
+.I private_file
+]
+.br
+.SH DESCRIPTION
+Exports configuration files \fBstartup\-config\fP and \fBprivate\-config\fP 
+from a dynamips NVRAM file to the target files.
+.PP
+.SH OPTIONS
+.TP
+.B nvram_file
+File that contains the NVRAM data.
+On some platforms, NVRAM is simulated inside the ROM.
+.TP
+.B config_file
+File for 'startup\-config'.
+.TP
+.B private_file
+File for 'private\-config'.
+.SH REPORTING BUGS
+.br
+Please send bug reports to 
+.UR https://github.com/GNS3/dynamips/issues
+.UE
+.SH SEE ALSO
+.br
+\fBdynamips\fP(1), \fBhypervisor_mode\fP(7)
+.br
+.UR http://www.gns3.net/dynamips/
+.UE
+.br
+.UR http://forum.gns3.net/
+.UE
+.br
+.UR https://github.com/GNS3/dynamips
+.UE
+.br
+.SH OLD WEBSITES
+.UR http://www.ipflow.utc.fr/index.php/
+.UE
+.br
+.UR http://www.ipflow.utc.fr/blog/
+.UE
+.br
+.UR http://hacki.at/7200emu/index.php
+.UE
+.SH AUTHOR
+\fBdynamips\fP is being maintained by Flávio J. Saraiva 
+<flaviojs2005@gmail.com>. This manual page was initially written by 
+Erik Wenzel <erik@debian.org> for the Debian GNU/Linux system.
+

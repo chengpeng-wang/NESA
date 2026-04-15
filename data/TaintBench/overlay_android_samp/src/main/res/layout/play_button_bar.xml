@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:padding="@dimen/play_action_button_xpadding" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <Button android:id="@+id/positive_button" android:background="@drawable/play_action_button_apps_base" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/Play_Purchase_ActionButton"/>
+    <Button android:id="@+id/negative_button" android:background="@drawable/play_action_button_apps_base" android:visibility="gone" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/Play_Purchase_ActionButton"/>
+</RelativeLayout>

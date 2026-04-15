@@ -1,0 +1,4 @@
+{
+    "src_function": "getLastKnownLocation",
+    "sink_function": "append"
+}

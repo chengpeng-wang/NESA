@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBaseTheme">
+    </style>
+    <style name="AppTheme">
+    </style>
+    <style name="my_edittext_style">
+        <item name="android:background">@drawable/selector_edittext_bg</item>
+    </style>
+</resources>

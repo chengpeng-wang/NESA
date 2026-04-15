@@ -1,0 +1,4 @@
+{
+    "src_function": "getNetworkOperatorName",
+    "sink_function": "write"
+}

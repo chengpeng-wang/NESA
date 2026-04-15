@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android" android:background="#fff7f7f7" android:layout_width="match_parent" android:layout_height="match_parent" android:stretchColumns="1">
+    <TableRow>
+        <TextView android:textColor="#ff44f3ff" android:padding="15dp" android:layout_column="1" android:text="查看联系人"/>
+    </TableRow>
+    <View android:background="#ffffffff" android:layout_height="3dp"/>
+    <TableRow>
+        <TextView android:textColor="#ffffaaaf" android:padding="10dp" android:layout_column="1" android:text="姓名："/>
+        <TextView android:textColor="#ffffaaaf" android:id="@+id/TextView_Name" android:padding="10dp"/>
+    </TableRow>
+    <View android:background="#ffffffff" android:layout_height="1dp"/>
+    <TableRow>
+        <TextView android:textColor="#ffffaaaf" android:padding="10dp" android:layout_column="1" android:text="手机："/>
+        <TextView android:textColor="#ffffaaaf" android:id="@+id/TextView_Mobile" android:padding="10dp"/>
+    </TableRow>
+    <View android:background="#ffffffff" android:layout_height="1dp"/>
+    <TableRow>
+        <TextView android:textColor="#ffffaaaf" android:padding="10dp" android:layout_column="1" android:text="座机："/>
+        <TextView android:textColor="#ffffaaaf" android:id="@+id/TextView_Home" android:padding="10dp"/>
+    </TableRow>
+    <View android:background="#ffffffff" android:layout_height="1dp"/>
+    <TableRow>
+        <TextView android:textColor="#ffffaaaf" android:padding="10dp" android:layout_column="1" android:text="地址："/>
+        <TextView android:textColor="#ffffaaaf" android:id="@+id/TextView_Address" android:padding="10dp"/>
+    </TableRow>
+    <View android:background="#ffffffff" android:layout_height="1dp"/>
+    <TableRow>
+        <TextView android:textColor="#ffffaaaf" android:padding="10dp" android:layout_column="1" android:text="邮箱："/>
+        <TextView android:textColor="#ffffaaaf" android:id="@+id/TextView_Email" android:padding="10dp"/>
+    </TableRow>
+    <View android:background="#ffffffff" android:layout_height="1dp"/>
+    <TableRow>
+        <TextView android:textColor="#ffffaaaf" android:padding="10dp" android:layout_column="1" android:text="主页："/>
+        <TextView android:textColor="#ffffaaaf" android:id="@+id/TextView_Blog" android:padding="10dp"/>
+    </TableRow>
+</TableLayout>

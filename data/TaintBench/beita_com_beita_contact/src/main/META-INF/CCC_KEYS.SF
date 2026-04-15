@@ -1,0 +1,89 @@
+Signature-Version: 1.0
+SHA1-Digest-Manifest-Main-Attributes: ngANqza5/whaYZFfNQhzhT/iRBA=
+Created-By: 1.6.0_29 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: jq+v+aBnIaWnb7Lxx58GvkJKab8=
+
+Name: org/apache/harmony/awt/internal/nls/messages.properties
+SHA1-Digest: jMwW9jKD0vPqgROM1ZlDu/yYG0c=
+
+Name: com/sun/mail/dsn/mailcap
+SHA1-Digest: adoefGJAcxFZ9c1BCbtMgJDc4uU=
+
+Name: res/drawable/calluser.png
+SHA1-Digest: RWKI0D+Ww+4NIlqQ+/VTdI1jkRc=
+
+Name: javamail.smtp.provider
+SHA1-Digest: ZX797rIEua0P4b3taBnIScfckNI=
+
+Name: res/drawable/edituser.png
+SHA1-Digest: 6CY+Pgw6gVJvj4sfn68jFdu0vqU=
+
+Name: javamail.default.address.map
+SHA1-Digest: v0AMWogtP3iw2he5Ed7ptkfGPSI=
+
+Name: res/drawable/bg.png
+SHA1-Digest: IT4HbL99tlFVe4mH2/2wh4ww/aI=
+
+Name: res/drawable/exit.png
+SHA1-Digest: uThUAqqmc2NRo+P7AvN+21uk+WA=
+
+Name: res/drawable/add.png
+SHA1-Digest: G/oHhC/JOVmhNKw/VV7s6c36ezo=
+
+Name: javamail.imap.provider
+SHA1-Digest: yd9kVPaarUBEmFyZYPyun4oIrlY=
+
+Name: resources.arsc
+SHA1-Digest: FNy/m62x/CgxqH0m/I42xVFkrA0=
+
+Name: res/drawable/sendsms.png
+SHA1-Digest: V6OxNTx+lLQ+hiI8wWWGrhXGQTk=
+
+Name: javamail.default.providers
+SHA1-Digest: tBRMNiJQTMZ/CZ7f+5bYEhYt+TI=
+
+Name: mailcap.default
+SHA1-Digest: OEOm9RCN2oyqc/cL3CCUJZmM8Yg=
+
+Name: AndroidManifest.xml
+SHA1-Digest: IrnLJijYLQXC4F/M4ycKgyzYLzw=
+
+Name: javamail.charset.map
+SHA1-Digest: yphd7jCdIMBZfsSI2ilVAOEzZI8=
+
+Name: javamail.smtp.address.map
+SHA1-Digest: la7OFR8+1sr/jbW4TcYPhFzpwqs=
+
+Name: res/layout/editorcontacts.xml
+SHA1-Digest: d2Vo0o7fsxqHzRuZqPJW6jxp+z8=
+
+Name: mailcap
+SHA1-Digest: ydglDriTEt+HQdxQxFQv3cdkxGQ=
+
+Name: mimetypes.default
+SHA1-Digest: LtnD5FLKTeAWyyv18Kx6HHZlDLQ=
+
+Name: classes.dex
+SHA1-Digest: oePU9va2Z5MJNE816PGgDbXqRdk=
+
+Name: res/layout/viewuser.xml
+SHA1-Digest: 5rLV4d0GldtnmZyHHOVv2OMSa5M=
+
+Name: res/drawable/icon.png
+SHA1-Digest: EU7wzMFb27RLcSNDNvPkBgxvDLI=
+
+Name: res/drawable/viewuser.png
+SHA1-Digest: tkdgoc1HGBLXVPKyC5LY6WKmLsE=
+
+Name: res/drawable/listuser.png
+SHA1-Digest: C+X3/koDFAzS8V/7y1UYkTMYXA8=
+
+Name: res/drawable/remove.png
+SHA1-Digest: pwWV7kJURXv4oU8O8JxKuvjXhTg=
+
+Name: dsn.mf
+SHA1-Digest: DIMfyAT/elPDToK2wVP94dYzeEg=
+
+Name: javamail.pop3.provider
+SHA1-Digest: xx7+YzBZJEzUzyad35ichWNPTvY=
+

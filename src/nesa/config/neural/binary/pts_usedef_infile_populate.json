@@ -1,0 +1,72 @@
+{
+    "system": "You are a static analysis assistant.",
+
+    "task": "Given a program, please list all the use-define pairs of references that refer to the same memory objects at the use site. Here the defined references may be local variables, parameters, expressions (such as access paths).",
+
+    "examples": [
+        {
+            "description": "Given a program, please list all the use-define pairs of references that refer to the same memory objects. Here the defined references may be local variables, parameters, expressions (such as access paths).",
+            "code": "1. void sample(A a, A b) {\n2.     A c = a;\n3.     A d = b;\n4.     A e = c;\n5. }",
+            "question": "List all the use-define pairs of references that MAY refer to the same memory objects at the use site.",
+            "output": {
+                "explanation": "Let us examine the code line by line. \n (1) The reference a is used to initialize the reference c at line 2. Hence, c at line 2 and a at line 1 MAY refer to the same memory ojbect; \n (2) The reference b is used to initialize the reference d at line 3. Hence, d at line 3 and b at line 1 MAY refer to the same meomory object; \n (3) The reference c is used to initialize the reference e at line 4. Hence, e at line 4 and c at line 2 MAY refer to the same memory object, and also e at line 4 and a at line 1 MAY refer to the same memory object.",
+                "answer": [
+                    [
+                        {"Line": 2, "Variable": "a"},
+                        {"Line": 1, "Variable": "a"}
+                    ],
+                    [
+                        {"Line": 3, "Variable": "b"},
+                        {"Line": 1, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 4, "Variable": "c"},
+                        {"Line": 2, "Variable": "c"}
+                    ],
+                    [
+                        {"Line": 4, "Variable": "c"},
+                        {"Line": 1, "Variable": "a"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "Given a program, please list all the use-define pairs of references that refer to the same memory objects. Here the defined references may be local variables, parameters, expressions (such as access paths).",
+            "code": "1. void sample(List<A> list) {\n2.     A a = new A();\n3.     list.add(a);\n4.     A b = list.get(0);\n5. A c = b;\n6.}",
+            "question": "List all the use-define pairs of references that MAY refer to the same memory objects at the use site.",
+            "output": {
+                "explanation": "Let us examine the code line by line. \n (1) The reference a is used to insert the object to the list at line 3. Hence, a at line 3 and a at line 2 MAY refer to the same memory object; \n (2) The reference b is assigned the object retrieved from the list at line 4. Hence, b at line 4 and a at line 2 MAY refer to the same memory object; \n (3) The reference b is used to initialize the reference c at line 5. Hence, c at line 5 and b at line 4 MAY refer to the same memory object.",
+                "answer": [
+                    [
+                        {"Line": 3, "Variable": "a"},
+                        {"Line": 2, "Variable": "a"}
+                    ],
+                    [
+                        {"Line": 4, "Variable": "list"},
+                        {"Line": 1, "Variable": "list"}
+                    ],
+                    [
+                        {"Line": 5, "Variable": "b"},
+                        {"Line": 4, "Variable": "b"}
+                    ],
+                    [
+                        {"Line": 5, "Variable": "b"},
+                        {"Line": 2, "Variable": "a"}
+                    ]
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Given a program, please list all the use-define pairs of references that refer to the same memory objects. Here the defined references may be local variables, parameters, expressions (such as access paths).",
+        "code": "{P_CODE}",
+        "question": "List all the use-define pairs of references that MAY refer to the same memory objects at the use site. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Please follow the above examples and think step by step. You can just follow the following steps:\n First, find all the references used in each statement. \n Second, for each used reference, find the definition of the reference. \n Third, summarize the above results in the required format.",
+
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- (Program Line 1: Line {LINE_NUMBER_1}, Expression 1: {VARIABLE_NAME_1}), (Program Line 2: Line {LINE_NUMBER_2}, Expression 2: {VARIABLE_NAME_2})"
+        ]
+    }
+}

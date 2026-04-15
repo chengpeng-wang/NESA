@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="attr" name="buttonBarStyle" id="2130771968" />
+    <public type="attr" name="buttonBarButtonStyle" id="2130771969" />
+    <public type="drawable" name="back" id="2130837504" />
+    <public type="drawable" name="back_" id="2130837505" />
+    <public type="drawable" name="black_gradient" id="2130837506" />
+    <public type="drawable" name="ic_launcher" id="2130837507" />
+    <public type="drawable" name="line" id="2130837508" />
+    <public type="drawable" name="logo" id="2130837509" />
+    <public type="drawable" name="privatbank" id="2130837510" />
+    <public type="drawable" name="shape" id="2130837511" />
+    <public type="layout" name="activity_certificate" id="2130903040" />
+    <public type="layout" name="activity_flash" id="2130903041" />
+    <public type="layout" name="activity_lock" id="2130903042" />
+    <public type="layout" name="activity_play" id="2130903043" />
+    <public type="layout" name="activity_vk" id="2130903044" />
+    <public type="xml" name="device_admin_data" id="2130968576" />
+    <public type="color" name="black_overlay" id="2131034112" />
+    <public type="dimen" name="activity_horizontal_margin" id="2131099648" />
+    <public type="dimen" name="activity_vertical_margin" id="2131099649" />
+    <public type="string" name="app_name" id="2131165184" />
+    <public type="string" name="action_settings" id="2131165185" />
+    <public type="string" name="title_activity_lock_z" id="2131165186" />
+    <public type="string" name="mail_or_login_vk" id="2131165187" />
+    <public type="style" name="AppBaseTheme" id="2131230720" />
+    <public type="style" name="AppTheme" id="2131230721" />
+    <public type="style" name="FullscreenTheme" id="2131230722" />
+    <public type="style" name="ButtonBar" id="2131230723" />
+    <public type="style" name="ButtonBarButton" id="2131230724" />
+    <public type="id" name="button1" id="2131296256" />
+    <public type="id" name="editText1" id="2131296257" />
+    <public type="id" name="preLoad" id="2131296258" />
+    <public type="id" name="button2" id="2131296259" />
+    <public type="id" name="imageView1" id="2131296260" />
+    <public type="id" name="webView1" id="2131296261" />
+</resources>

@@ -1,0 +1,73 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to determine whether two expressions can both evaluate to zero simultaneously, i.e., if the first one is evaluated to zero, whether the second on is also evaluated to zero.",
+
+    "task": "Given two specific expressions, denoted by expr_a and expr_b at specific lines l1 and l2 in a single function, please determine whether both expressions can evaluate to zero. Please consider conditional statements that may prevent zero values from propagating. Please ignore all the possible exceptions in the program and assume that each statement can be executed normally.",
+
+    "examples": [
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of total at line 3 and total at line 4.",
+            "code": "1. double calculateTotal(double price, double taxRate) {\n2.   double tax = price * taxRate;\n3.   double total = price + tax;\n4.   return total;\n5. }",
+            "question": "Examine whether both total at line 3 and total at line 4 can simultaneously evaluate to zero. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable total is defined by the sum of two parameters at line 3 and used at line 4. Hence, the origin of the variable total at line 4 is totally determined by the total at line 3. They can simultaneously evaluate to zero only if both price and tax are zero.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of price at line 1 and total at line 4.",
+            "code": "1. double calculateTotal(double price, double taxRate) {\n2.   double tax = price * taxRate;\n3.   double total = price;\n4.   return total;\n5. }",
+            "question": "Examine whether both price at line 1 and total at line 4 can simultaneously evaluate to zero. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable total is defined by price at line 3 and used at line 4. Hence, the origin of the variable total at line 4 is totally determined by the total at line 3, and thus, determined by price at line 1. They can simultaneously evaluate to zero only if both price and total are zero.",         
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of a at line 1 and b at line 2.",
+            "code": "1. int a = 0;\n2. int b = a;",
+            "question": "Examine whether both a at line 1 and b at line 2 can simultaneously evaluate to zero. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable a is assigned the value 0 at line 1, and b is assigned the value of a at line 2. Since a is 0, b will also be 0. Therefore, both a at line 1 and b at line 2 can be zero simultaneously.",
+                "answer": "Yes"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of a at line 1 and b at line 3.",
+            "code": "1. int a = 0;\n2. a = 5;\n3. int b = a;",
+            "question": "Examine whether both a at line 1 and b at line 3 can simultaneously evaluate to zero. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The variable a is initially assigned 0 at line 1 but is reassigned the value 5 at line 2. Thus, the value of a at line 1 does not affect the value of b at line 3. Since a at line 1 is 0 and b at line 3 is 5, they cannot be zero simultaneously.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of a at line 2 and b at line 4.",
+            "code": "1. int a = input();\n2. int b = 1;\n3. if (Math.abs(a) > 0.00001) {\n4.   c= b / a;\n5. }",
+            "question": "Examine whether both a at line 1 and a at line 4 can simultaneously evaluate to zero. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The value of a is assigned with an input value at line 1. The branch condition at line 3 checks whether the absolute value of a is greater than 0.00001. Then, the value of a at line 4 can not be zero as it is used in the true branch of the branch condition.",
+                "answer": "No"
+            }
+        },
+        {
+            "description": "Please read and understand the following code snippet. Examine the values of a at line 2 and b at line 4.",
+            "code": "1. int a = input();\n2. int b = a;\n3. if (b == 0) {\n4.   c= b / a;\n5. }",
+            "question": "Examine whether both a at line 1 and a at line 4 can simultaneously evaluate to zero. Please think step by step and investigate how the values are used and generated.",
+            "output": {
+                "explanation": "The value of a is assigned with an input value at line 1. The branch condition at line 3 checks whether the absolute value of a is equal to 0. Then, the value of a at line 4 is exactly the value of a at line 1 and evaluated to zero at line 4 as it is used in the true branch of the branch condition.",
+                "answer": "No"
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and examine the value of {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2}.",
+        "code": "{P_CODE}",
+        "question": "Examine whether both {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} can simultaneously evaluate to zero. Here \"can\" means that the two variables or expression can possibly be equal to zero. Please pay attention on the branch conditions that check whether a value is equal to 0 or not. Please ignore all the possible exceptions in the program and assume that each statement can be executed normally. \n Please think step by step and investigate how the values are used and generated. You can follow the following steps: \n (1) First check whether {P_VARIABLE_NAME_1} at line {P_LINE_NUMBER_1} and {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} can have the same value; If not, directly answer No. Otherwise, go to step (2). \n (2) Then check whether {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} is guarded by any constraint, such as {P_VARIABLE_NAME_2} != 0 or the absolute value of {P_VARIABLE_NAME_2} is greater than 0. If so, answer No directly. Otherwise, answer Yes. \n (3) Remember: If {P_VARIABLE_NAME_2} at line {P_LINE_NUMBER_2} can cause a divide-by-zero bug, you should also answer Yes instead of No.",
+        "format": [
+            "Format of the output:",
+            "explanation: [Your explanation]",
+            "Answer:",
+            "Yes/No."
+        ]
+    }
+}

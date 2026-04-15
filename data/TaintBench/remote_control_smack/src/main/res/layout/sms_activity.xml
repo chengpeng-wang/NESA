@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:gravity="center" android:id="@+id/sms_relativeLayout" android:background="#000000" android:layout_width="match_parent" android:layout_height="40dp">
+        <Button android:id="@+id/btn_sms_command" android:background="@drawable/btn_command_click" android:layout_width="30dp" android:layout_height="30dp" android:layout_alignParentRight="true" style="?android:attr/buttonStyleSmall"/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ffffff" android:id="@+id/tv_update_time" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="2014/3/27 18:00" android:layout_alignParentLeft="true"/>
+        <Button android:id="@+id/btn_sms_update" android:background="@drawable/btn_update_click" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginLeft="5dp" android:layout_toRightOf="@+id/tv_update_time"/>
+    </RelativeLayout>
+    <ListView android:id="@+id/sms_listView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/sms_relativeLayout"/>
+</RelativeLayout>

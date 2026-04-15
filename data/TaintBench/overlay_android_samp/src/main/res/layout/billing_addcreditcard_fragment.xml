@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <ScrollView android:id="@+id/content_view" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp">
+        <LinearLayout android:orientation="vertical" android:id="@+id/credit_card_details" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <FrameLayout android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <include android:paddingLeft="@dimen/addinstrument_content_padding" android:paddingRight="@dimen/addinstrument_content_padding" layout="@layout/billing_addcreditcard_fields"/>
+                <include android:paddingLeft="@dimen/addinstrument_content_padding" android:paddingRight="@dimen/addinstrument_content_padding" layout="@layout/billing_vbv_fields"/>
+            </FrameLayout>
+            <include layout="@layout/play_button_bar"/>
+        </LinearLayout>
+    </ScrollView>
+    <ProgressBar android:layout_gravity="center" android:id="@+id/loading_spinner" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?android:attr/progressBarStyleLarge"/>
+</FrameLayout>

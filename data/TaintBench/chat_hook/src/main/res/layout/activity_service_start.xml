@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:focusable="true" android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:layout_gravity="center_horizontal" android:id="@+id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textViewinfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14dp" android:layout_marginTop="14dp" android:layout_below="@+id/textView1" android:layout_alignLeft="@+id/textViewphone"/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textViewphone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14dp" android:layout_marginTop="18dp" android:text="我的手机号:" android:layout_below="@+id/textViewinfo" android:layout_alignParentLeft="true"/>
+        <EditText android:id="@+id/editTextphone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ems="10" android:layout_toRightOf="@+id/textViewphone" android:layout_alignBaseline="@+id/textViewphone" android:layout_alignBottom="@+id/textViewphone" android:inputType="phone"/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:id="@+id/textViewmsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:layout_below="@+id/buttonphone" android:layout_alignLeft="@+id/textViewphone"/>
+        <Button android:id="@+id/buttonphone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="启动服务和隐藏应用" android:layout_below="@+id/button1" android:layout_alignParentRight="true"/>
+        <Button android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:text="发送以上信息到我的手机" android:layout_below="@+id/editTextphone" android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+</ScrollView>

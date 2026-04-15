@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="#fff" android:paddingLeft="10dp" android:paddingTop="10dp" android:paddingRight="10dp" android:layout_width="300dp" android:layout_height="match_parent">
+    <EditText android:id="@+id/txtUsername" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Full Name">
+        <requestFocus/>
+    </EditText>
+    <EditText android:id="@+id/txtPassword" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Phone Number" android:inputType="textPhonetic"/>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/btnLogin" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delete" android:layout_weight="0.5"/>
+        <Button android:id="@+id/btnCancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel" android:layout_weight="0.5"/>
+    </LinearLayout>
+</LinearLayout>

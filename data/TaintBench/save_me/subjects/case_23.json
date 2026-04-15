@@ -1,0 +1,4 @@
+{
+    "src_function": "getMacAddress",
+    "sink_function": "execute"
+}

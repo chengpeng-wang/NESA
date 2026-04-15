@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:background="@drawable/hana" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <ImageView android:id="@+id/infoOperating" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginBottom="100dp" android:src="@drawable/indeterminate_spinner" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:layout_centerInParent="true"/>
+</RelativeLayout>

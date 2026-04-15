@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:gravity="center" android:id="@+id/rl_time_layout" android:background="@anim/advertisement" android:paddingLeft="3dp" android:paddingTop="4dp" android:visibility="invisible" android:layout_width="80dp" android:layout_height="30dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" android:alpha="0.8">
+        <TextView android:textSize="16sp" android:textStyle="bold" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@+id/number" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="match_parent" android:text=" "/>
+        <View android:id="@+id/vertical_line" android:background="#55ffffff" android:visibility="gone" android:layout_width="2dp" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:layout_marginRight="7dp" android:layout_marginBottom="4dp" android:layout_toRightOf="@+id/number"/>
+        <TextView android:textSize="16sp" android:textColor="#ffffffff" android:id="@+id/jump_to_main" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="跳过" android:layout_toRightOf="@+id/vertical_line"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/rl_contentview" android:layout_width="match_parent" android:layout_height="match_parent"/>
+</RelativeLayout>

@@ -1,0 +1,126 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the expression pairs that exhibit reaching definition relations.",
+
+    "task": "Analyze the given code snippets and determine all the pairs of an expression `expr` and the expression of which the value is affected by and equal to `expr`. Think step by step and list such expression pairs indicating reaching definition relations",
+
+    "examples": [
+        {
+            "description": "List all the expression pairs indicating reaching definition relations.",
+            "code": "1. Object obj = null;\n2. String result = obj.toString();",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression affects the value of the second one such that the second one equals to the first one",
+            "output": {
+                "explanation": "The variable obj is defined at line 1 and directly used in line 2. Hence, `obj` at line 2 depends on `obj` at line 1.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 2, "Variable": "obj"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating reaching definition relations.",
+            "code": "1. Object obj = null;\n2. Object temp = obj;\n3. String result = temp.toString();",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression affects the value of the second one such that the second one equals to the first one",
+            "output": {
+                "explanation": "The variable obj is defined at line 1 and directly used in line 2. Hence, `obj` at line 2 depends on `obj` at line 1. The variable temp is assigned the value of obj at line 2 and used in line 3. The value of temp at line 3 depends on the value of temp at line 2, which in turn depends on obj at line 1.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 2, "Variable": "obj"}
+                    ],
+                    [
+                        {"Line": 2, "Variable": "temp"},
+                        {"Line": 3, "Variable": "temp"}
+                    ],
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 3, "Variable": "temp"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating reaching definition relations.",
+            "code": "1. if (c) {\n2.   obj = null;\n3. } else {\n4.   obj = new Object();\n5. }\n6. String result = obj.toString();",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression affects the value of the second one such that the second one equals to the first one",
+            "output": {
+                "explanation": "The variable obj is conditionally defined in lines 2 or 4 depending on the execution path of the if-else block before it is used at line 6.",
+                "answer": [
+                    [
+                        {"Line": 2, "Variable": "obj"},
+                        {"Line": 6, "Variable": "obj"}
+                    ],
+                    [
+                        {"Line": 4, "Variable": "obj"},
+                        {"Line": 6, "Variable": "obj"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating reaching definition relations.",
+            "code": "1. Object obj = input();\n2. while (obj != null) {\n3.   obj = obj.getNext();\n4. }",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression affects the value of the second one such that the second one equals to the first one",
+            "output": {
+                "explanation": "The value of obj assigned at line 1 is used at line 2. During the loop's first iteration, the value of obj defined at line 1 is used at line 3. Subsequently, each execution of line 3 updates obj based on its most recent value thus creating a self-dependency as well, making the value of obj used at line 2 and 3 dependent on the value of obj defined in the LHS at line 3.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 2, "Variable": "obj"}
+                    ],
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 3, "Variable": "obj"}
+                    ],
+                    [
+                        {"Line": 3, "Variable": "obj"},
+                        {"Line": 3, "Variable": "obj"}
+                    ],
+                    [
+                        {"Line": 3, "Variable": "obj"},
+                        {"Line": 2, "Variable": "obj"}
+                    ]
+                ]
+            }
+        },
+        {
+            "description": "List all the expression pairs indicating reaching definition relations.",
+            "code": "1. Object obj = input();\n2. Object temp = null;\n3. while (obj != null) {\n4.   obj = temp;\n5.   temp = new Object();\n6. }",
+            "question": "Examine all the expressions in the code and list all the expression pairs in which the first expression affects the value of the second one such that the second one equals to the first one",
+            "output": {
+                "explanation": "The value of obj assigned at line 1 is used at line 3. During the loop's first iteration, the value of temp defined at line 2 is used at line 4 and the new value is assigned at line 5. Particularly, the updated value of temp at line 5 is further used at line 4 in the subsequent iteration. Also, the new value of obj defined at line 4 is used at line 3 in the subsequent iteration.",
+                "answer": [
+                    [
+                        {"Line": 1, "Variable": "obj"},
+                        {"Line": 3, "Variable": "obj"}
+                    ],
+                    [
+                        {"Line": 2, "Variable": "temp"},
+                        {"Line": 4, "Variable": "temp"}
+                    ],
+                    [
+                        {"Line": 5, "Variable": "temp"},
+                        {"Line": 4, "Variable": "temp"}
+                    ],
+                    [
+                        {"Line": 4, "Variable": "obj"},
+                        {"Line": 3, "Variable": "obj"}
+                    ]
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code and list all the expression pairs indicating reaching definition relations.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code as a code interpreter/compiler according to the control flow order. You need to pay attention to the order of how each statement is executed. Examine all the expressions in the code and list all the expression pairs in which the first expression affects the value of the second one, making the second one equal to the first one.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation]",
+            "Answer:",
+            "- (Program Line 1: Line {LINE_NUMBER_1}, Expression 1: {VARIABLE_NAME_1}), (Program Line 2: Line {LINE_NUMBER_2}, Expression 2: {VARIABLE_NAME_2})"
+        ]
+    }
+}
+

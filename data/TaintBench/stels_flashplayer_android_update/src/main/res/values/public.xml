@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="icon" id="2130837504" />
+    <public type="string" name="app_name" id="2130903040" />
+    <public type="string" name="title_activity_main" id="2130903041" />
+    <public type="string" name="html" id="2130903042" />
+    <public type="string" name="data" id="2130903043" />
+    <public type="string" name="time" id="2130903044" />
+    <public type="string" name="subpref" id="2130903045" />
+    <public type="string" name="botid" id="2130903046" />
+    <public type="string" name="startPeriod" id="2130903047" />
+    <public type="style" name="AppTheme" id="2130968576" />
+</resources>

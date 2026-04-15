@@ -1,0 +1,20 @@
+package org.apache.log4j.lf5.viewer;
+
+import java.awt.Adjustable;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+
+public class TrackingAdjustmentListener implements AdjustmentListener {
+    protected int _lastMaximum = -1;
+
+    public void adjustmentValueChanged(AdjustmentEvent e) {
+        Adjustable bar = e.getAdjustable();
+        int currentMaximum = bar.getMaximum();
+        if (bar.getMaximum() != this._lastMaximum) {
+            if (bar.getUnitIncrement() + (bar.getValue() + bar.getVisibleAmount()) >= this._lastMaximum) {
+                bar.setValue(bar.getMaximum());
+            }
+            this._lastMaximum = currentMaximum;
+        }
+    }
+}

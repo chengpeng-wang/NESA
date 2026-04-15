@@ -1,0 +1,59 @@
+{
+    "system": "You are a security analysis assistant. You perform precise, object-sensitive and order-sensitive reasoning over source code.",
+
+    "task": "Your task is to detect unsalted one-way hash bugs (CWE-759). You must identify MessageDigest objects for which digest() is invoked WITHOUT a proper salt being added beforehand.",
+
+    "analysis_rules": [
+        "Only consider calls to digest() on objects of type MessageDigest.",
+        "For each digest() call, reason only about the SAME MessageDigest variable (object-sensitive). Do NOT consider update() calls on other variables or objects.",
+        "A digest() call is considered SALTED if and only if there exists at least one update(...) call on the SAME MessageDigest variable that appears STRICTLY BEFORE the digest() call in program order.",
+        "For the purpose of this task, treat an update(...) call as adding salt ONLY when its argument is a value directly produced by SecureRandom, such as a call to generateSeed(...) or nextBytes(...).",
+        "If the update(...) argument is NOT syntactically derived from SecureRandom (e.g., literal data, strings, passwords, or general input), then it does NOT count as salting.",
+        "If no such SecureRandom-derived update(...) call exists before digest(), then the digest() call is UNSALTED and should be reported.",
+        "If at least one SecureRandom-derived update(...) call exists before digest(), do NOT report this digest() call."
+    ],
+
+    "examples": [
+        {
+            "description": "Unsalted hash",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA-512\");\n2. byte[] hashValue = hash.digest(\"hash me\".getBytes(\"UTF-8\"));",
+            "question": "Please examine the code snippet. Check whether digest() is called on a MessageDigest object without adding salt before the digest operation. If so, report the variable at the line where digest() is called.",
+            "output": {
+                "explanation": "The MessageDigest object 'hash' is created at line 1. At line 2, hash.digest() is called. There is no prior update(...) call on the same object with a salt-like value. Therefore, this digest() call is unsalted.",
+                "answer": [
+                    {"Line": 2, "Expression": "hash"}
+                ]
+            }
+        },
+        {
+            "description": "Salted hash with SecureRandom",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA-512\");\n2. SecureRandom prng = SecureRandom.getInstance(\"SHA1PRNG\");\n3. hash.update(prng.generateSeed(32));\n4. byte[] hashValue = hash.digest(\"hash me\".getBytes(\"UTF-8\"));",
+            "question": "Please examine the code snippet. Check whether digest() is called on a MessageDigest object without adding salt before the digest operation. If so, report the variable at the line where digest() is called.",
+            "output": {
+                "explanation": "The MessageDigest object 'hash' is updated at line 3 with a value generated from SecureRandom, which qualifies as a salt. The subsequent digest() call at line 4 is therefore salted and should not be reported.",
+                "answer": []
+            }
+        },
+        {
+            "description": "No digest call",
+            "code": "1. MessageDigest hash = MessageDigest.getInstance(\"SHA-512\");\n2. String output = hash.toString();",
+            "question": "Please examine the code snippet. Check whether digest() is called on a MessageDigest object without adding salt before the digest operation. If so, report the variable at the line where digest() is called.",
+            "output": {
+                "explanation": "There is no call to digest() on the MessageDigest object. Therefore, no unsalted hash exists.",
+                "answer": []
+            }
+        }
+    ],
+
+    "final_task": {
+        "description": "Please read the following code. List the MessageDigest objects where digest() is called without salting.",
+        "code": "{P_CODE}",
+        "question": "Please examine the code snippet. Check whether digest() is called on a MessageDigest object without adding salt before the digest operation. If salt is added via update() before digest(), do NOT report. If salt is NOT added, report the variable at the line where digest() is called.",
+        "format": [
+            "Please answer the question with explanation and final answer. Remember, you should:\n (1) Identify all digest() method calls on MessageDigest objects\n (2) Check whether salt was added via update() calls before each digest() call\n (3) Only report the variable if NO salt was added before digest()\n Do not repeat the question and program. You should follow the following format of output.",
+            "Explanation: [Your explanation on whether digest() is called and whether salt was added before the digest operation.]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}

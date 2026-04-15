@@ -1,0 +1,65 @@
+{
+    "system": "You are a static analysis assistant, tasked with mimicking the execution of code snippets to find all the expressions of which the values depend on the variable's value at a specific line.",
+
+    "task": "Analyze the given code snippets and determine all the expressions of which the values depend on the variable's value at a specific line. Particularly, you should check the following form of expressions: (1) return value of the function, (2) actual arguments of function calls, (3) operands of commonly used operators. Think step by step and list pairs of a program line and an expression.",
+
+    "examples": [
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. int b = 0;\n2. z = b + 1;",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined at line 1 and directly used in line 2. Hence, the use site of the value of b at line 1 is the variable b at line 2. The value of b + 1 depends on the value of b at line 1.",
+                "answer": [
+                    {"Line": 2, "Variable": "b + 1"}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. int b = 0;\n2. b = 3;\n3. z = foo(b * 2);",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. However it is overwritten at line 2 before it is used at line 3. Hence there is no expression of which the value depends on the value of b at line 1.",
+                "answer": []
+            }
+        },
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. b = 1;\n2. if (c) {\n3.   z = b;\n4. } else {\n5.   z = b + 1;\n6. koo(z + 4);\n7. }",
+            "question": "Examine the value of variable b at line 1.",
+            "output": {
+                "explanation": "The variable b is defined and initialized at line 1. Then the variable z is assigned in the if-statement. Two different values are assigned, both of which are dependent on the value of b. Finally, the value of z + 4 at line 6 depends on the values of z at line 3 and line 5 and thus depend on b at line 1.",
+                "answer": [
+                    {"Line": 3, "Variable": "b"},
+                    {"Line": 5, "Variable": "b + 1"},
+                    {"Line": 6, "Variable": "z + 4"}
+                ]
+            }
+        },
+        {
+            "description": "List all the expressions of which the values depend on the value of b at line 1.",
+            "code": "1. s = input();\n2. if (c) {\n3.   z = s + \"a\";\n4. } else {\n5.   data = s + \"b\";\n6. response.getWriter().println(\"<br>bad(): data = \" + data.replaceAll(\"(<script>)\", \"\"));\n7. }",
+            "question": "Examine the value of variable s at line 1.",
+            "output": {
+                "explanation": "The variable s is defined and initialized at line 1. The value of s is used in line 5 to assign the value of data. The value of data is used in line 6 to call the replaceAll method. The value of data.replaceAll(\"(<script>)\", \"\") depends on the value of data at line 5 and thus depends on s at line 1. Hence the expression \"<br>bad(): data = \" + data.replaceAll(\"(<script>)\", \"\") depends on the value of s at line 1.",
+                "answer": [
+                    {"Line": 6, "Variable": "<br>bad(): data = \" + data.replaceAll(\"(<script>)\", \"\")"},
+                    {"Line": 5, "Variable": "s + \"b\""},
+                    {"Line": 3, "Variable": "s + \"a\""}
+                ]
+            }
+        }
+    ],
+    "final_task": {
+        "description": "Please read the following code. Examine the value of the variable {P_VARIABLE_NAME} at line {P_LINE_NUMBER} and analyze how the value is used in other statements",
+        "code": "{P_CODE}",
+        "question": "List all the expressions of which the values depend on the value of {P_VARIABLE_NAME} at line {P_LINE_NUMBER}. Please examine the code as a code interpreter/compiler according to the control flow order and see how the value is used in other statements. You need to pay attention to the order of how each statement is executed. Particularly, you should check the following form of expressions: (1) return value of the function, (2) actual arguments of function calls, (3) operands of commonly used operators.",
+        "format": [
+            "Format of the output:",
+            "Explanation: [Your explanation on how the value of the variable is used in other statements]",
+            "Answer:",
+            "- Program Line: Line {LINE_NUMBER}, Expression: {VARIABLE_NAME}"
+        ]
+    }
+}
