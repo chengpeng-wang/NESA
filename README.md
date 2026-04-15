@@ -6,8 +6,9 @@
 - [Prerequisite](README.md#prerequisite)
 - [Core NESA Client](README.md#core-nesa-client)
 - [How to Run NESA](README.md#how-to-run-nesa)
-- [How to Run Baseline](README.md#how-to-run-baseline)
+- [How to Run Baselines](README.md#how-to-run-baselines)
 - [Troubleshooting](README.md#troubleshooting)
+- [Paper](README.md#paper)
 - [Contact](README.md#contact)
 - [License](README.md#license)
 
@@ -155,7 +156,7 @@ Notes:
 
 
 
-## How to Run Baseline
+## How to Run Baselines
 
 Baseline wrappers live under `scripts/baseline/`.
 
